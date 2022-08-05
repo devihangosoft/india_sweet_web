@@ -1,0 +1,33 @@
+.customTabs ul{
+    border-bottom: 1px solid #edebeb;
+}
+.react-tabs__tab {
+padding:6px 0px ;
+    margin: 0px 15px;
+    cursor: pointer;
+}
+
+.react-tabs__tab--selected {
+    background: transparent;
+    border-color: transparent;
+    color: black;
+    border-radius: none;
+    border-bottom: 3px solid #007bff;
+    color: #007bff;
+    font-weight: bold;
+}
+.react-tabs__tab:focus:after {
+    background-color: transparent;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #212529;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: transparent;
+}

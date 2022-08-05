@@ -1,0 +1,16 @@
+.config-sidebar ul{
+padding: 0;
+list-style-type:none;
+margin-bottom: 0;
+}
+.config-sidebar ul li+li {
+    margin-top: 8px;
+}
+.config-sidebar ul li .btn {
+  width:100%;
+  text-align: left;
+}
+.config-sidebar ul li svg {
+margin-right: 10px;
+width: 16px;
+}

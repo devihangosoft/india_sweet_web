@@ -1,0 +1,80 @@
+    /* html,
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    } */
+
+    .floating-div {
+      bottom: 3.25rem;
+      position: fixed;
+      right: 1.25em;
+      z-index: 1036;
+      width: 24rem;
+      ;
+    }
+
+    .curved-card {
+      border-radius: 24px;
+      /* box-shadow: 0 1px 0 rgba(0,0,0,.15); */
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .content-wrapper {
+      background: #F7F7FE;
+    }
+
+    .text-blue {
+      color: #227CF8;
+    }
+
+    .bg-gradient-purpl {
+      background: #375AF8 linear-gradient(180deg, #375AF8, #007bff) repeat-x !important;
+      color: #fff;
+    }
+
+    .bg-gradient-purpl .btn-tool {
+      color: #fff;
+    }
+
+    .stat-text {
+      letter-spacing: .05rem;
+      color: #03132b;
+    }
+
+    .stat-number {
+      font-size: 1.625rem;
+      color: #3d5170;
+    }
+
+    .bg-gradient-red {
+      background: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important;
+      color: #fff;
+    }
+
+    .bg-gradient-navy-blue {
+      background: linear-gradient(87deg, #172b4d 0, #1a174d 100%) !important;
+      color: #fff;
+    }
+
+    .bg-gradient-yellow {
+      background: linear-gradient(45deg, #ff6f00, #ffca28 100%) !important;
+      color: #fff;
+    }
+
+    .bg-gradient-green {
+      background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important;
+      color: #fff;
+    }
+
+    .bg-gradient-blue {
+      background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important;
+      color: #fff;
+    }
+
+    .btn-neutral{
+      background-color: #fff;
+      border-color:#fff;
+      color: #5e72e4;
+      box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+    }
