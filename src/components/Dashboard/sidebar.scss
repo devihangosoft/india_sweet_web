@@ -23,12 +23,10 @@ a:hover {
 
     &:hover {
       text-decoration: none;
-      background-color: rgba(115, 102, 255, 0.06);
-      color: #171064;
+      background-color: #FEAF00;
 
       svg {
         fill: rgba(115, 102, 255, 0.1);
-        stroke: #171064;
       }
 
       span {
@@ -398,7 +396,7 @@ a:hover {
       z-index: 9;
       height: auto;
       line-height: inherit;
-      background: $white;
+      background: #F2EAE1;
       width: 60px;
       text-align: left;
       transition: 0.3s;
@@ -1038,7 +1036,7 @@ div.sidebar-wrapper {
   >div {
     height: auto;
     line-height: inherit;
-    background: $white;
+    background: #F2EAE1;
     width: 150px;
     text-align: left;
     transition: 0.3s;

@@ -1,18 +1,18 @@
 import React from "react";
-import ResetPassword from "./components/Login/ResetPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//import MainContent from "./components/Sidebar/MainContent";
 
-import LeadList from "./components/Dashboard/Orders/Orders";
-
-
-
-
+import Orders from "./components/Dashboard/Orders/Orders";
+import Products from "./components/Dashboard/Products/Products";
+import Stores from "./components/Dashboard/Stores/Stores";
+import Payments from "./components/Dashboard/Payments/Payments";
 
 import Configuration from "./components/Configurations/Configuration";
 import Signin from "./components/Login/Signin";
 import Logout from "./components/Login/Logout";
 import Register from "./components/Login/Register";
+import ResetPassword from "./components/Login/ResetPassword";
+import OtpVerification from "./components/Login/OtpVerification";
+
 // import Adduser from "./components/UserConfig/Adduser";
 import CreatePassword from "./components/Login/CreatePassword";
 import MainContent from "./components/Dashboard/Dashboard";
@@ -29,8 +29,7 @@ import Sms from "./components/Configurations/SmsConfig/Sms";
 
 import Layout from "./components/Layout/Layout";
 
-import OtpVerification from "./components/Login/OtpVerification";
-import Orders from "./components/Dashboard/Orders/Orders";
+
 //import Cards from "./components/DataTables/Card";
 // import Accordions from "./components/Elements/Accordions";
 // import CustomTabs from "./components/Elements/CustomTabs";
@@ -64,6 +63,30 @@ function App() {
             element={
               <Layout name="Orders">
                 <Orders />
+              </Layout>
+            }
+          />
+            <Route
+            path="/products"
+            element={
+              <Layout name="Products">
+                <Products />
+              </Layout>
+            }
+          />
+            <Route
+            path="/stores"
+            element={
+              <Layout name="Stores">
+                <Stores />
+              </Layout>
+            }
+          />
+            <Route
+            path="/payments"
+            element={
+              <Layout name="Payments">
+                <Payments />
               </Layout>
             }
           />

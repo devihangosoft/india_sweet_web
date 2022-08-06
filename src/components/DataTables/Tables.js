@@ -5,11 +5,17 @@ import "react-data-table-component-extensions/dist/index.css";
 import { columns, data } from "./data";
 
 const customStyles = {
+  style:{
+background:'#f5f5f5'
+  },
   rows: {
     style: {
-      padding:"10px 0px",
+      padding:"5px 0px",
       minHeight: "50px",
       fontSize: "15px",
+      margin:"0 0 10px 0",
+      background: "#f5f5f5",
+      borderBottom:'0px solid!important',
       "&:hover": {
         background: "#f5f5f5",
       },

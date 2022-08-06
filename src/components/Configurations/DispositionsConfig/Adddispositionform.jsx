@@ -227,7 +227,7 @@ function Adddispositionform() {
                     </div>
                     <div className="form-group mt-5 mb-0">
                       <button
-                        className="btn btn-primary btn-block w-100"
+                        className="btn btn-theme btn-block w-100"
                         type="submit"
                       >
                         Create Account

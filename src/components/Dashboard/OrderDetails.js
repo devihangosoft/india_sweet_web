@@ -53,7 +53,7 @@ function OrderDetails() {
                         </p>
                         <p className="text-center">
                           <button
-                            className="btn btn-sm btn-primary img-circle"
+                            className="btn btn-sm btn-theme img-circle"
                             title="Call customer"
                             data-toggle="modal"
                             data-target="#dialer-modal"
@@ -217,7 +217,7 @@ function OrderDetails() {
                               </button>
                               <button
                                 type="button"
-                                className="btn btn-primary"
+                                className="btn btn-theme"
                                 onClick="updateCustomerInfo()"
                               >
                                 Submit

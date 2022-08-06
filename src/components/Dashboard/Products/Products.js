@@ -4,7 +4,7 @@ import Filter from "../../Elements/Filter/Filter";
 import Adduserform from "../../Configurations/UserConfig/Adduserform";
 import { useDispatch } from "react-redux/es/exports";
 
-function Orders() {
+function Products() {
   const dispatch = useDispatch();
   const handleShow = () =>
   dispatch({ type: "openModal",  payload : <Adduserform />  });
@@ -14,7 +14,7 @@ function Orders() {
         <div className="row">
 
         <div className="col-6">
-                  <button class="btn btn-theme mt-2"variant="primary" onClick={handleShow}>Add Order</button>
+                  <button class="btn btn-theme mt-2"variant="primary" onClick={handleShow}>Add Product</button>
                   </div>
 
           <div className="col-6 ">
@@ -31,4 +31,4 @@ function Orders() {
   );
 }
 
-export default Orders;
+export default Products;

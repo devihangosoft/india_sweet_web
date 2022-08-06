@@ -16,14 +16,14 @@ export default function Teams() {
     <>
 
 
-             <div className="py-4">
+             <div className="pb-4">
                 <div className="row">
                   <div className="col-6">
                     <h3>Teams List</h3>
                     
                   </div>
                   <div className="col-6">
-                  <button class="btn btn-primary float-right mt-2"variant="primary" onClick={handleShow}>Add Team</button>
+                  <button class="btn btn-theme float-right mt-2"variant="primary" onClick={handleShow}>Add Team</button>
                   </div>
                 </div>
               </div>

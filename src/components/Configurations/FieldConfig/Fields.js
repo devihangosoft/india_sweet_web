@@ -23,7 +23,7 @@ export default function Fields() {
                     
                   </div>
                   <div className="col-6">
-                  <button class="btn btn-primary float-right mt-2"variant="primary" onClick={handleShow}>Add Field</button>
+                  <button class="btn btn-theme float-right mt-2"variant="primary" onClick={handleShow}>Add Field</button>
                   </div>
                 </div>
               </div>
