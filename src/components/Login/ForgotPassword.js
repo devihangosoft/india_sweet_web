@@ -52,7 +52,7 @@ function ForgotPassword() {
                     type="button"
                     id="requestBtn"
                     onclick="resetPasswordRequest()"
-                    className="btn btn-primary btn-block py-2 text-white"
+                    className="btn btn-theme btn-block py-2 text-white"
                   >
                     <span className="font-weight-bold">
                       Request new password
@@ -110,7 +110,7 @@ function ForgotPassword() {
                 <div className="form-group col-lg-12 mx-auto mb-0">
                   <a
                     onclick="updatePassword()"
-                    className="btn btn-primary btn-block py-2 text-white"
+                    className="btn btn-theme btn-block py-2 text-white"
                   >
                     <span className="font-weight-bold">Change password</span>
                   </a>
@@ -129,13 +129,13 @@ function ForgotPassword() {
                 <div className="text-center w-100">
                   <p className="text-muted font-weight-bold">
                     Don't have an account?{" "}
-                    <NavLink to="/registration" className="text-primary ml-2">
+                    <NavLink to="/registration" className=" ml-2">
                       Register
                     </NavLink>
                   </p>
                   <p className="text-muted font-weight-bold">
                     Login to Creysto
-                    <NavLink to="/" className="text-primary ml-2">
+                    <NavLink to="/" className=" ml-2">
                       Login
                     </NavLink>
                   </p>

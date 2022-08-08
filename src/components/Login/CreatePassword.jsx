@@ -16,11 +16,12 @@ function CreatePassword() {
 	};
   return (
     <>    
-     <div className="container">
+  
+          <div className="login-card">
+          <div className="container">
       <div className="row align-items-center justify-content-between">
        
         <div className="col-md-7 p-0">
-          <div className="login-card">
             <div>
               <div className="text-center">
 			   <Header />
@@ -45,7 +46,7 @@ function CreatePassword() {
                     </div>
                     <div className="form-group mt-5 mb-0">
 
-                      <button className="btn btn-primary btn-block w-100" type="submit">Done                          </button>
+                      <button className="btn btn-theme btn-block w-100" type="submit">Done                          </button>
                     </div>
                     <p className="mt-4 mb-0">Don't have account?<NavLink to="/register" className="ms-2" > Create Account</NavLink></p>
                   </form>

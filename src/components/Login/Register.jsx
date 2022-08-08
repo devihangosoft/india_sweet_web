@@ -76,7 +76,7 @@ function Register() {
   const { response, loading, error } = useAxios({
     method: "post",
     url: "/registeruser",
-    headers:{
+    headers: {
       "Content-Type": "application/json",
       "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
     },
@@ -168,11 +168,12 @@ function Register() {
 
   return (
     <>
-      <div className="container">
-        <div className="row align-items-center justify-content-between">
-         
-          <div className="col-md-7 p-0">
-            <div className="login-card">
+
+      <div className="login-card">
+        <div className="container">
+          <div className="row align-items-center justify-content-center">
+
+            <div className="col-md-6 p-0">
               <div>
                 <div className="text-center">
                   <Header />
@@ -186,8 +187,10 @@ function Register() {
                   >
                     {({ errors, touched }) => (
                       <Form className="theme-form">
-                        <h4>Create your account</h4>
-                        <p>Enter your personal details to create account</p>
+                        <div className="text-center">
+                          <h5 className="text-uppercase">Create account</h5>
+                          <p>Enter your personal details to create account</p>
+                        </div>
                         {/* <div className="form-group">
                       <label className="col-form-label">User Name</label>
                       <Field
@@ -285,15 +288,7 @@ function Register() {
                                 type="number"
                                 name="phone"
                                 placeholder="9898 XXXXXX"
-                                // onChange={e => {
-                                //   e.preventDefault();
-                                //   const { value } = e.target;
-                                //   const regex = /^(0*[1-9][0-9]*(\.[0-9]*)?|0*\.[0-9]*[1-9][0-9]*)$/;
-                                //   if (regex.test(value.toString())) {
-                                //     setFieldValue("rank", value);
-                                //   }
-                                // }}
-                              />
+                                />
                               <ErrorMessage
                                 name="phone"
                                 component="div"
@@ -410,30 +405,31 @@ function Register() {
                         </div>
                         <div className="form-group mt-5 mb-0">
                           <button
-                            className="btn btn-primary btn-block w-100"
+                            className="btn btn-theme btn-block w-100"
                             type="submit"
                           >
                             Create Account
                           </button>
                         </div>
-                        <div className="form-group mt-5 mb-0">
-                          {message && (
+
+                        {message && (
+                          <div className="form-group mt-5 mb-0">
                             <div className="form-group">
                               <div className="alert alert-danger" role="alert">
                                 {message}
                               </div>
                             </div>
-                          )}
-                        </div>
-                        <div className="form-group mt-5 mb-0">
-                          {successmessage && (
+                          </div>
+                        )}
+                        {successmessage && (
+                          <div className="form-group mt-5 mb-0">
                             <div className="form-group">
                               <div className="alert alert-success" role="alert">
                                 {successmessage}
                               </div>
                             </div>
-                          )}
-                        </div>
+                          </div>
+                        )}
                         <div className="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
                           <div className="border-bottom w-100 ml-5"></div>
                           <span className="px-2 small text-muted font-weight-bold text-muted">

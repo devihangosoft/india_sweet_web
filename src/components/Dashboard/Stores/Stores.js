@@ -1,20 +1,20 @@
 import React from "react";
 import Tables from "../../DataTables/Tables";
 import Filter from "../../Elements/Filter/Filter";
-import {NavLink} from "react-router-dom"
+import Adduserform from "../../Configurations/UserConfig/Adduserform";
+import { useDispatch } from "react-redux/es/exports";
 
-function Orders() {
-
+function Stores() {
+  const dispatch = useDispatch();
+  const handleShow = () =>
+  dispatch({ type: "openModal",  payload : <Adduserform />  });
   return (
     <>
       <div className="pb-4">
         <div className="row">
 
         <div className="col-6">
-          <NavLink className="text-white btn btn-theme mt-2" to="/orderform">
-          Add Order
-          </NavLink>
-        
+                  <button class="btn btn-theme mt-2"variant="primary" onClick={handleShow}>Add Store</button>
                   </div>
 
           <div className="col-6 ">
@@ -31,4 +31,4 @@ function Orders() {
   );
 }
 
-export default Orders;
+export default Stores;

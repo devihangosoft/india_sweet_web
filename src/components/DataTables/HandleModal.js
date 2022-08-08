@@ -17,9 +17,9 @@ function EditButton(props) {
     return (
       <>
         <div className="mr-3" onClick={handleShow} row={props.row}>
-          <Icon.Edit type="button" color="blue" width="20" />
+          <Icon.Edit type="button" color="#FEAF00" width="20" />
         </div>
-        {/* <button type="button" class="btn btn-primary mr-3" onClick={handleShow}>
+        {/* <button type="button" class="btn btn-theme mr-3" onClick={handleShow}>
           Edit
         </button> */}
       </>

@@ -15,19 +15,22 @@ function ResetPassword() {
   };
   return (
     <>
-      <div className="container">
-        <div className="row align-items-center justify-content-between">
-          
-          <div className="col-md-7 p-0">
+   
             <div className="login-card">
+            <div className="container">
+        <div className="row align-items-center justify-content-center">
+          
+          <div className="col-md-6 p-0">
               <div>
                 <div className="text-center">
                   <Header />
                 </div>
                 <div className="login-main">
                   <form className="theme-form">
-                    <h4>Reset Your Password</h4>
+                  <div className="text-center">
+                    <h5 className="text-uppercase">Reset Your Password</h5>
                     <p>Enter your email/ phone to reset password</p>
+                    </div>
                     <div className="form-group">
                       <label className="col-form-label">Enter Your Mobile Number</label>
                       <div className="row">
@@ -36,7 +39,7 @@ function ResetPassword() {
                         </div>
                         <div className="mt-3 col-12">
                           <div className="text-end">
-                            <button className="btn btn-primary btn-block m-t-10" type="submit">Send</button>
+                            <button className="btn btn-theme btn-block m-t-10" type="submit">Send</button>
                           </div>
                         </div>
                       </div>
@@ -73,10 +76,10 @@ function ResetPassword() {
                     </div>
                     <div className="form-group mt-5 mb-0">
 
-                      <button className="btn btn-primary btn-block w-100" type="submit">Done                          </button>
+                      <button className="btn btn-theme btn-block w-100" type="submit">Done                          </button>
                     </div>
                     <p className="mt-4 mb-0 text-center">Already have an password?
-                      <NavLink to="/login" className="text-primary ml-2">
+                      <NavLink to="/login" className="ml-2">
                         Login
                       </NavLink>
                     </p>
