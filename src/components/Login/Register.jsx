@@ -187,7 +187,6 @@ function Register() {
                   >
                     {({ errors, touched }) => (
                       <Form className="theme-form">
-
                         <div className="text-center">
                           <h5 className="text-uppercase">Create account</h5>
                           <p>Enter your personal details to create account</p>
@@ -289,15 +288,7 @@ function Register() {
                                 type="number"
                                 name="phone"
                                 placeholder="9898 XXXXXX"
-                              // onChange={e => {
-                              //   e.preventDefault();
-                              //   const { value } = e.target;
-                              //   const regex = /^(0*[1-9][0-9]*(\.[0-9]*)?|0*\.[0-9]*[1-9][0-9]*)$/;
-                              //   if (regex.test(value.toString())) {
-                              //     setFieldValue("rank", value);
-                              //   }
-                              // }}
-                              />
+                                />
                               <ErrorMessage
                                 name="phone"
                                 component="div"

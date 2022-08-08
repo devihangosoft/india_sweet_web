@@ -28,7 +28,9 @@ import Emails from "./components/Configurations/EmailConfig/Emails";
 import Sms from "./components/Configurations/SmsConfig/Sms";
 
 import Layout from "./components/Layout/Layout";
-
+import OrderForm from "./components/Dashboard/Orders/OrderForm";
+import OrderDetails from "./components/Dashboard/Orders/OrderDetails"
+import CustomizedSteppers from "./components/Dashboard/Orders/Stepper"
 
 //import Cards from "./components/DataTables/Card";
 // import Accordions from "./components/Elements/Accordions";
@@ -57,7 +59,14 @@ function App() {
               </Layout>
             }
           />
-         
+               <Route
+            path="/steppers"
+            element={
+              <Layout name="Steppers">
+         <CustomizedSteppers/>
+              </Layout>
+            }
+          />
           <Route
             path="/orders"
             element={
@@ -66,6 +75,24 @@ function App() {
               </Layout>
             }
           />
+
+            <Route
+            path="/orderform"
+            element={
+              <Layout name="Add Order">
+               <OrderForm/>
+              </Layout>
+            }
+          />
+            <Route
+            path="/orderdetails"
+            element={
+              <Layout name="Order Details">
+               <OrderDetails/>
+              </Layout>
+            }
+          />
+
             <Route
             path="/products"
             element={
