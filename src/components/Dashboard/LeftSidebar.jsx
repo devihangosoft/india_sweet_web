@@ -23,17 +23,18 @@ export default function LeftSideBar() {
   };
   return (
     <div className="sidebar-wrapper">
-      <div className="logo-wrapper">
-        {/* <NavLink
+      {/* <div className="logo-wrapper">
+        <NavLink
           to="/dashboard"
           className="sidebar-link sidebar-title d-flex  align-items-center"
         >
-          <img src="./images/creysto-logo.png" alt="Creysto Logo" />
+          <img src="./images/logo.png" alt=" Logo" />
           <span className="ml-4">
-            <h4 className="my-1">CREYSTO</h4>
+          <img src="./images/logo.png" alt=" Logo" />
+            <h4 className="my-1">India Sweet House</h4>
           </span>
-        </NavLink> */}
-      </div>
+        </NavLink>
+      </div> */}
 
       <ul
         className="sidebar-links custom-scrollbar"

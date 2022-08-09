@@ -1,12 +1,8 @@
 import React from "react";
 import "./Configuration.css";
-import * as Icons from "react-feather";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import PhoneIcon from '@mui/icons-material/Phone';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import PersonPinIcon from '@mui/icons-material/PersonPin';
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import AppRegistrationOutlinedIcon from '@mui/icons-material/AppRegistrationOutlined';
@@ -17,9 +13,14 @@ import ProductionQuantityLimitsOutlinedIcon from '@mui/icons-material/Production
 import DiscountOutlinedIcon from '@mui/icons-material/DiscountOutlined';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
-
+import Teams from "./TeamsConfig/Teams"
 import Users from "./UserConfig/Users";
-
+import Sms from "./SmsConfig/Sms";
+import Emails from "./EmailConfig/Emails";
+import Fields from "./FieldConfig/Fields";
+import Dispositions from "./DispositionsConfig/Dispositions";
+import Stores from "../Dashboard/Stores/Stores"
+import Products from "../Dashboard/Products/Products"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -101,28 +102,28 @@ function Configuration() {
 
 
               <TabPanel value={value} index={0}>
-  Item One
+  <Fields/>
 </TabPanel>
 <TabPanel value={value} index={1}>
   <Users />
 </TabPanel>
 <TabPanel value={value} index={2}>
-  Item Three
+ <Teams/>
 </TabPanel>
 <TabPanel value={value} index={3}>
-  Item four
+<Dispositions/>
 </TabPanel>
 <TabPanel value={value} index={4}>
-  Item five
+<Products/>
 </TabPanel>
 <TabPanel value={value} index={5}>
-  Item six
+ <Stores/>
 </TabPanel>
 <TabPanel value={value} index={6}>
-  Item seven
+ <Emails/>
 </TabPanel>
 <TabPanel value={value} index={7}>
-  Item eight
+<Sms/>
 </TabPanel>
 
 

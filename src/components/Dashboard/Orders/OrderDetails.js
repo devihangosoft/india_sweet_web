@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import StepProgressBar from "react-step-progress";
-import Accordion from "react-bootstrap/Accordion";
 import "react-step-progress/dist/index.css";
-import * as Icon from "react-feather"
 import CustomizedSteppers from "./Stepper";
 
 function OderDetails() {
