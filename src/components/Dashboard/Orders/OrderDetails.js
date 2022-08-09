@@ -3,6 +3,7 @@ import StepProgressBar from "react-step-progress";
 import Accordion from "react-bootstrap/Accordion";
 import "react-step-progress/dist/index.css";
 import * as Icon from "react-feather"
+import CustomizedSteppers from "./Stepper";
 
 function OderDetails() {
   const step1Content = <h1>fgfgghgjh</h1>;
@@ -19,16 +20,137 @@ function OderDetails() {
     <>
       <div className="page-content">
         <div className="cart">
-          <div className="container">
-            <div className="row">
-            <aside className="col-lg-4">
-                <div className="summary summary-cart">
-                  <table className="table table-summary">
+
+
+
+<CustomizedSteppers />
+
+          {/* <!-- Main content --> */}
+          <div className="row">
+            <div className="col-md-12 py-3">
+              <h2 className="h5 mb-0"><a href="#" className="text-muted"></a> Order #16123222</h2>
+            </div>
+            <div className="col-lg-5">
+              {/* <!-- Details --> */}
+              <div className="card mb-4">
+                <div className="card-body">
+                  <div className="mb-3 d-flex justify-content-between">
+                    <div>
+                      <span className="me-3">22-11-2021</span>
+                    </div>
+                    <div className="d-flex ">
+                      <span className="badge rounded-pill bg-info text-white ">SHIPPING</span>
+
+                      <div className="dropdown">
+                        <button className="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
+                          <i className="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul className="dropdown-menu dropdown-menu-end">
+                          <li><a className="dropdown-item" href="#"><i className="bi bi-pencil"></i> Edit</a></li>
+                          <li><a className="dropdown-item" href="#"><i className="bi bi-printer"></i> Print</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <table className="table table-borderless">
                     <tbody>
-                      <tr className="summary-subtotal">
-                        <td>Order id:</td>
-                        <td>100</td>
-                      </tr>{/*<!-- End .summary-subtotal --> */}
+                      <tr>
+                        <td>
+                          <div className="d-flex mb-2">
+
+                            <div className="flex-lg-grow-1 ms-3">
+                              <h6 className="small mb-0">Product Name</h6>
+                              <span className="small">Qunatity : 5</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="text-right">$79.99</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex mb-2">
+
+                            <div className="flex-lg-grow-1 ms-3">
+                              <h6 className="small mb-0">Product Name</h6>
+                              <span className="small">Qunatity : 5</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="text-right">$79.99</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td >Subtotal</td>
+                        <td className="text-right">$159,98</td>
+                      </tr>
+
+                      <tr className="fw-bold">
+                        <td>TOTAL</td>
+                        <td className="text-right">$169,98</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+              {/* <!-- Payment --> */}
+              <div className="card mb-4">
+                <div className="card-body">
+                  <div className="row">
+                    <div className="col-lg-6">
+                      <h3 className="h6">Payment Method</h3>
+                      <p>Visa -1234 <br />
+                        Total: $169,98 <span className="badge bg-success rounded-pill text-white">PAID</span></p>
+                    </div>
+                    <div className="col-lg-6">
+                      <h3 className="h6">Billing address</h3>
+                      <address>
+                        <strong>John Doe</strong><br />
+                        1355 Market St, Suite 900<br />
+                        San Francisco, CA 94103<br />
+                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                      </address>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-3">
+              {/* <!-- Customer Notes --> */}
+              <div className="card mb-4">
+                <div className="card-body">
+                  <h3 className="h6">Customer Notes</h3>
+                  <p>Sed enim, faucibus litora velit vestibulum habitasse. Cras lobortis cum sem aliquet mauris rutrum. Sollicitudin. Morbi, sem tellus vestibulum porttitor.</p>
+                </div>
+              </div>
+              <div className="card mb-4">
+                {/* <!-- Shipping information --> */}
+                <div className="card-body">
+                  <h3 className="h6">Shipping Information</h3>
+                  {/* <strong>FedEx</strong>
+          <span><a href="#" className="text-decoration-underline" target="_blank">FF1234567890</a> <i className="bi bi-box-arrow-up-right"></i> </span> */}
+                  <hr />
+                  {/* <h3 className="h6">Address</h3> */}
+                  <address>
+                    <strong>John Doe</strong><br />
+                    1355 Market St, Suite 900<br />
+                    San Francisco, CA 94103<br />
+                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                  </address>
+                  <h3 className="h6">Delivery Date : <span>10/12/2022</span></h3>
+                  <h3 className="h6">Delivery Time : <span>12:24 PM</span></h3>
+
+                </div>
+              </div>
+            </div>
+
+            <aside className="col-lg-4">
+
+              <div className="card">
+                <div className="card-body">
+                  <table className="table ">
+                    <tbody>
+
                       <tr className="summary-shipping">
                         <td>Customer name:</td>
                         <td>user</td>
@@ -51,159 +173,12 @@ function OderDetails() {
                         <td>Whatsapp:</td>
                         <td>+91 XXXXX</td>
                       </tr>
-
-                      {/* <tr className="summary-shipping-row">
-                        <td>
-                          <div className="custom-control custom-radio">
-                            <input type="radio" id="free-shipping" name="shipping" className="custom-control-input" />
-                            <label className="custom-control-label" for="free-shipping">Free Shipping</label>
-                          </div>
-                        </td>
-                        <td>$0.00</td>
-                      </tr> */}
-
-                      <tr className="summary-shipping-estimate">
-                        <td>Delivery Address</td>
-                        <td>Blore</td>
-                      </tr>{/*<!-- End .summary-shipping-estimate --> */}
-
-                      <tr className="summary-total">
-                        <td>Total:</td>
-                        <td>$160.00</td>
-                      </tr>{/*<!-- End .summary-total --> */}
                     </tbody>
-                  </table>{/*<!-- End .table table-summary --> */}
-
-                  {/* <a href="checkout.html" className="btn btn-theme btn-order btn-block">PROCEED </a> */}
-                </div>{/*<!-- End .summary --> */}
-
-              </aside>{/*<!-- End .col-lg-3 --> */}
-              <div className="col-lg-8">
-              
-                <table className="table table-cart table-mobile">
-                  <thead>
-                    <tr>
-                      <th>Product</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Total</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td className="product-col">
-                        <div className="product">
-                          {/* <figure className="product-media">
-                            <a href="#">
-                              <img src="assets/images/products/table/product-1.jpg" alt="Product image" />
-                            </a>
-                          </figure> */}
-
-                          <h6 className="product-title">
-                            Product 1
-                          </h6>
-                        </div>
-                      </td>
-                      <td className="price-col">$84.00</td>
-                      <td className="quantity-col">
-                        <div className="cart-product-quantity">
-                          <input type="number" className="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required="" />
-                          <div className="input-group  input-spinner">
-                            <div className="input-group-prepend">
-                              <button className="btn btn-decrement btn-spinner" type="button">
-                               <Icon.Minus/>
-                               </button></div>
-                            <input type="text" className="form-control " required="" placeholder="" />
-                            <div className="input-group-append"><button className="btn btn-increment btn-spinner" type="button">
-                              <Icon.Plus/>
-                              </button></div></div>
-                        </div>
-                      </td>
-                      <td className="total-col">$84.00</td>
-                      <td className="remove-col"><button className="btn-remove">
-                        <Icon.X/>
-                        </button></td>
-                    </tr>
-
-                    <tr>
-                      <td className="product-col">
-                        <div className="product">
-                          {/* <figure className="product-media">
-                            <a href="#">
-                              <img src="assets/images/products/table/product-1.jpg" alt="Product image" />
-                            </a>
-                          </figure> */}
-
-                          <h6 className="product-title">
-                            Product 1
-                          </h6>
-                        </div>
-                      </td>
-                      <td className="price-col">$84.00</td>
-                      <td className="quantity-col">
-                        <div className="cart-product-quantity">
-                          {/* <input type="number" className="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required="" />
-                          <div className="input-group  input-spinner">
-                            <div className="input-group-prepend">
-                              <button className="btn btn-decrement btn-spinner" type="button">
-                               <Icon.Minus/>
-                               </button></div>
-                            <input type="text" className="form-control " required="" placeholder="" />
-                            <div className="input-group-append"><button className="btn btn-increment btn-spinner" type="button">
-                              <Icon.Plus/>
-                              </button></div></div> */}
-                        </div>
-                      </td>
-                      <td className="total-col">$84.00</td>
-                      <td className="remove-col"><button className="btn-remove">
-                        <Icon.X/>
-                        </button></td>
-                    </tr>
-                    
-                  </tbody>
-                </table>{/*<!-- End .table table-wishlist --> */}
-
-                <div className="cart-bottom">
-                  <a href="#" className="btn btn-outline-dark-2"><span>UPDATE CART</span>
-                  <Icon.RefreshCcw/></a>
-                </div>{/*<!-- End .cart-bottom --> */}
-              </div>{/*<!-- End .col-lg-9 --> */}
-
-            </div>{/*<!-- End .row --> */}
-          </div>{/*<!-- End .container --> */}
-        </div>{/*<!-- End .cart --> */}
-      </div>
-      <div classNameName="row align-items-center justify-content-between">
-        <div classNameName="col-md-12">
-          <StepProgressBar
-            startingStep={0}
-            // previousBtnName="Prev"
-            steps={[
-              {
-                label: "Briefing",
-                name: "Briefing",
-                content: step1Content
-              },
-              {
-                label: "Image-Acquisition",
-                name: "Image-Acquisition",
-                content: step2Content
-              },
-              {
-                label: "Image-processing",
-                name: "Image Processing",
-                content: step3Content
-                // validator: step2Validator
-              },
-              {
-                label: "Finish",
-                name: "Finish",
-                content: step3Content
-              }
-            ]}
-          />
+                  </table>
+                </div>
+              </div>
+            </aside>
+          </div>
         </div>
       </div>
     </>
