@@ -205,7 +205,7 @@ function Register() {
                     </div> */}
                         <div className="form-group">
                           <div className="row g-2">
-                            <div className="col-6">
+                            <div className="col-12">
                               <label className="col-form-label">
                                 User Name
                               </label>
@@ -221,7 +221,7 @@ function Register() {
                                 className="text-danger"
                               />
                             </div>
-                            <div className="col-6">
+                            {/* <div className="col-6">
                               <label className="col-form-label">
                                 Company Name
                               </label>
@@ -236,7 +236,7 @@ function Register() {
                                 component="div"
                                 className="text-danger"
                               />
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                         <div className="form-group">
@@ -314,7 +314,7 @@ function Register() {
                           </div>
                         </div>
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                           <div className="row g-2">
                             <div className="col-6">
                               <label className="col-form-label pt-0">
@@ -349,7 +349,7 @@ function Register() {
                               />
                             </div>
                           </div>
-                        </div>
+                        </div> */}
 
                         <div className="form-group">
                           <div className="row g-2">

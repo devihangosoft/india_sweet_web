@@ -14,7 +14,7 @@ export default function Users() {
              <div className="pb-4">
                 <div className="row">
                   <div className="col-6">
-                    <h3>Users List</h3>
+                    {/* <h3>Users List</h3> */}
                     
                   </div>
                   <div className="col-6">

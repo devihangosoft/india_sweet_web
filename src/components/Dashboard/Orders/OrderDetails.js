@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "react-step-progress/dist/index.css";
 import CustomizedSteppers from "./Stepper";
+import * as Icon from "react-feather";
 
 function OderDetails() {
   const step1Content = <h1>fgfgghgjh</h1>;
@@ -20,7 +21,7 @@ function OderDetails() {
 
 
 
-<CustomizedSteppers />
+{/* <CustomizedSteppers /> */}
 
           {/* <!-- Main content --> */}
           <div className="row">
@@ -35,18 +36,8 @@ function OderDetails() {
                     <div>
                       <span className="me-3">22-11-2021</span>
                     </div>
-                    <div className="d-flex ">
+                    <div>
                       <span className="badge rounded-pill bg-info text-white ">SHIPPING</span>
-
-                      <div className="dropdown">
-                        <button className="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
-                          <i className="bi bi-three-dots-vertical"></i>
-                        </button>
-                        <ul className="dropdown-menu dropdown-menu-end">
-                          <li><a className="dropdown-item" href="#"><i className="bi bi-pencil"></i> Edit</a></li>
-                          <li><a className="dropdown-item" href="#"><i className="bi bi-printer"></i> Print</a></li>
-                        </ul>
-                      </div>
                     </div>
                   </div>
                   <table className="table table-borderless">
@@ -61,7 +52,7 @@ function OderDetails() {
                             </div>
                           </div>
                         </td>
-                        <td className="text-right">$79.99</td>
+                        <td className="text-right">₹79.99</td>
                       </tr>
                       <tr>
                         <td>
@@ -73,18 +64,18 @@ function OderDetails() {
                             </div>
                           </div>
                         </td>
-                        <td className="text-right">$79.99</td>
+                        <td className="text-right">₹79.99</td>
                       </tr>
                     </tbody>
                     <tfoot>
                       <tr>
                         <td >Subtotal</td>
-                        <td className="text-right">$159,98</td>
+                        <td className="text-right">₹159,98</td>
                       </tr>
 
                       <tr className="fw-bold">
                         <td>TOTAL</td>
-                        <td className="text-right">$169,98</td>
+                        <td className="text-right">₹169,98</td>
                       </tr>
                     </tfoot>
                   </table>
@@ -97,15 +88,16 @@ function OderDetails() {
                     <div className="col-lg-6">
                       <h3 className="h6">Payment Method</h3>
                       <p>Visa -1234 <br />
-                        Total: $169,98 <span className="badge bg-success rounded-pill text-white">PAID</span></p>
+                        Total: ₹169,98 <span className="badge bg-success rounded-pill text-white">PAID</span></p>
                     </div>
                     <div className="col-lg-6">
                       <h3 className="h6">Billing address</h3>
                       <address>
-                        <strong>John Doe</strong><br />
-                        1355 Market St, Suite 900<br />
-                        San Francisco, CA 94103<br />
-                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                        <strong>Dev Anand</strong><br />
+                        312 Vijay nagar, Banglore<br />
+                        Karntaka, India<br />
+
+                        <abbr title="Phone"> <Icon.Phone size={15} /></abbr> +91 XXXXX XXXXX
                       </address>
                     </div>
                   </div>
@@ -117,7 +109,9 @@ function OderDetails() {
               <div className="card mb-4">
                 <div className="card-body">
                   <h3 className="h6">Customer Notes</h3>
-                  <p>Sed enim, faucibus litora velit vestibulum habitasse. Cras lobortis cum sem aliquet mauris rutrum. Sollicitudin. Morbi, sem tellus vestibulum porttitor.</p>
+                  <p>
+                    This is dummy Text for comments
+                  </p>
                 </div>
               </div>
               <div className="card mb-4">
@@ -129,10 +123,10 @@ function OderDetails() {
                   <hr />
                   {/* <h3 className="h6">Address</h3> */}
                   <address>
-                    <strong>John Doe</strong><br />
-                    1355 Market St, Suite 900<br />
-                    San Francisco, CA 94103<br />
-                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                    <strong>Dev Anand</strong><br />
+                    312 Vijay nagar, Banglore<br />
+                    Karntaka, India<br />
+                    <abbr title="Phone"> <Icon.Phone size={15} /></abbr> +91 XXXXX XXXXX
                   </address>
                   <h3 className="h6">Delivery Date : <span>10/12/2022</span></h3>
                   <h3 className="h6">Delivery Time : <span>12:24 PM</span></h3>

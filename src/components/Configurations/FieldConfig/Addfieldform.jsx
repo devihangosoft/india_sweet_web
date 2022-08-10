@@ -102,140 +102,68 @@ function Addfieldform() {
             <div className="p-4">
 
 
-              <div>
+             
+
+
+              <div className="">
+                        <h3 className="card-title">Add new field</h3>
+
+                    </div>
+                        <form id="newFieldForm">
+                            <div className="form-group">
+                                <label for="fieldSection">Field section</label>
+                                <select className="form-control" name="fieldSection" id="fieldSection" disabled="">
+                                    <option disabled="">Select section</option>
+                                    <option selected="" value="leads">Orders</option>
+
+
+                                </select>
+                                <span className="formError" id="fieldSectionError"></span>
+                            </div>
+                            <div className="form-group">
+                                <label for="fieldName">Field name</label>
+                                <input type="text" name="fieldName" id="fieldName" className="form-control" placeholder="Enter field name" />
+                                <span className="formError" id="fieldNameError"></span>
+                            </div>
+
+                            <div className="form-group">
+                                <label for="fieldType">Field type</label>
+                                <select className="form-control" name="fieldType" id="fieldType">
+                                    <option selected="" disabled="">Select field type</option>
+                                    <option value="text">Text (single-line)</option>
+                                    <option value="text-name">Text (Name)</option>
+                                    <option value="number">Number</option>
+                                    <option value="tel">Phone</option>
+                                    <option value="email">Email</option>
+                                    <option value="date">Date</option>
+                                    <option value="time">Time</option>
+                                    <option value="datetime-local">Date-time</option>
+                                    <option value="textarea">Text (multi-line)</option>
+                                    <option value="dropdown">Dropdown</option>
+                                    <option value="url">URL</option>
+
+                                </select>
+                                <span className="formError" id="fieldTypeError"></span>
+
+                            </div>
+                            <div className="form-check">
+                                <input type="checkbox" className="form-check-input" id="requiredField" />
+                                <label className="form-check-label" for="requiredField">Required field</label>
+
+                            </div>
+                            <div className="form-check">
+                                <input type="checkbox" className="form-check-input" id="requireValidations" />
+                                <label className="form-check-label" for="requireValidations">Add field validations</label>
+                            </div>
+                        </form>
+                        <button className="btn btn-theme mt-4" id="createFieldBtn" onclick="createField()" style={{width:'100%'}}>Add</button>
+                    </div>
                
-                {/* <div className="login-main"> */}
-                  <form className="theme-form" onSubmit={handleRegister}>
-                    <h4>Create user account</h4>
-                    <p>Enter user's personal details to create account</p>
-                    <div className="form-group">
-                      <label className="col-form-label">User Name</label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        required
-                        name="username"
-                        value={username}
-                        onChange={onHandleUsername}
-                        placeholder="User name"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label className="col-form-label pt-0">Your Name</label>
-                      <div className="row g-2">
-                        <div className="col-6">
-                          <input
-                            className="form-control"
-                            type="text"
-                            required
-                            name="firstname"
-                            value={firstname}
-                            onChange={onHandleFirstname}
-                            placeholder="First name"
-                          />
-                        </div>
-                        <div className="col-6">
-                          <input
-                            className="form-control"
-                            type="text"
-                            required
-                            name="lastname"
-                            value={lastname}
-                            onChange={onHandleLastname}
-                            placeholder="Last name"
-                          />
-                        </div>
-                      </div>
-                    </div>
 
-                    <div className="form-group">
-                      <div className="row g-2">
-                        <div className="col-6">
-                          <label className="col-form-label">Phone Number</label>
-                          <input
-                            className="form-control"
-                            type="tel"
-                            required
-                            name="phone"
-                            value={phone}
-                            onChange={onHandlePhone}
-                            placeholder="+91 XXXX"
-                          />
-                        </div>
-                        <div className="col-6">
-                          <label className="col-form-label">
-                            Email Address
-                          </label>
-                          <input
-                            className="form-control"
-                            type="email"
-                            required
-                            name="email"
-                            value={email}
-                            onChange={onHandleEmail}
-                            placeholder="Test@gmail.com"
-                          />
-                        </div>
-                      </div>
-                    </div>
 
-                    <div className="form-group">
-                      <div className="row g-2">
-                        <div className="col-12">
-                          <label className="col-form-label">New Password</label>
-                          <div className="form-input position-relative">
-                            <input
-                              className="form-control"
-                              type={passwordShown1 ? "text" : "password"}
-                              required
-                              name="password"
-                              value={password}
-                              onChange={onHandlePassword}
-                              placeholder="*********"
-                            />
-                            <div className="show-hide">
-                              <span
-                                onClick={togglePasswordVisiblity1}
-                                className="show"
-                              ></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-12">
-                          <label className="col-form-label">
-                            Retype Password
-                          </label>
-                          <div className="form-input position-relative">
-                            <input
-                              className="form-control"
-                              type={passwordShown2 ? "text" : "password"}
-                              required
-                              name="cpassword"
-                              value={cpassword}
-                              onChange={onHandleCpassword}
-                              placeholder="*********"
-                            />
-                            <div className="show-hide">
-                              <span
-                                onClick={togglePasswordVisiblity2}
-                                className="show"
-                              ></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="form-group mt-5 mb-0">
-                      <button
-                        className="btn btn-theme btn-block w-100"
-                        type="submit"
-                      >
-                        Create Account
-                      </button>
-                    </div>                    
-                  </form>
-                </div>
-              </div>
+
+                
+          
             {/* </div> */}
             
           {/* </div>
