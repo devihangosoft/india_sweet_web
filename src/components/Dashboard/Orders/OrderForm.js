@@ -170,7 +170,6 @@ function OrderForm() {
 
     return (
         <>
-            <div className="container">
 
                 <div>
                     <Formik
@@ -562,7 +561,6 @@ function OrderForm() {
                         )}
                     </Formik>
                 </div>
-            </div>
 
 
 
