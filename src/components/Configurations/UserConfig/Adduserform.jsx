@@ -1,76 +1,123 @@
-import React, { useState } from "react";
-
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
-
-import "../../Login/Signin.scss";
+import { useNavigate, NavLink } from "react-router-dom";
+import "../../../index.scss";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import useAxios from "../../hooks/useAxios";
 
 function Adduserform() {
-  const [passwordShown1, setPasswordShown1] = useState(false);
-  const togglePasswordVisiblity1 = () => {
-    setPasswordShown1(passwordShown1 ? false : true);
+  let navigate = useNavigate();
+  let name = /^[a-zA-Z ]+$/;
+  const SignupSchema = Yup.object().shape({
+    firstname: Yup.string()
+      .trim()
+      .required("First name is required")
+      .matches(name, "Enter only Alphabets"),
+    lastname: Yup.string()
+      .trim()
+      .required("Last name is required")
+      .matches(name, "Enter only Alphabets"),
+    username: Yup.string()
+      .trim()
+      .required("Username is required")
+      .min(3, "Username must be at least 3 characters")
+      .max(20, "Username must not exceed 20 characters"),
+    phone: Yup.string()
+      .trim()
+      .required("Phone number is required")
+      .min(10, "Mobile number should be 10 digit")
+      .max(10, "Mobile number should be 10 digit"),
+    companyname: Yup.string().trim().required("Company name is required"),
+    email: Yup.string()
+      .trim()
+      .required("Email is required")
+      .email("Email is invalid")
+  });
+
+  const initialValues = {
+    firstname: "",
+    lastname: "",
+    username: "",
+    companyname: "",
+    phone: "",
+    email: "",
+    planused: "",
+    noofemployees: "",
   };
 
-  const [passwordShown2, setPasswordShown2] = useState(false);
-  const togglePasswordVisiblity2 = () => {
-    setPasswordShown2(passwordShown2 ? false : true);
-  };
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
-  const [cpassword, setCpassword] = useState("");
-  const [successful, setSuccessful] = useState(false);
+  const ref = useRef([]);
+
   const [message, setMessage] = useState("");
+  const [successmessage, setSuccessmessage] = useState("");
 
-  const onHandleFirstname = (e) => {
-    const firstname = e.target.value;
-    setFirstname(firstname);
-  };
-  const onHandleLastname = (e) => {
-    const lastname = e.target.value;
-    setLastname(lastname);
-  };
-  const onHandleUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
-  };
-  const onHandlePhone = (e) => {
-    const phone = e.target.value;
-    setPhone(phone);
-  };
-  const onHandleEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
+  const [apiState, setapiState] = useState(0);
+  const { response, loading, error } = useAxios({
+    method: "post",
+    url: "/Adduserformuser",
+    headers: {
+      "Content-Type": "application/json",
+      "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
+    },
+    body: JSON.stringify({
+      // ref.current.values
+      first_name: ref.current.values.firstname,
+      last_name: ref.current.values.lastname,
+      phone_number: ref.current.values.phone,
+      email_address: ref.current.values.email,
+      user_name: ref.current.values.username,
+      password: ref.current.values.password,
+      company_name: ref.current.values.companyname,
+      plan_used: ref.current.values.planused,
+      no_of_employees: ref.current.values.noofemployees,
+    }),
+    apiState: apiState,
+  });
+
+  useEffect(() => {
+    if (response !== null) {
+      console.log(response);
+      setSuccessmessage(response.message);
+      setTimeout(() => {
+        navigate("/login");
+      }, 5000);
+    }
+
+    const resMessage =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    setMessage(resMessage);
+    setTimeout(() => {
+      setMessage("");
+    }, 5000);
+  }, [response, error]);
+
+  const handleAdduserform = (e) => {
+    // e.preventDefault();
+    setapiState(apiState + 1);
   };
 
-  const onHandlePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-  };
-
-  const onHandleCpassword = (e) => {
-    const cpassword = e.target.value;
-    setCpassword(cpassword);
-  };
-
-  const handleRegister = async (e) => {
-    e.preventDefault();
-
+  const handleAdduserform1 = async (e) => {
+    console.log(ref.current.values);
     let postData = JSON.stringify({
-      first_name: firstname,
-      last_name: lastname,
-      phone_number: phone,
-      email_address: email,
-      user_name: username,
-      password,
+      // ref.current.values
+      first_name: ref.current.values.firstname,
+      last_name: ref.current.values.lastname,
+      phone_number: ref.current.values.phone,
+      email_address: ref.current.values.email,
+      user_name: ref.current.values.username,
+      password: ref.current.values.password,
+      company_name: ref.current.values.companyname,
+      plan_used: ref.current.values.planused,
+      no_of_employees: ref.current.values.noofemployees,
     });
 
     console.log(postData);
     try {
-      const response = await axios
-        .post("http://216.48.182.12:5000/registeruser", postData, {
+      //const response =
+      await axios
+        .post("http://216.48.182.12:5000/Adduserformuser", postData, {
           headers: {
             "Content-Type": "application/json",
             "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
@@ -78,8 +125,11 @@ function Adduserform() {
         })
         .then((response) => {
           console.log(response.data);
-          setMessage(response.data.message);
-          setSuccessful(true);
+          setSuccessmessage(response.data.message);
+
+          setTimeout(() => {
+            navigate("/login");
+          }, 5000);
         });
     } catch (error) {
       const resMessage =
@@ -88,160 +138,179 @@ function Adduserform() {
           error.response.data.message) ||
         error.message ||
         error.toString();
-      setMessage(resMessage);
-      setSuccessful(false);
+
+      setTimeout(() => {
+        setMessage("");
+      }, 5000);
     }
   };
 
   return (
     <>
-      {/* <div className="container">
-        <div className="row align-items-center justify-content-between">          
-          <div className="col-xl-6 p-0"> */}
-
-            <div className="p-4">
 
 
-              <div>
-               
-                {/* <div className="login-main"> */}
-                  <form className="theme-form" onSubmit={handleRegister}>
-                    <h4>Create user account</h4>
-                    <p>Enter user's personal details to create account</p>
-                    <div className="form-group">
-                      <label className="col-form-label">User Name</label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        required
-                        name="username"
-                        value={username}
-                        onChange={onHandleUsername}
-                        placeholder="User name"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label className="col-form-label pt-0">Your Name</label>
-                      <div className="row g-2">
-                        <div className="col-6">
-                          <input
-                            className="form-control"
-                            type="text"
-                            required
-                            name="firstname"
-                            value={firstname}
-                            onChange={onHandleFirstname}
-                            placeholder="First name"
-                          />
+                <div className="p-4">
+                  <Formik
+                    initialValues={initialValues}
+                    validationSchema={SignupSchema}
+                    onSubmit={handleAdduserform}
+                    innerRef={ref}
+                  >
+                    {({ errors, touched }) => (
+                      <Form className="theme-form">
+                        <div className="text-center">
+                          <h5 className="text-uppercase">Create account</h5>
+                          <p>Enter your personal details to create account</p>
                         </div>
-                        <div className="col-6">
-                          <input
-                            className="form-control"
-                            type="text"
-                            required
-                            name="lastname"
-                            value={lastname}
-                            onChange={onHandleLastname}
-                            placeholder="Last name"
-                          />
+                   
+                        <div className="form-group">
+                          <div className="row g-2">
+                            <div className="col-12">
+                              <label className="col-form-label">
+                                User Name
+                              </label>
+                              <Field
+                                className="form-control"
+                                type="text"
+                                name="username"
+                                placeholder="User name"
+                              />
+                              <ErrorMessage
+                                name="username"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                     
+                          </div>
                         </div>
-                      </div>
-                    </div>
-
-                    <div className="form-group">
-                      <div className="row g-2">
-                        <div className="col-6">
-                          <label className="col-form-label">Phone Number</label>
-                          <input
-                            className="form-control"
-                            type="tel"
-                            required
-                            name="phone"
-                            value={phone}
-                            onChange={onHandlePhone}
-                            placeholder="+91 XXXX"
-                          />
-                        </div>
-                        <div className="col-6">
-                          <label className="col-form-label">
-                            Email Address
-                          </label>
-                          <input
-                            className="form-control"
-                            type="email"
-                            required
-                            name="email"
-                            value={email}
-                            onChange={onHandleEmail}
-                            placeholder="Test@gmail.com"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="form-group">
-                      <div className="row g-2">
-                        <div className="col-12">
-                          <label className="col-form-label">New Password</label>
-                          <div className="form-input position-relative">
-                            <input
-                              className="form-control"
-                              type={passwordShown1 ? "text" : "password"}
-                              required
-                              name="password"
-                              value={password}
-                              onChange={onHandlePassword}
-                              placeholder="*********"
-                            />
-                            <div className="show-hide">
-                              <span
-                                onClick={togglePasswordVisiblity1}
-                                className="show"
-                              ></span>
+                        <div className="form-group">
+                          <div className="row g-2">
+                            <div className="col-6">
+                              <label className="col-form-label pt-0">
+                                First Name
+                              </label>
+                              <Field
+                                className="form-control"
+                                type="text"
+                                name="firstname"
+                                placeholder="First name"
+                                pattern="[a-zA-Z]+"
+                              />
+                              <ErrorMessage
+                                name="firstname"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                            <div className="col-6">
+                              <label className="col-form-label pt-0">
+                                Last Name
+                              </label>
+                              <Field
+                                className="form-control"
+                                type="text"
+                                name="lastname"
+                                placeholder="Last name"
+                              />
+                              <ErrorMessage
+                                name="lastname"
+                                component="div"
+                                className="text-danger"
+                              />
                             </div>
                           </div>
                         </div>
-                        <div className="col-12">
-                          <label className="col-form-label">
-                            Retype Password
-                          </label>
-                          <div className="form-input position-relative">
-                            <input
-                              className="form-control"
-                              type={passwordShown2 ? "text" : "password"}
-                              required
-                              name="cpassword"
-                              value={cpassword}
-                              onChange={onHandleCpassword}
-                              placeholder="*********"
-                            />
-                            <div className="show-hide">
-                              <span
-                                onClick={togglePasswordVisiblity2}
-                                className="show"
-                              ></span>
+
+                        <div className="form-group">
+                          <div className="row g-2">
+                            <div className="col-6">
+                              <label className="col-form-label">
+                                Phone Number
+                              </label>
+                              <Field
+                                className="form-control"
+                                type="number"
+                                name="phone"
+                                placeholder="9898 XXXXXX"
+                                />
+                              <ErrorMessage
+                                name="phone"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                            <div className="col-6">
+                              <label className="col-form-label">
+                                Email Address
+                              </label>
+                              <Field
+                                className="form-control"
+                                type="email"
+                                name="email"
+                                placeholder="Test@gmail.com"
+                              />
+                              <ErrorMessage
+                                name="email"
+                                component="div"
+                                className="text-danger"
+                              />
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    <div className="form-group mt-5 mb-0">
-                      <button
-                        className="btn btn-theme btn-block w-100"
-                        type="submit"
-                      >
-                        Create User
-                      </button>
-                    </div>                    
-                  </form>
+
+                       
+                        <div className="form-group mt-5 mb-0">
+                          <button
+                            className="btn btn-theme btn-block w-100"
+                            type="submit"
+                          >
+                            Create Account
+                          </button>
+                        </div>
+
+                        {message && (
+                          <div className="form-group mt-5 mb-0">
+                            <div className="form-group">
+                              <div className="alert alert-danger" role="alert">
+                                {message}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {successmessage && (
+                          <div className="form-group mt-5 mb-0">
+                            <div className="form-group">
+                              <div className="alert alert-success" role="alert">
+                                {successmessage}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        <div className="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                          <div className="border-bottom w-100 ml-5"></div>
+                          <span className="px-2 small text-muted font-weight-bold text-muted">
+                            OR
+                          </span>
+                          <div className="border-bottom w-100 mr-5"></div>
+                        </div>
+
+                        <p className="mt-4 mb-0 text-center">
+                          Already have an account?{" "}
+                          <NavLink
+                            to="/login"
+                            className="ms-2"
+                            href="login.html"
+                          >
+                            {" "}
+                            Sign in
+                          </NavLink>
+                        </p>
+                      </Form>
+                    )}
+                  </Formik>
                 </div>
-              </div>
-            {/* </div> */}
             
-          {/* </div>
-        </div>
-      </div> */}
-
     </>
   );
 }

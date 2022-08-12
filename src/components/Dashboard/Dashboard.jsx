@@ -9,6 +9,7 @@ import { Icon } from "@mui/material";
 import ApexChart from '../Elements/Charts/ApexChart'
 import LinearProgressBar from '../Elements/Charts/LinearProgressBar'
 import Tables from "../DataTables/Tables";
+import Orders from "./Orders/Orders";
 
 const MainContent = () => {
   return (
@@ -97,7 +98,7 @@ const MainContent = () => {
         <div className="card card-box-shadow">
             <div className="card-body">
             {/* <h5>Latest Orders</h5> */}
-          <Tables/>
+          <Orders/>
           </div>
           </div>
           </div>

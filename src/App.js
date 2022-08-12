@@ -32,6 +32,7 @@ import OrderForm from "./components/Dashboard/Orders/OrderForm";
 import OrderDetails from "./components/Dashboard/Orders/OrderDetails"
 import CustomizedSteppers from "./components/Dashboard/Orders/Stepper"
 import Test from "./Test";
+import StoresForm from "./components/Dashboard/Stores/StoresForm";
 //import Cards from "./components/DataTables/Card";
 // import Accordions from "./components/Elements/Accordions";
 // import CustomTabs from "./components/Elements/CustomTabs";
@@ -184,6 +185,14 @@ function App() {
             }
           />
 
+<Route
+            path="/form"
+            element={
+              <Layout name="SMS">
+               <StoresForm/>
+              </Layout>
+            }
+          />
 
         
         </Routes>
