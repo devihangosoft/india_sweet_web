@@ -60,7 +60,6 @@ export default function MuiTable(props) {
     let columns = [];
     if (tData != null) {
         columns = ((Object.keys(tData[0]))).map((item, index) => {
-            console.log(item);
             return {
                 id: item,
                 label: getLabel(item),                
@@ -71,18 +70,26 @@ export default function MuiTable(props) {
         })
     }
 
-    console.log("kkkkkk", columns)
+    
 
 let rows = [];
 if (tData != null) {    
     rows = tData.map((item, index) => {
-      return {
-        product_id: item.product_id,
-        product_name: item.product_name,
-        product_details: item.product_details,
-        quantity: item.quantity,
-        price: item.price
-      }
+
+    let rowVal = {}
+    columns.map((columnItem, index)=>{
+    rowVal[columnItem.id]=item[columnItem.id]
+    })
+    // console.log(rowVal)
+
+      return rowVal
+    //   {
+    //     product_id: item.product_id,
+    //     product_name: item.product_name,
+    //     product_details: item.product_details,
+    //     quantity: item.quantity,
+    //     price: item.price
+    //   }
     })
   }
 
