@@ -4,14 +4,14 @@ import Filter from "../../Elements/Filter/Filter";
 import Adduserform from "../../Configurations/UserConfig/Adduserform";
 import { useDispatch } from "react-redux/es/exports";
 import useAxios from "../../hooks/useAxios";
-import axios from "axios";
 import MuiTable from "../../DataTables/MuiTable";
+import StoresForm from "./StoresForm";
 
 
 function Stores() {
   const dispatch = useDispatch();
   const handleShow = () =>
-    dispatch({ type: "openModal", payload: <Adduserform /> });
+    dispatch({ type: "openModal", payload: <StoresForm/> });
 
   const [apiState, setapiState] = useState(1);
   const { response, loading, error } = useAxios({
@@ -22,8 +22,8 @@ function Stores() {
       "Content-Type": "application/json",
       // "api-key": "vU1r8cgjty2d3F4zdxvd0TXpctgkRflfGKKfLpfiIhHDTrcbdz0ZUrm6TA",
       "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
-      "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2MDI3ODY2OCwianRpIjoiZDdiZWQxMDItNjZjOC00OTBiLTgyMTctYzY2MjY1YjUyYmNiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IkRldjEyIiwibmJmIjoxNjYwMjc4NjY4LCJleHAiOjE2NjAzMDAyNjh9.xyRG9vVF7-LT0SdzRJwJbw_Db9cWXnC23rx344ZNj7c"
-    },
+      "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2MDMwMjIyMywianRpIjoiN2U3YjMzODQtMDAyYi00ODNlLTgzY2YtZWU3M2ExYzZmZDJiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IkRldjEyMzQ3IiwibmJmIjoxNjYwMzAyMjIzLCJleHAiOjE2NjAzMjM4MjN9.fdLbOB18qfeREgmxiKNpZFiUal740lfFydLJLq5eT7M"
+},
     // body: JSON.stringify({
     //   user_id: "1405ebc2-9eae-4909-b8f8-de131da71bd7",
     // }),
@@ -56,20 +56,14 @@ function Stores() {
   };
 
 
-
-
   return (
     <>
-      <div className="pb-4">
-        <div className="row">
-
+      <div className="row pb-4">
         <div className="col-6">
-                  <button class="btn btn-theme mt-2"variant="primary" onClick={handleShow}>Add Store</button>
-                  </div>
-
-          <div className="col-6 ">
-            <Filter/>
-          </div>
+          <button class="btn btn-theme mt-2" variant="primary" onClick={handleShow}>Add Store</button>
+        </div>
+        <div className="col-6 ">
+          <Filter />
         </div>
       </div>
       <div className="row align-items-center justify-content-between">

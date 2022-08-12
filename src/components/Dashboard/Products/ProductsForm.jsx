@@ -6,19 +6,30 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import useAxios from "../../hooks/useAxios";
 
-function Adddispositionform() {
+function ProductsForm() {
   //let navigate = useNavigate();
   let name = /^[a-zA-Z ]+$/;
   const SignupSchema = Yup.object().shape({
-    dispositionname: Yup.string()
+    name: Yup.string()
       .trim()
       .required("First name is required")
       .matches(name, "Enter only Alphabets"),
+      details: Yup.string()
+      .trim()
+      .required("Product details is required"),
+      quantity: Yup.string()
+      .trim()
+      .required("Product quantity is required"),
+      price: Yup.string()
+      .trim()
+      .required("Product price is required")
   });
 
   const initialValues = {
-    dispositionname: "",
-
+    details: "",
+    name: "",
+quantity:"",
+price:""
   };
 
   const ref = useRef([]);
@@ -28,15 +39,15 @@ function Adddispositionform() {
   const [apiState, setapiState] = useState(0);
   const { response, loading, error } = useAxios({
     method: "post",
-    url: "/Adddispositionformuser",
+    url: "/productsFormuser",
     headers: {
       "Content-Type": "application/json",
       "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
     },
     body: JSON.stringify({
       // ref.current.values   
-      Disposition_address: ref.current.values.address,
-      Disposition_name: ref.current.values.dispositionname,
+      Product_details: ref.current.values.details,
+      Product_name: ref.current.values.name,
     }),
     apiState: apiState,
   });
@@ -60,7 +71,7 @@ function Adddispositionform() {
     }, 5000);
   }, [response, error]);
 
-  const handleAdddispositionform = (e) => {
+  const handleproductsForm = (e) => {
     // e.preventDefault();
     setapiState(apiState + 1);
   };
@@ -73,36 +84,98 @@ function Adddispositionform() {
                   <Formik
                     initialValues={initialValues}
                     validationSchema={SignupSchema}
-                    onSubmit={handleAdddispositionform}
+                    onSubmit={handleproductsForm}
                     innerRef={ref}
                   >
                     {({ errors, touched }) => (
                       <Form className="theme-form">
                         <div className="text-center">
-                          <h5 className="text-uppercase">Create new Disposition</h5>
-                          <p>Enter your Disposition details</p>
+                          <h5 className="text-uppercase">Create new Product</h5>
+                          <p>Enter your product details</p>
                         </div>
                         <div className="form-group">
                           <div className="row g-2">
                             <div className="col-12">
                               <label className="col-form-label">
-                                Disposition Name
+                                products Name
                               </label>
                               <Field
                                 className="form-control"
                                 type="text"
-                                name="dispositionname"
-                                placeholder="enter disposition"
+                                name="name"
+                                placeholder="enter product name"
                               />
                               <ErrorMessage
-                                name="dispositionname"
+                                name="name"
                                 component="div"
                                 className="text-danger"
                               />
                             </div>                           
                           </div>
                         </div>
-                                         
+
+                        <div className="form-group">
+                          <div className="row g-2">            
+                            <div className="col-12">
+                              <label className="col-form-label">
+                                Product details
+                              </label>
+                              <Field
+                                className="form-control"
+                                type="text"
+                                name="details"
+                                placeholder="enter product details"
+                              />
+                              <ErrorMessage
+                                name="details"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="form-group">
+                          <div className="row g-2">            
+                            <div className="col-12">
+                              <label className="col-form-label">
+                                Product quantity
+                              </label>
+                              <Field
+                                className="form-control"
+                                type="text"
+                                name="quantity"
+                                placeholder="enter product quantity"
+                              />
+                              <ErrorMessage
+                                name="quantity"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <div className="row g-2">            
+                            <div className="col-12">
+                              <label className="col-form-label">
+                                Product price
+                              </label>
+                              <Field
+                                className="form-control"
+                                type="text"
+                                name="price"
+                                placeholder="enter product details"
+                              />
+                              <ErrorMessage
+                                name="price"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                                          
                         <div className="form-group mt-5 mb-0">
                           <button
                             className="btn btn-theme btn-block w-100"
@@ -139,4 +212,4 @@ function Adddispositionform() {
   );
 }
 
-export default Adddispositionform;
+export default ProductsForm;

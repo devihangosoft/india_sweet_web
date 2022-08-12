@@ -6,18 +6,23 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import useAxios from "../../hooks/useAxios";
 
-function Adddispositionform() {
+function StoresForm() {
   //let navigate = useNavigate();
   let name = /^[a-zA-Z ]+$/;
   const SignupSchema = Yup.object().shape({
-    dispositionname: Yup.string()
+    storename: Yup.string()
       .trim()
       .required("First name is required")
+      .matches(name, "Enter only Alphabets"),
+      address: Yup.string()
+      .trim()
+      .required("Store Address is required")
       .matches(name, "Enter only Alphabets"),
   });
 
   const initialValues = {
-    dispositionname: "",
+    address: "",
+    storename: "",
 
   };
 
@@ -28,15 +33,15 @@ function Adddispositionform() {
   const [apiState, setapiState] = useState(0);
   const { response, loading, error } = useAxios({
     method: "post",
-    url: "/Adddispositionformuser",
+    url: "/StoresFormuser",
     headers: {
       "Content-Type": "application/json",
       "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
     },
     body: JSON.stringify({
       // ref.current.values   
-      Disposition_address: ref.current.values.address,
-      Disposition_name: ref.current.values.dispositionname,
+      store_address: ref.current.values.address,
+      store_name: ref.current.values.storename,
     }),
     apiState: apiState,
   });
@@ -60,7 +65,7 @@ function Adddispositionform() {
     }, 5000);
   }, [response, error]);
 
-  const handleAdddispositionform = (e) => {
+  const handleStoresForm = (e) => {
     // e.preventDefault();
     setapiState(apiState + 1);
   };
@@ -73,36 +78,57 @@ function Adddispositionform() {
                   <Formik
                     initialValues={initialValues}
                     validationSchema={SignupSchema}
-                    onSubmit={handleAdddispositionform}
+                    onSubmit={handleStoresForm}
                     innerRef={ref}
                   >
                     {({ errors, touched }) => (
                       <Form className="theme-form">
                         <div className="text-center">
-                          <h5 className="text-uppercase">Create new Disposition</h5>
-                          <p>Enter your Disposition details</p>
+                          <h5 className="text-uppercase">Create new store</h5>
+                          <p>Enter your store details</p>
                         </div>
                         <div className="form-group">
                           <div className="row g-2">
                             <div className="col-12">
                               <label className="col-form-label">
-                                Disposition Name
+                                Stores Name
                               </label>
                               <Field
                                 className="form-control"
                                 type="text"
-                                name="dispositionname"
-                                placeholder="enter disposition"
+                                name="storename"
+                                placeholder="enter store name"
                               />
                               <ErrorMessage
-                                name="dispositionname"
+                                name="storename"
                                 component="div"
                                 className="text-danger"
                               />
                             </div>                           
                           </div>
                         </div>
-                                         
+
+                        <div className="form-group">
+                          <div className="row g-2">            
+                            <div className="col-12">
+                              <label className="col-form-label">
+                                Store Address
+                              </label>
+                              <textarea
+                                className="form-control"
+                                type="text"
+                                name="address"
+                                placeholder="enter store address"
+                              />
+                              <ErrorMessage
+                                name="address"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                                          
                         <div className="form-group mt-5 mb-0">
                           <button
                             className="btn btn-theme btn-block w-100"
@@ -139,4 +165,4 @@ function Adddispositionform() {
   );
 }
 
-export default Adddispositionform;
+export default StoresForm;

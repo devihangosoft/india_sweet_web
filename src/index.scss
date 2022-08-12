@@ -476,3 +476,19 @@ $box-layout-space: 40px;
 .card-box-shadow{
   box-shadow: $card-box-shadow;
 }
+
+.MuiTablePagination-selectLabel,.MuiTablePagination-displayedRows {
+  margin-bottom: 0;
+
+}
+th{
+  text-transform: capitalize;
+  font-weight: 600!important;
+}
+.logo-name{
+  background: #9a1b1e;
+  color:#fff;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 12px;
+}

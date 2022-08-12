@@ -23,18 +23,18 @@ export default function LeftSideBar() {
   };
   return (
     <div className="sidebar-wrapper">
-      {/* <div className="logo-wrapper">
+      <div className="logo-wrapper">
         <NavLink
           to="/dashboard"
           className="sidebar-link sidebar-title d-flex  align-items-center"
         >
+            <p className="logo-name my-1">ISH</p>
+        
+          <span className="ml-3">
           <img src="./images/logo.png" alt=" Logo" />
-          <span className="ml-4">
-          <img src="./images/logo.png" alt=" Logo" />
-            <h4 className="my-1">India Sweet House</h4>
           </span>
         </NavLink>
-      </div> */}
+      </div>
 
       <ul
         className="sidebar-links custom-scrollbar"
