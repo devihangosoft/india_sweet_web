@@ -31,7 +31,7 @@ import Layout from "./components/Layout/Layout";
 import OrderForm from "./components/Dashboard/Orders/OrderForm";
 import OrderDetails from "./components/Dashboard/Orders/OrderDetails"
 import CustomizedSteppers from "./components/Dashboard/Orders/Stepper"
-
+import Test from "./Test";
 //import Cards from "./components/DataTables/Card";
 // import Accordions from "./components/Elements/Accordions";
 // import CustomTabs from "./components/Elements/CustomTabs";
@@ -172,6 +172,14 @@ function App() {
             element={
               <Layout name="SMS">
                 <Sms />
+              </Layout>
+            }
+          />
+          <Route
+            path="/Test"
+            element={
+              <Layout name="SMS">
+                <Test />
               </Layout>
             }
           />
