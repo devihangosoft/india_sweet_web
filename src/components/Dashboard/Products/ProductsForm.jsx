@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import useAxios from "../../hooks/useAxios";
 
 function ProductsForm() {
+  
   //let navigate = useNavigate();
   let name = /^[a-zA-Z ]+$/;
   const SignupSchema = Yup.object().shape({
@@ -14,13 +15,13 @@ function ProductsForm() {
       .trim()
       .required("First name is required")
       .matches(name, "Enter only Alphabets"),
-      details: Yup.string()
+    details: Yup.string()
       .trim()
       .required("Product details is required"),
-      quantity: Yup.string()
+    quantity: Yup.string()
       .trim()
       .required("Product quantity is required"),
-      price: Yup.string()
+    price: Yup.string()
       .trim()
       .required("Product price is required")
   });
@@ -28,26 +29,26 @@ function ProductsForm() {
   const initialValues = {
     details: "",
     name: "",
-quantity:"",
-price:""
+    quantity: "",
+    price: ""
   };
 
   const ref = useRef([]);
   const [message, setMessage] = useState("");
   const [successmessage, setSuccessmessage] = useState("");
+  const userData = JSON.parse( sessionStorage.getItem("user"));
+  
 
   const [apiState, setapiState] = useState(0);
   const { response, loading, error } = useAxios({
     method: "post",
-    url: "/productsFormuser",
-    headers: {
-      "Content-Type": "application/json",
-      "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
-    },
+    url: "/createproduct",   
     body: JSON.stringify({
-      // ref.current.values   
-      Product_details: ref.current.values.details,
-      Product_name: ref.current.values.name,
+      "user_id": `${userData.data[0].user_id}`,
+      "product_name": ref.current.values.name,
+      "product_details": ref.current.values.details,
+      "quantity": ref.current.values.quantity,
+      "price": ref.current.values.price
     }),
     apiState: apiState,
   });
@@ -57,7 +58,7 @@ price:""
       console.log(response);
       setSuccessmessage(response.message);
       setTimeout(() => {
-       // navigate("/login");
+        // navigate("/login");
       }, 5000);
     }
 
@@ -79,135 +80,135 @@ price:""
   return (
     <>
 
- 
-                <div className="p-4">
-                  <Formik
-                    initialValues={initialValues}
-                    validationSchema={SignupSchema}
-                    onSubmit={handleproductsForm}
-                    innerRef={ref}
-                  >
-                    {({ errors, touched }) => (
-                      <Form className="theme-form">
-                        <div className="text-center">
-                          <h5 className="text-uppercase">Create new Product</h5>
-                          <p>Enter your product details</p>
-                        </div>
-                        <div className="form-group">
-                          <div className="row g-2">
-                            <div className="col-12">
-                              <label className="col-form-label">
-                                products Name
-                              </label>
-                              <Field
-                                className="form-control"
-                                type="text"
-                                name="name"
-                                placeholder="enter product name"
-                              />
-                              <ErrorMessage
-                                name="name"
-                                component="div"
-                                className="text-danger"
-                              />
-                            </div>                           
-                          </div>
-                        </div>
 
-                        <div className="form-group">
-                          <div className="row g-2">            
-                            <div className="col-12">
-                              <label className="col-form-label">
-                                Product details
-                              </label>
-                              <Field
-                                className="form-control"
-                                type="text"
-                                name="details"
-                                placeholder="enter product details"
-                              />
-                              <ErrorMessage
-                                name="details"
-                                component="div"
-                                className="text-danger"
-                              />
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="form-group">
-                          <div className="row g-2">            
-                            <div className="col-12">
-                              <label className="col-form-label">
-                                Product quantity
-                              </label>
-                              <Field
-                                className="form-control"
-                                type="text"
-                                name="quantity"
-                                placeholder="enter product quantity"
-                              />
-                              <ErrorMessage
-                                name="quantity"
-                                component="div"
-                                className="text-danger"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="form-group">
-                          <div className="row g-2">            
-                            <div className="col-12">
-                              <label className="col-form-label">
-                                Product price
-                              </label>
-                              <Field
-                                className="form-control"
-                                type="text"
-                                name="price"
-                                placeholder="enter product details"
-                              />
-                              <ErrorMessage
-                                name="price"
-                                component="div"
-                                className="text-danger"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                                          
-                        <div className="form-group mt-5 mb-0">
-                          <button
-                            className="btn btn-theme btn-block w-100"
-                            type="submit"
-                          >
-                            Create 
-                          </button>
-                        </div>
-
-                        {message && (
-                          <div className="form-group mt-5 mb-0">
-                            <div className="form-group">
-                              <div className="alert alert-danger" role="alert">
-                                {message}
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        {successmessage && (
-                          <div className="form-group mt-5 mb-0">
-                            <div className="form-group">
-                              <div className="alert alert-success" role="alert">
-                                {successmessage}
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </Form>
-                    )}
-                  </Formik>
+      <div className="p-4">
+        <Formik
+          initialValues={initialValues}
+          validationSchema={SignupSchema}
+          onSubmit={handleproductsForm}
+          innerRef={ref}
+        >
+          {({ errors, touched }) => (
+            <Form className="theme-form">
+              <div className="text-center">
+                <h5 className="text-uppercase">Create new Product</h5>
+                <p>Enter your product details</p>
+              </div>
+              <div className="form-group">
+                <div className="row g-2">
+                  <div className="col-12">
+                    <label className="col-form-label">
+                      products Name
+                    </label>
+                    <Field
+                      className="form-control"
+                      type="text"
+                      name="name"
+                      placeholder="enter product name"
+                    />
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className="text-danger"
+                    />
+                  </div>
                 </div>
-              
+              </div>
+
+              <div className="form-group">
+                <div className="row g-2">
+                  <div className="col-12">
+                    <label className="col-form-label">
+                      Product details
+                    </label>
+                    <Field
+                      className="form-control"
+                      type="text"
+                      name="details"
+                      placeholder="enter product details"
+                    />
+                    <ErrorMessage
+                      name="details"
+                      component="div"
+                      className="text-danger"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <div className="row g-2">
+                  <div className="col-12">
+                    <label className="col-form-label">
+                      Product quantity
+                    </label>
+                    <Field
+                      className="form-control"
+                      type="text"
+                      name="quantity"
+                      placeholder="enter product quantity"
+                    />
+                    <ErrorMessage
+                      name="quantity"
+                      component="div"
+                      className="text-danger"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="row g-2">
+                  <div className="col-12">
+                    <label className="col-form-label">
+                      Product price
+                    </label>
+                    <Field
+                      className="form-control"
+                      type="text"
+                      name="price"
+                      placeholder="enter product details"
+                    />
+                    <ErrorMessage
+                      name="price"
+                      component="div"
+                      className="text-danger"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="form-group mt-5 mb-0">
+                <button
+                  className="btn btn-theme btn-block w-100"
+                  type="submit"
+                >
+                  Create
+                </button>
+              </div>
+
+              {message && (
+                <div className="form-group mt-5 mb-0">
+                  <div className="form-group">
+                    <div className="alert alert-danger" role="alert">
+                      {message}
+                    </div>
+                  </div>
+                </div>
+              )}
+              {successmessage && (
+                <div className="form-group mt-5 mb-0">
+                  <div className="form-group">
+                    <div className="alert alert-success" role="alert">
+                      {successmessage}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </Form>
+          )}
+        </Formik>
+      </div>
+
     </>
   );
 }

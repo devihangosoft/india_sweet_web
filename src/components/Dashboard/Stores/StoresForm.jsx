@@ -33,13 +33,8 @@ function StoresForm() {
   const [apiState, setapiState] = useState(0);
   const { response, loading, error } = useAxios({
     method: "post",
-    url: "/StoresFormuser",
-    headers: {
-      "Content-Type": "application/json",
-      "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
-    },
+    url: "/createstore",
     body: JSON.stringify({
-      // ref.current.values   
       store_address: ref.current.values.address,
       store_name: ref.current.values.storename,
     }),
@@ -114,7 +109,7 @@ function StoresForm() {
                               <label className="col-form-label">
                                 Store Address
                               </label>
-                              <textarea
+                              <Field
                                 className="form-control"
                                 type="text"
                                 name="address"

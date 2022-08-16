@@ -1,44 +1,41 @@
 import React from 'react';
-// import axios from 'axios';
-const axios = require('axios');
+import axios from 'axios';
+// const axios = require('axios');
 
 const Test = () => {
     
+    const apicall = async()=>{
+       
 
-    async function start() {
-                 
         let headersList = {
             "Accept": "*/*",
-            // "User-Agent": "Thunder Client (https://www.thunderclient.com)",
             "Content-Type": "application/json",
-            // "api-key": "vU1r8cgjty2d3F4zdxvd0TXpctgkRflfGKKfLpfiIhHDTrcbdz0ZUrm6TA",
-            "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
-            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2MDI3ODY2OCwianRpIjoiZDdiZWQxMDItNjZjOC00OTBiLTgyMTctYzY2MjY1YjUyYmNiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IkRldjEyIiwibmJmIjoxNjYwMjc4NjY4LCJleHAiOjE2NjAzMDAyNjh9.xyRG9vVF7-LT0SdzRJwJbw_Db9cWXnC23rx344ZNj7c" 
+            "api-key": "F2PE47UiPImpXj5bEJQymSynK9wAYSd71Lon1haWXLYRGfbRS6K51dQ_NQ",
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2MDYzMzc4MiwianRpIjoiODM5ZGQ3OWEtOTYyOC00NDU3LWJkZDEtOTE5NDAwNjcwNzcwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IkRldkAxMjM0IiwibmJmIjoxNjYwNjMzNzgyLCJleHAiOjE2NjA2NTUzODJ9.YN6CklmVTyUla7FStH5PmWQxOfzoyMnYsbice_gY65o" 
            }
            
            let bodyContent = JSON.stringify({
-            user_id:"e4ead5a7-3549-473b-ba0e-63f2238f7635",
-            store_name: "temp store",
-            store_address: "temp address"
-        });
-           console.log(bodyContent);
+             "user_id": "8740618d-a140-4a96-9999-32212a4926fb",
+             "product_name": "DOODHA BURFI",
+             "product_details": "indian sweet house ki mithaai ",
+             "quantity": "1kg",
+             "price": "700"
+           });
            
            let reqOptions = {
-            //  url: "http://216.48.182.12:5000/getcustomerlist",
-            //  url: "http://216.48.182.12:5000/getlead",
-            //  url: "http://216.48.182.12:5000/createstore",
-            //  url: "http://216.48.182.12:5000/getstoredetails",
-            //  url: "http://216.48.182.12:5000/getdisposition",
-             url: "http://216.48.182.12:5000/getproduct",
-             method: "GET",
+             url: "http://192.168.8.101:5000/createproduct",
+             method: "POST",
              headers: headersList,
-            //  data: bodyContent,
+             data: bodyContent,
            }
            
            let response = await axios.request(reqOptions);
            console.log(response.data);
-       }
-       start();
+
+    }
+
+    
+    apicall();
 
 
     return (

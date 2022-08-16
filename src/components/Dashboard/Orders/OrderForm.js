@@ -67,9 +67,6 @@ function OrderForm() {
         referencecontact: "",
         referencename: ""
 
-
-
-
     };
 
     const ref = useRef([]);
@@ -77,22 +74,29 @@ function OrderForm() {
     const [apiState, setapiState] = useState(0);
     const { response, loading, error } = useAxios({
         method: "post",
-        url: "/registeruser",
+        url: "/create_lead",
         headers: {
             "Content-Type": "application/json",
             "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
         },
         body: JSON.stringify({
             // ref.current.values
-            first_name: ref.current.values.firstname,
-            last_name: ref.current.values.lastname,
-            phone_number: ref.current.values.phone,
-            email_address: ref.current.values.email,
-            user_name: ref.current.values.username,
-            password: ref.current.values.password,
-            company_name: ref.current.values.companyname,
-            plan_used: ref.current.values.planused,
-            no_of_employees: ref.current.values.noofemployees,
+            quotation_no: ref.current.values.quotation_no,
+            product_id: ref.current.values.product_id,
+            product_name: ref.current.values.product_name,
+            quantity: ref.current.values.quantity,
+            product_price: ref.current.values.product_price,
+            customer_name: ref.current.values.customer_name,
+            customer_email: ref.current.values.customer_email,
+            customer_phone: ref.current.values.customer_phone,
+            dilivery_address: ref.current.values.dilivery_address,
+            dilivery_date: ref.current.values.dilivery_date,
+            dilivery_time: ref.current.values.dilivery_time,
+            store_branch: ref.current.values.store_branch,
+            ref_name: ref.current.values.ref_name,
+            ref_contact: ref.current.values.ref_contact,
+            ref_phone: ref.current.values.ref_phone,
+            customer_whatsapp: ref.current.values.customer_whatsapp
         }),
         apiState: apiState,
     });
@@ -121,52 +125,6 @@ function OrderForm() {
         setapiState(apiState + 1);
     };
 
-    const handleRegister1 = async (e) => {
-        console.log(ref.current.values);
-        let postData = JSON.stringify({
-            // ref.current.values
-            first_name: ref.current.values.firstname,
-            last_name: ref.current.values.lastname,
-            phone_number: ref.current.values.phone,
-            email_address: ref.current.values.email,
-            user_name: ref.current.values.username,
-            password: ref.current.values.password,
-            company_name: ref.current.values.companyname,
-            plan_used: ref.current.values.planused,
-            no_of_employees: ref.current.values.noofemployees,
-        });
-
-        console.log(postData);
-        try {
-            //const response =
-            await axios
-                .post("http://216.48.182.12:5000/registeruser", postData, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
-                    },
-                })
-                .then((response) => {
-                    console.log(response.data);
-                    // setSuccessmessage(response.data.message);
-
-                    setTimeout(() => {
-                        navigate("/login");
-                    }, 5000);
-                });
-        } catch (error) {
-            const resMessage =
-                (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                error.message ||
-                error.toString();
-
-            setTimeout(() => {
-                // setMessage("");
-            }, 5000);
-        }
-    };
 
     return (
         <>
