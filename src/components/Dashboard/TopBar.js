@@ -1,12 +1,15 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import "./LeftSidebar.scss";
 import "./sidebar.scss";
 import "./header.scss";
 import * as Icon from "react-feather";
 import { Dropdown } from "react-bootstrap";
+import { useNavigate, NavLink } from "react-router-dom";
 
 export default function TopBar() {
+  let navigate = useNavigate();
+
+
   return (
     <>
       <div>
@@ -157,8 +160,8 @@ export default function TopBar() {
                     </Dropdown.Item>
                     <div className="dropdown-divider"></div>
                     <Dropdown.Item
-                      to="/"
-                      onClick="logout()"
+                      to="/logout"  
+                      onClick={()=>{navigate('/logout')}}                    
                       className="dropdown-item dropdown-footer"
                     >
                       <Icon.LogOut />

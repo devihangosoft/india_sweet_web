@@ -28,10 +28,10 @@ function Login() {
   useEffect(() => {
     if (response !== null) {
       if (response.access_token) {
-        sessionStorage.setItem("user", JSON.stringify(response.data));
-        // setSuccessmessage("Successfully Logedin!! ");
+        sessionStorage.setItem("user", JSON.stringify(response));
+        setSuccessmessage("Successfully Logedin!! ");
         setTimeout(() => {
-          navigate("/otpverification");
+          navigate("/dashboard");
         }, 3000);
       }
     }
