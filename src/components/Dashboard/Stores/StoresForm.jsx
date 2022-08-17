@@ -44,10 +44,7 @@ function StoresForm() {
   useEffect(() => {
     if (response !== null) {
       console.log(response);
-      setSuccessmessage(response.message);
-      setTimeout(() => {
-       // navigate("/login");
-      }, 5000);
+      setSuccessmessage(response.message);      
     }
 
     const resMessage =

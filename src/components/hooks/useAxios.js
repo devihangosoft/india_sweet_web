@@ -13,8 +13,7 @@ const useAxios = ({ url, method, headers, body = null, apiState = 0 }) => {
     const [loading, setloading] = useState(false);
     const userData = JSON.parse( sessionStorage.getItem("user"));
 
-    // console.log("session data: ", userData[0])
-    // console.log("session data: ", userData.access_token)
+    // console.log("BODY DATA:",body)
 
     const fetchData = () => {
         setloading(true);

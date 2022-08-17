@@ -3,7 +3,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 import Header from "./Header";
 
 import "./Signin.scss";
-import useAxios from "../hooks/useAxios";
+import axios from "axios";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -11,49 +11,49 @@ function Login() {
   const [message, setMessage] = useState("");
   const [successmessage, setSuccessmessage] = useState("");
 
-  const [apiState, setapiState] = useState(0);
-  const { response, loading, error } = useAxios({
-    method: 'post', url: '/login',
-    headers: {
-      "Content-Type": "application/json",
-      "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
-    },
-    body: JSON.stringify({
+
+
+  
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    
+    let postData = JSON.stringify({
       username: username,
       password: password,
-    }),
-    apiState: apiState
-  });
+    });
 
-  useEffect(() => {
-    if (response !== null) {
-      if (response.access_token) {
-        sessionStorage.setItem("user", JSON.stringify(response));
-        setSuccessmessage("Successfully Logedin!! ");
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 3000);
-      }
+    
+    try {
+      //const response =
+      await axios
+        .post("http://216.48.182.12:5000/login", postData, {
+          headers: {
+            "Content-Type": "application/json",
+            "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
+          },
+        })
+        .then((response) => {
+          sessionStorage.setItem("user", JSON.stringify(response));
+          setSuccessmessage("Login successfull !!");
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 3000);
+        });
+
+    } catch (error) {
+      const resMessage =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+        setMessage(resMessage);
+      setTimeout(() => {
+        setMessage("");
+      }, 5000);
     }
-
-    const resMessage =
-      (error.response &&
-        error.response.data &&
-        error.response.data.message) ||
-      error.message ||
-      error.toString();
-    setMessage(resMessage);
-    setTimeout(() => {
-      setMessage("");
-    }, 5000);
-
-  }, [response, error]);
-
-
-  const handleLogin = (e) => {
-    e.preventDefault()
-    setapiState(apiState + 1);
-  }
+  };
 
 
   let navigate = useNavigate();
@@ -121,11 +121,11 @@ function Login() {
                   <div className="form-group mt-5">
                     <button
                       className="btn btn-theme btn-block"
-                      disabled={loading}
+                      // disabled={loading}
                     >
-                      {loading && (
+                      {/* {loading && (
                         <span className="spinner-border spinner-border-sm"></span>
-                      )}
+                      )} */}
                       <span>Login</span>
                     </button>
                   </div>

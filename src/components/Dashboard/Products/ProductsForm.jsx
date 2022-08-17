@@ -42,15 +42,16 @@ function ProductsForm() {
   const { response, loading, error } = useAxios({
     method: "post",
     url: "/createproduct",   
-    body: JSON.stringify({
-      "user_id": `${userData.data[0].user_id}`,
-      "product_name": ref.current.values.name,
-      "product_details": ref.current.values.details,
-      "quantity": ref.current.values.quantity,
-      "price": ref.current.values.price
+    body: JSON.stringify({      
+      product_name: ref.current.values.name,
+      product_details: ref.current.values.details,
+      quantity: ref.current.values.quantity,
+      price: ref.current.values.price
     }),
     apiState: apiState,
   });
+
+
 
   useEffect(() => {
     if (response !== null) {

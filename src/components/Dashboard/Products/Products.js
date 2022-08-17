@@ -24,27 +24,15 @@ function Products() {
   useEffect(() => {
     if (response !== null) {
       console.log(response);
-      // setSuccessmessage(response.message);
-      // setTimeout(() => {
-      //   navigate("/login");
-      // }, 5000);
     }
 
     const resMessage =
       (error.response && error.response.data && error.response.data.message) ||
       error.message ||
       error.toString();
-    // setMessage(resMessage);
-    console.log(resMessage)
-    setTimeout(() => {
-      // setMessage("");
-    }, 5000);
+    console.log(resMessage)   
   }, [response, error]);
 
-  const handleRegister = (e) => {
-    // e.preventDefault();
-    setapiState(apiState + 1);
-  };
 
 
   return (
@@ -57,7 +45,7 @@ function Products() {
           </div>
 
           <div className="col-6 ">
-            <Filter />
+            {/* <Filter /> */}
           </div>
         </div>
       </div>

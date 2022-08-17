@@ -119,10 +119,59 @@ function OrderForm() {
         }, 5000);
     }, [response, error]);
 
+
+
+    const [apiState1, setapiState1] = useState(1);
+    const { response: response1, loading: loading1, error: error1 } = useAxios({
+        method: "get",
+        url: "/getproduct",
+        apiState: apiState1,
+    });
+
+    useEffect(() => {
+        if (response1 !== null) {
+            // console.log("products are : ",response1);
+        }
+
+        const resMessage =
+            (error1.response && error1.response.data && error1.response.data.message) ||
+            error1.message ||
+            error1.toString();
+        console.log(resMessage)
+    }, [response1, error1]);
+
+
+    const [apiState2, setapiState2] = useState(1);
+    const { response: response2, loading: loading2, error: error2 } = useAxios({
+        method: "get",
+        url: "/getstoredetails",
+        apiState: apiState1,
+    });
+
+    useEffect(() => {
+        if (response2 !== null) {
+            // console.log("Stores are : ", response2);
+        }
+
+        const resMessage =
+            (error2.response && error2.response.data && error2.response.data.message) ||
+            error2.message ||
+            error2.toString();
+        console.log(resMessage)
+    }, [response2, error2]);
+
+
+
     const handleRegister = (e) => {
         // e.preventDefault();
         setapiState(apiState + 1);
     };
+
+
+
+
+
+
 
 
     return (
@@ -138,9 +187,9 @@ function OrderForm() {
                     {({ errors, touched }) => (
                         <Form className="theme-form">
                             <div className="row">
-                                <div className="col-md-6">
+                                <div className="col-md-12">
                                     <div className="row g-2">
-                                        <div className="col-6">
+                                        <div className="col-3">
 
                                             <div className="form-group">
                                                 <label className="col-form-label">Quotation Number</label>
@@ -159,7 +208,7 @@ function OrderForm() {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="col-6">
+                                        <div className="col-3">
                                             <div className="form-group">
                                                 <label className="col-form-label">Customer Name</label>
                                                 <Field
@@ -181,7 +230,7 @@ function OrderForm() {
 
                                     <div className="form-group">
                                         <div className="row g-2">
-                                            <div className="col-6">
+                                            <div className="col-3">
                                                 <label className="col-form-label">Phone Number</label>
                                                 <Field
                                                     className="form-control"
@@ -197,7 +246,7 @@ function OrderForm() {
                                                     className="text-danger"
                                                 />
                                             </div>
-                                            <div className="col-6">
+                                            <div className="col-3">
                                                 <label className="col-form-label">
                                                     Email Address
                                                 </label>
@@ -219,7 +268,7 @@ function OrderForm() {
                                     </div>
                                     <div className="form-group">
                                         <div className="row g-2">
-                                            <div className="col-6">
+                                            <div className="col-3">
                                                 <label className="col-form-label">GST No.</label>
                                                 <div className="form-Field position-relative">
                                                     <Field
@@ -236,7 +285,7 @@ function OrderForm() {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="col-6">
+                                            <div className="col-3">
                                                 <label className="col-form-label">
                                                     whatsapp
                                                 </label>
@@ -258,10 +307,11 @@ function OrderForm() {
                                         </div>
                                     </div>
 
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
+
                                         <label className="col-form-label pt-0">Address</label>
                                         <div className="row g-2">
-                                            <div className="col-6 mb-3">
+                                            <div className="col-3 mb-3">
                                                 <Field
                                                     className="form-control"
                                                     type="text"
@@ -276,7 +326,7 @@ function OrderForm() {
                                                     className="text-danger"
                                                 />
                                             </div>
-                                            <div className="col-6 mb-3">
+                                            <div className="col-3 mb-3">
                                                 <Field
                                                     className="form-control"
                                                     type="text"
@@ -292,7 +342,7 @@ function OrderForm() {
                                                 />
                                             </div>
 
-                                            <div className="col-6 mb-3">
+                                            <div className="col-3 mb-3">
                                                 <Field
                                                     className="form-control"
                                                     type="text"
@@ -307,7 +357,7 @@ function OrderForm() {
                                                     className="text-danger"
                                                 />
                                             </div>
-                                            <div className="col-6 mb-3">
+                                            <div className="col-3 mb-3">
                                                 <Field
                                                     className="form-control"
                                                     type="text"
@@ -323,7 +373,7 @@ function OrderForm() {
                                                 />
                                             </div>
 
-                                            <div className="col-6 mb-3">
+                                            <div className="col-3 mb-3">
                                                 <Field
                                                     className="form-control"
                                                     type="text"
@@ -338,7 +388,7 @@ function OrderForm() {
                                                     className="text-danger"
                                                 />
                                             </div>
-                                            <div className="col-6 mb-3">
+                                            <div className="col-3 mb-3">
                                                 <Field
                                                     className="form-control"
                                                     type="text"
@@ -354,10 +404,35 @@ function OrderForm() {
                                                 />
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div> */}
 
-                                <div className="col-md-6 ">
+                                    <div className="form-group">
+                                        <div className="row g-2">
+                                            <div className="col-12">
+                                                <label className="col-form-label">Address</label>
+                                                <div className="form-Field position-relative">
+                                                    <Field
+                                                        className="form-control"
+                                                        required
+                                                        name="address"
+
+                                                        placeholder="enter address"
+                                                    />
+                                                    <ErrorMessage
+                                                        name="address"
+                                                        component="div"
+                                                        className="text-danger"
+                                                    />
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                    <div className="col-md-12 border my-3" ></div>
+                                <div className="col-md-12 ">
 
 
                                     <div className="form-group">
@@ -368,6 +443,18 @@ function OrderForm() {
                                             name="product"
                                         >
                                             <option>Select</option>
+                                            {
+                                                response1 != null ?
+                                                    response1.map((item, index) => {
+                                                        return <option>{item.product_name}</option>
+                                                    })
+                                                    : console.log("No product data found")
+                                            }
+
+
+
+
+
                                         </select>
 
                                     </div>
@@ -390,7 +477,7 @@ function OrderForm() {
 
                                     <div className="form-group">
                                         <div className="row g-2">
-                                            <div className="col-6">
+                                            <div className="col-3">
                                                 <label className="col-form-label">Delivery Date</label>
                                                 <Field
                                                     className="form-control"
@@ -405,7 +492,7 @@ function OrderForm() {
                                                     className="text-danger"
                                                 />
                                             </div>
-                                            <div className="col-6">
+                                            <div className="col-3">
                                                 <label className="col-form-label">
                                                     Delivery Time
                                                 </label>
@@ -427,7 +514,7 @@ function OrderForm() {
                                     </div>
                                     <div className="form-group">
                                         <div className="row g-2">
-                                            <div className="col-6">
+                                            <div className="col-3">
                                                 <label className="col-form-label">Reference No</label>
                                                 <Field
                                                     className="form-control"
@@ -442,7 +529,7 @@ function OrderForm() {
                                                     className="text-danger"
                                                 />
                                             </div>
-                                            <div className="col-6">
+                                            <div className="col-3">
                                                 <label className="col-form-label">
                                                     Branch
                                                 </label>
@@ -452,6 +539,15 @@ function OrderForm() {
                                                     name="branch"
                                                 >
                                                     <option>Select</option>
+                                                    {
+                                                        response2 != null ?
+                                                            response2.map((item, index) => {
+                                                                return <option>{item.store_name}</option>
+                                                            })
+                                                            : console.log("No Branch data found")
+                                                    }
+
+
                                                 </select>
                                                 <ErrorMessage
                                                     name="branch"
@@ -463,7 +559,7 @@ function OrderForm() {
                                     </div>
                                     <div className="form-group">
                                         <div className="row g-2">
-                                            <div className="col-6">
+                                            <div className="col-3">
                                                 <label className="col-form-label">Reference Name</label>
                                                 <Field
                                                     className="form-control"
@@ -478,7 +574,7 @@ function OrderForm() {
                                                     className="text-danger"
                                                 />
                                             </div>
-                                            <div className="col-6">
+                                            <div className="col-3">
                                                 <label className="col-form-label">
                                                     Reference Contact
                                                 </label>

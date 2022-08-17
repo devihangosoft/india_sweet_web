@@ -115,7 +115,6 @@ function Adduserform() {
 
     console.log(postData);
     try {
-      //const response =
       await axios
         .post("http://216.48.182.12:5000/Adduserformuser", postData, {
           headers: {

@@ -83,14 +83,14 @@ function Configuration() {
         aria-label="scrollable auto tabs example"
         className="customTabs"
       >
-        <Tab icon={<AppRegistrationOutlinedIcon />} iconPosition="start" label="Field Configuration" />
+        <Tab hidden icon={<AppRegistrationOutlinedIcon />} iconPosition="start" label="Field Configuration" />
         <Tab icon={<PersonOutlineIcon />} iconPosition="start" label="User Configuration" />
         <Tab icon={<PeopleOutlineIcon />} iconPosition="start" label="Team Configuration" />
         <Tab icon={<DiscountOutlinedIcon />} iconPosition="start" label="Disposition Configuration" />
         <Tab icon={<ProductionQuantityLimitsOutlinedIcon />} iconPosition="start" label="Products Configuration" />
         <Tab icon={<StoreOutlinedIcon />} iconPosition="start" label="Store Configuration" />
-        <Tab icon={<AttachEmailOutlinedIcon />} iconPosition="start" label="Email Configuration" />
-        <Tab icon={<SmsOutlinedIcon />} iconPosition="start" label="SMS Configuration" />
+        {/* <Tab icon={<AttachEmailOutlinedIcon />} iconPosition="start" label="Email Configuration" />
+        <Tab icon={<SmsOutlinedIcon />} iconPosition="start" label="SMS Configuration" /> */}
       </Tabs>
     
             

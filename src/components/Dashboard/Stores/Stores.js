@@ -18,39 +18,22 @@ function Stores() {
   const [apiState, setapiState] = useState(1);
   const { response, loading, error } = useAxios({
     method: "get",
-    url: "/getstoredetails",
-    body: JSON.stringify({
-      "user_id": `${userData.data[0].user_id}`,      
-    }),
- 
- 
+    url: "/getstoredetails", 
     apiState: apiState,
   });
 
   useEffect(() => {
     if (response !== null) {
-      console.log(response);
-      // setSuccessmessage(response.message);
-      // setTimeout(() => {
-      //   navigate("/login");
-      // }, 5000);
+      console.log(response);      
     }
 
     const resMessage =
       (error.response && error.response.data && error.response.data.message) ||
       error.message ||
       error.toString();
-    // setMessage(resMessage);
-    console.log(resMessage)
-    setTimeout(() => {
-      // setMessage("");
-    }, 5000);
+    console.log(resMessage)    
   }, [response, error]);
 
-  const handleRegister = (e) => {
-    // e.preventDefault();
-    setapiState(apiState + 1);
-  };
 
 
   return (
@@ -60,7 +43,7 @@ function Stores() {
           <button class="btn btn-theme mt-2" variant="primary" onClick={handleShow}>Add Store</button>
         </div>
         <div className="col-6 ">
-          <Filter />
+          {/* <Filter /> */}
         </div>
       </div>
       <div className="row align-items-center justify-content-between">
