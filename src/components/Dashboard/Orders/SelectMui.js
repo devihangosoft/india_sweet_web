@@ -70,12 +70,13 @@ export default function SelectMui() {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
+      <FormControl sx={{ m: 0, width: '100%',border:'none' }}>
         <InputLabel id="demo-multiple-checkbox-label">Select</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
+          //variant="filled"
           value={personName}
           onChange={handleChange}
           input={<OutlinedInput label="Select" />}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Orders from "./components/Dashboard/Orders/Orders";
@@ -39,6 +39,16 @@ import StoresForm from "./components/Dashboard/Stores/StoresForm";
 // import LeftSide from "./components/Login/LeftSide";
 
 function App() {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //    // setUser(foundUser);
+  //   }
+  // }, []);
+
   return (
     <div className="App">
       <Modals />

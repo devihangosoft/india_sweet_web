@@ -2,10 +2,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'http://216.48.182.12:5000';
-axios.defaults.baseURL = 'http://192.168.8.101:5000';
-// axios.defaults.baseURL = 'http://192.168.8.101:5000';
-
+//axios.defaults.baseURL = 'http://216.48.182.12:5000';
+//axios.defaults.baseURL = 'http://192.168.8.101:5000';
+axios.defaults.baseURL = 'https://da4b-2402-8100-386a-6bf5-126-a862-8228-81ad.in.ngrok.io';
 
 const useAxios = ({ url, method, headers, body = null, apiState = 0 }) => {
     const [response, setResponse] = useState(null);

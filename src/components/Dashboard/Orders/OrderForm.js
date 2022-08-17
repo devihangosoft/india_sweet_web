@@ -1,15 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
-import axios from "axios";
 import "../../Login/Signin.scss";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useNavigate, NavLink } from "react-router-dom";
 import * as Yup from "yup";
 import useAxios from "../../hooks/useAxios";
 import SelectMui from "./SelectMui";
+import OrderProduct from "./OrderProduct";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 // import CustomSelect from "./CustomSelect";
 
 function OrderForm() {
-    let navigate = useNavigate();
+    const [productrow, setProductrow] = useState([0])
+    const notify = () => toast("Wow so easy!");
+    //let navigate = useNavigate();
     let name = /^[a-zA-Z ]+$/;
     const SignupSchema = Yup.object().shape({
         quotation_number: Yup.string()
@@ -26,16 +30,16 @@ function OrderForm() {
             .email("Email is invalid"),
         whatsapp: Yup.string()
             .trim().required("Whatsapp is required"),
-        doorno: Yup.string()
-            .trim().required("Door No is required"),
-        street: Yup.string()
-            .trim().required("Street is required"),
-        area: Yup.string()
-            .trim().required("Area is required"),
-        pincode: Yup.string()
-            .trim().required("Pincode is required"),
-        branch: Yup.string()
-            .trim().required("Branch is required"),
+        // doorno: Yup.string()
+        //     .trim().required("Door No is required"),
+        // street: Yup.string()
+        //     .trim().required("Street is required"),
+        // area: Yup.string()
+        //     .trim().required("Area is required"),
+        // pincode: Yup.string()
+        //     .trim().required("Pincode is required"),
+        // branch: Yup.string()
+        //     .trim().required("Branch is required"),
         product: Yup.string().trim().required("Product is required"),
         quantity: Yup.string().trim().required("Quantity is required"),
         deliverydate: Yup.string().trim().required("Delivery Date is required"),
@@ -48,15 +52,16 @@ function OrderForm() {
         customer_name: "",
         phone: "",
         email: "",
-        gst: "",
+       // gst: "",
         whatsapp: "",
+        address:"",
 
-        doorno: "",
-        street: "",
-        area: "",
-        pincode: "",
-        city: "",
-        state: "",
+        // doorno: "",
+        // street: "",
+        // area: "",
+        // pincode: "",
+        // city: "",
+        // state: "",
 
         product: "",
         quantity: "",
@@ -64,7 +69,7 @@ function OrderForm() {
         deliverydate: "",
         branch: "",
 
-        referenceno: "",
+       // referenceno: "",
         refphone: "",
         refname: ""
 
@@ -76,21 +81,21 @@ function OrderForm() {
     const { response, loading, error } = useAxios({
         method: "post",
         url: "/create_lead",
-        headers: {
-            "Content-Type": "application/json",
-            "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
-        },
+        // headers: {
+        //     "Content-Type": "application/json",
+        //     "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
+        // },
         body: JSON.stringify({
             // ref.current.values
-            quotation_no: ref.current.values.quotation_no,
-            product_id: ref.current.values.product_id,
-            product_name: ref.current.values.product_name,
+            quotation_no: ref.current.values.quotation_number,
+            product_id: '1',
+            product_name: ref.current.values.product,
             quantity: ref.current.values.quantity,
-            product_price: ref.current.values.product_price,
+            product_price: '10',
             customer_name: ref.current.values.customer_name,
             customer_email: ref.current.values.email,
             customer_phone: ref.current.values.phone,
-            dilivery_address: ref.current.values.dilivery_address,
+            dilivery_address: ref.current.values.address,
             dilivery_date: ref.current.values.deliverydate,
             dilivery_time: ref.current.values.deliverytime,
             store_branch: ref.current.values.branch,
@@ -105,26 +110,39 @@ function OrderForm() {
     useEffect(() => {
         if (response !== null) {
             console.log(response);
-            //  setSuccessmessage(response.message);
-            setTimeout(() => {
-                navigate("/login");
-            }, 5000);
+      //     console.log(response.message);
+           
         }
 
         const resMessage =
             (error.response && error.response.data && error.response.data.message) ||
             error.message ||
             error.toString();
-        // setMessage(resMessage);
+            console.log(resMessage);
         setTimeout(() => {
-            // setMessage("");
+           // setSuccessmessage("");
         }, 5000);
     }, [response, error]);
 
 
+    const [apiState1, setapiState1] = useState(1);
+    const { response: response1, loading: loading1, error: error1 } = useAxios({
+        method: "get",
+        url: "/getproduct",
+        apiState: apiState1,
+    });
 
+    useEffect(() => {
+        if (response1 !== null) {
+            // console.log("Stores are : ", response2);
+        }
 
-
+        const resMessage =
+            (error1.response && error1.response.data && error1.response.data.message) ||
+            error1.message ||
+            error1.toString();
+        console.log(resMessage)
+    }, [response1, error1]);
 
     const [apiState2, setapiState2] = useState(1);
     const { response: response2, loading: loading2, error: error2 } = useAxios({
@@ -145,28 +163,44 @@ function OrderForm() {
         console.log(resMessage)
     }, [response2, error2]);
 
+    const handleOrder = (e) => {
+       // e.preventDefault();
 
-
-    const handleRegister = (e) => {
-        // e.preventDefault();
-        setapiState(apiState + 1);
+        console.log(ref.current.values.product);
+       // setapiState(apiState + 1);
     };
 
-
+    const addProduct = (e) => {
+        e.preventDefault();
+        setProductrow([...productrow, productrow.length]);
+        console.log(productrow);
+    }
 
     return (
         <>
 
             <div>
+            <button onClick={notify}>Notify!</button>
+            <ToastContainer
+position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>
                 <Formik
                     initialValues={initialValues}
                     validationSchema={SignupSchema}
-                    onSubmit={handleRegister}
+                    onSubmit={handleOrder}
                     innerRef={ref}
                 >
                     {({ errors, touched }) => (
                         <Form className="theme-form">
-                            <div className="row">
+                            <div className="row">                      
                                 <div className="col-md-12">
                                     <div className="row g-2">
                                         <div className="col-3">
@@ -176,7 +210,7 @@ function OrderForm() {
                                                 <Field
                                                     className="form-control"
                                                     type="text"
-                                                    required
+                                                    
                                                     name="quotation_number"
 
                                                     placeholder="XXXX XXXX"
@@ -194,7 +228,7 @@ function OrderForm() {
                                                 <Field
                                                     className="form-control"
                                                     type="text"
-                                                    required
+                                                    
                                                     name="customer_name"
 
                                                     placeholder="User name"
@@ -212,7 +246,7 @@ function OrderForm() {
                                             <Field
                                                 className="form-control"
                                                 type="tel"
-                                                required
+                                                
                                                 name="phone"
 
                                                 placeholder="+91 XXXX"
@@ -230,7 +264,7 @@ function OrderForm() {
                                             <Field
                                                 className="form-control"
                                                 type="email"
-                                                required
+                                                
                                                 name="email"
 
                                                 placeholder="Test@gmail.com"
@@ -244,7 +278,7 @@ function OrderForm() {
                                     </div>
                                     <div className="form-group">
                                         <div className="row g-2">
-                                            <div className="col-3">
+                                            {/* <div className="col-3">
                                                 <label className="col-form-label">GST No.</label>
                                                 <div className="form-Field position-relative">
                                                     <Field
@@ -260,7 +294,34 @@ function OrderForm() {
                                                         className="text-danger"
                                                     />
                                                 </div>
-                                            </div>
+                                            </div> */}
+                                             <div className="col-3">
+                                            <label className="col-form-label">
+                                                Branch
+                                            </label>
+                                            <Field as="select"
+
+                                                className="form-control"
+                                                
+                                                name="branch"
+                                            >
+                                                <option>Select</option>
+                                                {
+                                                    response2 != null ?
+                                                        response2.map((item, index) => {
+                                                            return <option>{item.store_name}</option>
+                                                        })
+                                                        : console.log("No Branch data found")
+                                                }
+
+</Field>
+                                           
+                                            <ErrorMessage
+                                                name="branch"
+                                                component="div"
+                                                className="text-danger"
+                                            />
+                                        </div>
                                             <div className="col-3">
                                                 <label className="col-form-label">
                                                     whatsapp
@@ -268,7 +329,7 @@ function OrderForm() {
                                                 <div className="form-Field position-relative">
                                                     <Field
                                                         className="form-control"
-                                                        required
+                                                    
                                                         name="whatsapp"
 
                                                         placeholder="number"
@@ -280,35 +341,43 @@ function OrderForm() {
                                                     />
                                                 </div>
                                             </div>
+                                            <div className="col-3">
+                                                <label className="col-form-label">Reference Name</label>
+                                                <Field
+                                                    className="form-control"
+                                                    type="text"
+                                                    
+                                                    name="refname"
+                                                    placeholder="abc"
+                                                />
+                                                <ErrorMessage
+                                                    name="refname"
+                                                    component="div"
+                                                    className="text-danger"
+                                                />
+                                            </div>
+                                            <div className="col-3">
+                                                <label className="col-form-label">
+                                                    Reference Contact
+                                                </label>
+                                                <Field
+                                                    className="form-control"
+                                                    type="tel"
+                                                    
+                                                    name="referencecontact"
 
-                                            <div className="col-6">
-                                                <label className="col-form-label">Address</label>
-                                                <div className="form-Field position-relative">
-                                                    <Field
-                                                        className="form-control"
-                                                        required
-                                                        name="address"
-
-                                                        placeholder="enter address"
-                                                    />
-                                                    <ErrorMessage
-                                                        name="address"
-                                                        component="div"
-                                                        className="text-danger"
-                                                    />
-                                                </div>
+                                                    placeholder="+91 XXXXXX"
+                                                />
+                                                <ErrorMessage
+                                                    name="referencecontact"
+                                                    component="div"
+                                                    className="text-danger"
+                                                />
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
-
                                 </div>
                                 <div className="col-md-12 border my-3" ></div>
-
-
                                 <div className="form-group col-md-12">
                                     <div className="row g-2">
                                         <div className="col-3">
@@ -316,7 +385,7 @@ function OrderForm() {
                                             <Field
                                                 className="form-control"
                                                 type="date"
-                                                required
+                                                
                                                 name="deliverydate"
                                                 placeholder="+91 XXXX"
                                             />
@@ -333,7 +402,7 @@ function OrderForm() {
                                             <Field
                                                 className="form-control"
                                                 type="time"
-                                                required
+                                                
                                                 name="deliverytime"
 
                                                 placeholder="Test@gmail.com"
@@ -343,6 +412,23 @@ function OrderForm() {
                                                 component="div"
                                                 className="text-danger"
                                             />
+                                        </div>
+                                        <div className="col-6">
+                                            <label className="col-form-label">Address</label>
+                                            <div className="form-Field position-relative">
+                                                <Field
+                                                    className="form-control"
+                                                    
+                                                    name="address"
+
+                                                    placeholder="enter address"
+                                                />
+                                                <ErrorMessage
+                                                    name="address"
+                                                    component="div"
+                                                    className="text-danger"
+                                                />
+                                            </div>
                                         </div>
 
                                         {/* <div className="col-3">
@@ -360,90 +446,9 @@ function OrderForm() {
                                                     className="text-danger"
                                                 />
                                             </div> */}
-                                        <div className="col-3">
-                                            <label className="col-form-label">
-                                                Branch
-                                            </label>
-                                            <select
-                                                className="form-control"
-                                                required
-                                                name="branch"
-                                            >
-                                                <option>Select</option>
-                                                {
-                                                    response2 != null ?
-                                                        response2.map((item, index) => {
-                                                            return <option>{item.store_name}</option>
-                                                        })
-                                                        : console.log("No Branch data found")
-                                                }
-
-
-                                            </select>
-                                            <ErrorMessage
-                                                name="branch"
-                                                component="div"
-                                                className="text-danger"
-                                            />
-                                        </div>
-
-
-                                        <div className="col-3">
-                                            <label className="col-form-label">Reference Name</label>
-                                            <Field
-                                                className="form-control"
-                                                type="text"
-                                                required
-                                                name="refname"
-                                                placeholder="abc"
-                                            />
-                                            <ErrorMessage
-                                                name="refname"
-                                                component="div"
-                                                className="text-danger"
-                                            />
-                                        </div>
-                                        <div className="col-3">
-                                            <label className="col-form-label">
-                                                Reference Contact
-                                            </label>
-                                            <Field
-                                                className="form-control"
-                                                type="tel"
-                                                required
-                                                name="referencecontact"
-
-                                                placeholder="+91 XXXXXX"
-                                            />
-                                            <ErrorMessage
-                                                name="referencecontact"
-                                                component="div"
-                                                className="text-danger"
-                                            />
-                                        </div>
+                                                                               
                                     </div>
                                 </div>
-
-
-
-
-
-
-                                <div className="form-group">
-                                    <label className="col-form-label">Product Name</label>
-
-                                    <Field
-                                        name="product"
-                                        component={SelectMui}
-                                        placeholder="Select me"
-                                        multiple={true}
-                                    />
-
-
-
-                                 
-                                </div>
-
 
                                 {/* <div className="form-group">
                                         <label className="col-form-label">Quantity</label>
@@ -462,10 +467,36 @@ function OrderForm() {
                                         />
                                     </div> */}
 
+                                <div className="col-md-12 form-group mt-3">                                   
+                                        <div className="cart">
+                                            <div className="table-responsive ">
+                                                <table className="table table-bordered mb-0">
+                                                    <thead className="thead-light">
+                                                        <tr>
+                                                            <th scope="col">Product</th>
+                                                            <th scope="col">Price</th>
+                                                            <th scope="col">Quantity</th>
+                                                            <th scope="col">Total</th>
+                                                            {/* <th scope="col">Action</th> */}
 
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
 
+                                                        {
 
+                                                            productrow.map((item, index) => {
+                                                                return <OrderProduct response1={response1} />
+                                                            })
 
+                                                        }
+                                                        <tr>
+                                                            <td colspan="4">
+                                                                <button className="btn btn-info btn-sm" onClick={addProduct}>Add +</button>  </td></tr>                  </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                </div>
 
                                 <div className="col-md-4 form-group mt-3 mb-4 float-right">
                                     <button
@@ -475,27 +506,11 @@ function OrderForm() {
                                         Create Order
                                     </button>
                                 </div>
-
-
-
-
-
-
-
-
                             </div>
-
                         </Form>
-
-
                     )}
                 </Formik>
             </div>
-
-
-
-
-
         </>
     );
 }
