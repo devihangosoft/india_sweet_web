@@ -84,9 +84,10 @@ export default function SelectMui() {
         >
           {names.map((name, index) => (
             <MenuItem key={index} value={name}>
-              {/* <Checkbox checked={personName.indexOf(name) > -1} /> */}
-              <Checkbox checked={personName.indexOf(index) > -1} />
+              <Checkbox checked={personName.indexOf(name) > -1} />
+              {/* <Checkbox checked={personName.index > -1} /> */}
               <ListItemText primary={name} />
+              
             </MenuItem>
           ))}
         </Select>
