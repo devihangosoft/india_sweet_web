@@ -1,6 +1,10 @@
 import React from 'react'
-
-export default function OrderProduct({response1}) {
+import * as Icon from "react-feather";
+export default function OrderProduct({response1, productvalues, sendProducts}) {
+    const selectProduct = (e) =>{
+        console.log(productvalues);
+        sendProducts(e.target.value);
+    }
     return (
         <>
             <tr>
@@ -9,6 +13,7 @@ export default function OrderProduct({response1}) {
                         className="form-control"
                         required
                         name="product"
+                        onChange={selectProduct}
                     >
                         <option>Select</option>
                         {
@@ -28,15 +33,15 @@ export default function OrderProduct({response1}) {
                 </td>
                 <td>
                     <div className="counter">
-                        <i className="fas fa-angle-down"></i>
+                       <Icon.Plus />
                         <input className="input-number" type="text"
-                            value="1" min="0" max="10" />
-                        <i className="fas fa-angle-up"></i>
+                             min="0" max="10" />
+                        <Icon.Minus/>
                     </div>
                 </td>
-                <td>
+                {/* <td>
                     <h6>$20.00</h6>
-                </td>
+                </td> */}
                 {/* <td>
                     <button className="btn btn-danger btn-sm">Delete</button>
                 </td> */}

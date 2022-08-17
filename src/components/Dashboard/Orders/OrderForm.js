@@ -12,38 +12,39 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function OrderForm() {
     const [productrow, setProductrow] = useState([0])
+    const [productvalues, setProductvalues] = useState([])
     const notify = () => toast("Wow so easy!");
     //let navigate = useNavigate();
     let name = /^[a-zA-Z ]+$/;
     const SignupSchema = Yup.object().shape({
-        quotation_number: Yup.string()
-            .trim().required("Quotation number is required"),
-        // .matches(name, "Enter only Alphabets"),
-        customer_name: Yup.string()
-            .trim().required("customer_name is required")
-            .min(3, "customer_name must be at least 3 characters")
-            .max(20, "customer_name must not exceed 20 characters"),
-        phone: Yup.string().trim().required("Phone number is required").min(10, "Mobile number should be 10 digit")
-            .max(10, "Mobile number should be 10 digit"),
-        email: Yup.string()
-            .trim().required("Email is required")
-            .email("Email is invalid"),
-        whatsapp: Yup.string()
-            .trim().required("Whatsapp is required"),
-        // doorno: Yup.string()
-        //     .trim().required("Door No is required"),
-        // street: Yup.string()
-        //     .trim().required("Street is required"),
-        // area: Yup.string()
-        //     .trim().required("Area is required"),
-        // pincode: Yup.string()
-        //     .trim().required("Pincode is required"),
-        // branch: Yup.string()
-        //     .trim().required("Branch is required"),
-        product: Yup.string().trim().required("Product is required"),
-        quantity: Yup.string().trim().required("Quantity is required"),
-        deliverydate: Yup.string().trim().required("Delivery Date is required"),
-        deliverytime: Yup.string().trim().required("Delivery Time is required"),
+        // quotation_number: Yup.string()
+        //     .trim().required("Quotation number is required"),
+        // // .matches(name, "Enter only Alphabets"),
+        // customer_name: Yup.string()
+        //     .trim().required("customer_name is required")
+        //     .min(3, "customer_name must be at least 3 characters")
+        //     .max(20, "customer_name must not exceed 20 characters"),
+        // phone: Yup.string().trim().required("Phone number is required").min(10, "Mobile number should be 10 digit")
+        //     .max(10, "Mobile number should be 10 digit"),
+        // email: Yup.string()
+        //     .trim().required("Email is required")
+        //     .email("Email is invalid"),
+        // whatsapp: Yup.string()
+        //     .trim().required("Whatsapp is required"),
+        // // doorno: Yup.string()
+        // //     .trim().required("Door No is required"),
+        // // street: Yup.string()
+        // //     .trim().required("Street is required"),
+        // // area: Yup.string()
+        // //     .trim().required("Area is required"),
+        // // pincode: Yup.string()
+        // //     .trim().required("Pincode is required"),
+        // // branch: Yup.string()
+        // //     .trim().required("Branch is required"),
+        // product: Yup.string().trim().required("Product is required"),
+        // quantity: Yup.string().trim().required("Quantity is required"),
+        // deliverydate: Yup.string().trim().required("Delivery Date is required"),
+        // deliverytime: Yup.string().trim().required("Delivery Time is required"),
 
     });
 
@@ -174,6 +175,10 @@ function OrderForm() {
         e.preventDefault();
         setProductrow([...productrow, productrow.length]);
         console.log(productrow);
+    }
+
+    const sendProducts = (val) =>{
+setProductvalues([...productvalues, val])
     }
 
     return (
@@ -377,7 +382,9 @@ pauseOnHover
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-12 border my-3" ></div>
+                                <div className="col-md-12 " >
+                                <div className="border-top my-3" ></div>
+                                </div>
                                 <div className="form-group col-md-12">
                                     <div className="row g-2">
                                         <div className="col-3">
@@ -476,7 +483,7 @@ pauseOnHover
                                                             <th scope="col">Product</th>
                                                             <th scope="col">Price</th>
                                                             <th scope="col">Quantity</th>
-                                                            <th scope="col">Total</th>
+                                                            {/* <th scope="col">Total</th> */}
                                                             {/* <th scope="col">Action</th> */}
 
                                                         </tr>
@@ -486,7 +493,8 @@ pauseOnHover
                                                         {
 
                                                             productrow.map((item, index) => {
-                                                                return <OrderProduct response1={response1} />
+                                                                return <OrderProduct response1={response1} productvalues={productvalues} 
+                                                                sendProducts={sendProducts}/>
                                                             })
 
                                                         }
