@@ -1,12 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import Header from "./Header";
 import axios from "axios";
-
 import { useNavigate, NavLink } from "react-router-dom";
 import "./Signin.scss";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import useAxios from "../hooks/useAxios";
 
 function Register() {
   let navigate = useNavigate();
@@ -72,54 +70,7 @@ function Register() {
   const [message, setMessage] = useState("");
   const [successmessage, setSuccessmessage] = useState("");
 
-  const [apiState, setapiState] = useState(0);
-  const { response, loading, error } = useAxios({
-    method: "post",
-    url: "/registeruser",
-    headers: {
-      "Content-Type": "application/json",
-      "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
-    },
-    body: JSON.stringify({
-      // ref.current.values
-      first_name: ref.current.values.firstname,
-      last_name: ref.current.values.lastname,
-      phone_number: ref.current.values.phone,
-      email_address: ref.current.values.email,
-      user_name: ref.current.values.username,
-      password: ref.current.values.password,
-      company_name: ref.current.values.companyname,
-      plan_used: ref.current.values.planused,
-      no_of_employees: ref.current.values.noofemployees,
-    }),
-    apiState: apiState,
-  });
-
-  useEffect(() => {
-    if (response !== null) {
-      console.log(response);
-      setSuccessmessage(response.message);
-      setTimeout(() => {
-        navigate("/login");
-      }, 5000);
-    }
-
-    const resMessage =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-    setMessage(resMessage);
-    setTimeout(() => {
-      setMessage("");
-    }, 5000);
-  }, [response, error]);
-
-  const handleRegister = (e) => {
-    // e.preventDefault();
-    setapiState(apiState + 1);
-  };
-
-  const handleRegister1 = async (e) => {
+  const handleRegister = async (e) => {
     console.log(ref.current.values);
     let postData = JSON.stringify({
       // ref.current.values
@@ -191,21 +142,10 @@ function Register() {
                           <h5 className="text-uppercase">Create account</h5>
                           <p>Enter your personal details to create account</p>
                         </div>
-                        {/* <div className="form-group">
-                      <label className="col-form-label">User Name</label>
-                      <Field
-                        className="form-control"
-                        type="text"
-                        required
-                        name="username"
-                        value={username}
-                        onChange={onHandleUsername}
-                        placeholder="User name"
-                      />
-                    </div> */}
+
                         <div className="form-group">
                           <div className="row g-2">
-                            <div className="col-12">
+                            <div className="col-6">
                               <label className="col-form-label">
                                 User Name
                               </label>
@@ -221,7 +161,7 @@ function Register() {
                                 className="text-danger"
                               />
                             </div>
-                            {/* <div className="col-6">
+                            <div className="col-6">
                               <label className="col-form-label">
                                 Company Name
                               </label>
@@ -236,7 +176,7 @@ function Register() {
                                 component="div"
                                 className="text-danger"
                               />
-                            </div> */}
+                            </div>
                           </div>
                         </div>
                         <div className="form-group">
@@ -288,7 +228,7 @@ function Register() {
                                 type="number"
                                 name="phone"
                                 placeholder="9898 XXXXXX"
-                                />
+                              />
                               <ErrorMessage
                                 name="phone"
                                 component="div"
@@ -314,7 +254,7 @@ function Register() {
                           </div>
                         </div>
 
-                        {/* <div className="form-group">
+                        <div className="form-group">
                           <div className="row g-2">
                             <div className="col-6">
                               <label className="col-form-label pt-0">
@@ -349,7 +289,7 @@ function Register() {
                               />
                             </div>
                           </div>
-                        </div> */}
+                        </div>
 
                         <div className="form-group">
                           <div className="row g-2">
