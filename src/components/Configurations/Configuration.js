@@ -77,6 +77,12 @@ function Configuration() {
       <Tabs
        orientation="vertical"
         value={value}
+        textColor='primary'
+TabIndicatorProps={{
+ style: {
+   background: "#FAAF56"
+ },
+}}
         onChange={handleChange}
         variant="scrollable"
         scrollButtons="auto"

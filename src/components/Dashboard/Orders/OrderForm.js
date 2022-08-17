@@ -226,48 +226,48 @@ function OrderForm() {
                                                 />
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div className="form-group">
-                                        <div className="row g-2">
-                                            <div className="col-3">
-                                                <label className="col-form-label">Phone Number</label>
-                                                <Field
-                                                    className="form-control"
-                                                    type="tel"
-                                                    required
-                                                    name="phone"
 
-                                                    placeholder="+91 XXXX"
-                                                />
-                                                <ErrorMessage
-                                                    name="phone"
-                                                    component="div"
-                                                    className="text-danger"
-                                                />
-                                            </div>
-                                            <div className="col-3">
-                                                <label className="col-form-label">
-                                                    Email Address
-                                                </label>
-                                                <Field
-                                                    className="form-control"
-                                                    type="email"
-                                                    required
-                                                    name="email"
+                                        <div className="form-group">
+                                            <div className="row g-2">
+                                                <div className="col-3">
+                                                    <label className="col-form-label">Phone Number</label>
+                                                    <Field
+                                                        className="form-control"
+                                                        type="tel"
+                                                        required
+                                                        name="phone"
 
-                                                    placeholder="Test@gmail.com"
-                                                />
-                                                <ErrorMessage
-                                                    name="email"
-                                                    component="div"
-                                                    className="text-danger"
-                                                />
+                                                        placeholder="+91 XXXX"
+                                                    />
+                                                    <ErrorMessage
+                                                        name="phone"
+                                                        component="div"
+                                                        className="text-danger"
+                                                    />
+                                                </div>
+                                                <div className="col-3">
+                                                    <label className="col-form-label">
+                                                        Email Address
+                                                    </label>
+                                                    <Field
+                                                        className="form-control"
+                                                        type="email"
+                                                        required
+                                                        name="email"
+
+                                                        placeholder="Test@gmail.com"
+                                                    />
+                                                    <ErrorMessage
+                                                        name="email"
+                                                        component="div"
+                                                        className="text-danger"
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <div className="row g-2">
+                                        <div className="form-group">
+
                                             <div className="col-3">
                                                 <label className="col-form-label">GST No.</label>
                                                 <div className="form-Field position-relative">
@@ -305,6 +305,7 @@ function OrderForm() {
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
 
                                     {/* <div className="form-group">
@@ -407,31 +408,31 @@ function OrderForm() {
                                     </div> */}
 
                                     <div className="form-group">
-                                        <div className="row g-2">
-                                            <div className="col-12">
-                                                <label className="col-form-label">Address</label>
-                                                <div className="form-Field position-relative">
-                                                    <Field
-                                                        className="form-control"
-                                                        required
-                                                        name="address"
 
-                                                        placeholder="enter address"
-                                                    />
-                                                    <ErrorMessage
-                                                        name="address"
-                                                        component="div"
-                                                        className="text-danger"
-                                                    />
-                                                </div>
+                                        <div className="col-12">
+                                            <label className="col-form-label">Address</label>
+                                            <div className="form-Field position-relative">
+                                                <Field
+                                                    className="form-control"
+                                                    required
+                                                    name="address"
+
+                                                    placeholder="enter address"
+                                                />
+                                                <ErrorMessage
+                                                    name="address"
+                                                    component="div"
+                                                    className="text-danger"
+                                                />
                                             </div>
-                                           
                                         </div>
+
                                     </div>
 
 
+
                                 </div>
-                                    <div className="col-md-12 border my-3" ></div>
+                                <div className="col-md-12 border my-3" ></div>
                                 <div className="col-md-12 ">
 
 
@@ -511,9 +512,9 @@ function OrderForm() {
                                                 />
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <div className="row g-2">
+
+                                        <div className="form-group">
+
                                             <div className="col-3">
                                                 <label className="col-form-label">Reference No</label>
                                                 <Field
@@ -556,56 +557,56 @@ function OrderForm() {
                                                 />
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <div className="row g-2">
-                                            <div className="col-3">
-                                                <label className="col-form-label">Reference Name</label>
-                                                <Field
-                                                    className="form-control"
-                                                    type="text"
-                                                    required
-                                                    name="refname"
-                                                    placeholder="abc"
-                                                />
-                                                <ErrorMessage
-                                                    name="refname"
-                                                    component="div"
-                                                    className="text-danger"
-                                                />
-                                            </div>
-                                            <div className="col-3">
-                                                <label className="col-form-label">
-                                                    Reference Contact
-                                                </label>
-                                                <Field
-                                                    className="form-control"
-                                                    type="tel"
-                                                    required
-                                                    name="referencecontact"
 
-                                                    placeholder="+91 XXXXXX"
-                                                />
-                                                <ErrorMessage
-                                                    name="referencecontact"
-                                                    component="div"
-                                                    className="text-danger"
-                                                />
+                                        <div className="form-group">
+                                            <div className="row g-2">
+                                                <div className="col-3">
+                                                    <label className="col-form-label">Reference Name</label>
+                                                    <Field
+                                                        className="form-control"
+                                                        type="text"
+                                                        required
+                                                        name="refname"
+                                                        placeholder="abc"
+                                                    />
+                                                    <ErrorMessage
+                                                        name="refname"
+                                                        component="div"
+                                                        className="text-danger"
+                                                    />
+                                                </div>
+                                                <div className="col-3">
+                                                    <label className="col-form-label">
+                                                        Reference Contact
+                                                    </label>
+                                                    <Field
+                                                        className="form-control"
+                                                        type="tel"
+                                                        required
+                                                        name="referencecontact"
+
+                                                        placeholder="+91 XXXXXX"
+                                                    />
+                                                    <ErrorMessage
+                                                        name="referencecontact"
+                                                        component="div"
+                                                        className="text-danger"
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-4 form-group mt-3 mb-4 float-right">
-                                        <button
-                                            className="btn btn-theme btn-block w-100"
-                                            type="submit"
-                                        >
-                                            Create Order
-                                        </button>
+                                        <div className="col-md-4 form-group mt-3 mb-4 float-right">
+                                            <button
+                                                className="btn btn-theme btn-block w-100"
+                                                type="submit"
+                                            >
+                                                Create Order
+                                            </button>
+                                        </div>
+
                                     </div>
 
                                 </div>
-
-
 
                             </div>
                         </Form>
