@@ -170,7 +170,7 @@ function OtpVerification() {
                         type="submit"
                         onClick={handleVerifyOTP}
                       >
-                        Done{" "}
+                        Done
                       </button>
                     </div>
                     <p className="mt-4 mb-0 text-center">

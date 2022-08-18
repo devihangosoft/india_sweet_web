@@ -4,7 +4,7 @@ import axios from 'axios';
 
 //axios.defaults.baseURL = 'http://216.48.182.12:5000';
 //axios.defaults.baseURL = 'http://192.168.8.101:5000';
-axios.defaults.baseURL = 'https://da4b-2402-8100-386a-6bf5-126-a862-8228-81ad.in.ngrok.io';
+axios.defaults.baseURL = 'https://6c78-2402-8100-3852-2ba3-ccfa-29d6-70d9-9a7.in.ngrok.io';
 
 const useAxios = ({ url, method, headers, body = null, apiState = 0 }) => {
     const [response, setResponse] = useState(null);
@@ -27,8 +27,7 @@ const useAxios = ({ url, method, headers, body = null, apiState = 0 }) => {
                     "Content-Type": "application/json",                    
                     "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
                     "Authorization": `Bearer ${userData.access_token}`
-                },
-                
+                },                
             }
         )
             .then((res) => {

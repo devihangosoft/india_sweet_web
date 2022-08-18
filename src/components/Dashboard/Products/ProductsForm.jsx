@@ -144,7 +144,7 @@ function ProductsForm() {
                     </label>
                     <Field
                       className="form-control"
-                      type="text"
+                      type="number"
                       name="quantity"
                       placeholder="enter product quantity"
                     />
@@ -164,7 +164,7 @@ function ProductsForm() {
                     </label>
                     <Field
                       className="form-control"
-                      type="text"
+                      type="number"
                       name="price"
                       placeholder="enter product details"
                     />

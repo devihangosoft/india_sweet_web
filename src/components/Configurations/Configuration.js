@@ -89,8 +89,9 @@ TabIndicatorProps={{
         aria-label="scrollable auto tabs example"
         className="customTabs"
       >
-        <Tab hidden icon={<AppRegistrationOutlinedIcon />} iconPosition="start" label="Field Configuration" />
-        <Tab icon={<PersonOutlineIcon />} iconPosition="start" label="User Configuration" />
+       <Tab icon={<PersonOutlineIcon />} iconPosition="start" label="User Configuration" />
+       <Tab hidden icon={<AppRegistrationOutlinedIcon />} iconPosition="start" label="Field Configuration" />
+        
         <Tab icon={<PeopleOutlineIcon />} iconPosition="start" label="Team Configuration" />
         <Tab icon={<DiscountOutlinedIcon />} iconPosition="start" label="Disposition Configuration" />
         <Tab icon={<ProductionQuantityLimitsOutlinedIcon />} iconPosition="start" label="Products Configuration" />
@@ -107,11 +108,12 @@ TabIndicatorProps={{
                 
 
 
-              <TabPanel value={value} index={0}>
-  <Fields/>
+         
+<TabPanel value={value} index={0}>
+  <Users />
 </TabPanel>
 <TabPanel value={value} index={1}>
-  <Users />
+  <Fields/>
 </TabPanel>
 <TabPanel value={value} index={2}>
  <Teams/>

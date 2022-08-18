@@ -39,7 +39,7 @@ import StoresForm from "./components/Dashboard/Stores/StoresForm";
 // import LeftSide from "./components/Login/LeftSide";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     const loggedInUser = JSON.parse(sessionStorage.getItem("user"));
@@ -47,6 +47,8 @@ function App() {
       setIsLoggedIn(true);
     }
   }, []);
+
+  console.log(isLoggedIn);
 
   return (
     <div className="App">

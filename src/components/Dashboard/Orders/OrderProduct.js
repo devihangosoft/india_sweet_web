@@ -1,9 +1,9 @@
 import React from 'react'
 import * as Icon from "react-feather";
-export default function OrderProduct({response1, productvalues, sendProducts}) {
+export default function OrderProduct({row, response1, productvalues, sendProducts}) {
     const selectProduct = (e) =>{
         console.log(productvalues);
-        sendProducts(e.target.value);
+        sendProducts(e.target.value, row);
     }
     return (
         <>
@@ -33,10 +33,10 @@ export default function OrderProduct({response1, productvalues, sendProducts}) {
                 </td>
                 <td>
                     <div className="counter">
-                       <Icon.Plus />
-                        <input className="input-number" type="text"
-                             min="0" max="10" />
-                        <Icon.Minus/>
+                       {/* <Icon.Plus /> */}
+                        <input className="input-number" type="number"
+                             min="0" value={productvalues.proquantity} />
+                        {/* <Icon.Minus/> */}
                     </div>
                 </td>
                 {/* <td>

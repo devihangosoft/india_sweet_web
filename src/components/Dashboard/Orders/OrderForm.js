@@ -4,16 +4,20 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useNavigate, NavLink } from "react-router-dom";
 import * as Yup from "yup";
 import useAxios from "../../hooks/useAxios";
-import SelectMui from "./SelectMui";
 import OrderProduct from "./OrderProduct";
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 // import CustomSelect from "./CustomSelect";
 
 function OrderForm() {
-    const [productrow, setProductrow] = useState([0])
-    const [productvalues, setProductvalues] = useState([])
-    const notify = () => toast("Wow so easy!");
+    const [productrow, setProductrow] = useState([ {
+        proname:"",
+        proquantity:""
+    }])
+    const [productvalues, setProductvalues] = useState([
+       
+    ])
+    const notify = () => toast("Order Placed Successfully");
     //let navigate = useNavigate();
     let name = /^[a-zA-Z ]+$/;
     const SignupSchema = Yup.object().shape({
@@ -82,10 +86,6 @@ function OrderForm() {
     const { response, loading, error } = useAxios({
         method: "post",
         url: "/create_lead",
-        // headers: {
-        //     "Content-Type": "application/json",
-        //     "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
-        // },
         body: JSON.stringify({
             // ref.current.values
             quotation_no: ref.current.values.quotation_number,
@@ -111,8 +111,7 @@ function OrderForm() {
     useEffect(() => {
         if (response !== null) {
             console.log(response);
-      //     console.log(response.message);
-           
+      //     console.log(response.message);           
         }
 
         const resMessage =
@@ -120,8 +119,10 @@ function OrderForm() {
             error.message ||
             error.toString();
             console.log(resMessage);
+         
         setTimeout(() => {
            // setSuccessmessage("");
+          // notify();
         }, 5000);
     }, [response, error]);
 
@@ -166,7 +167,7 @@ function OrderForm() {
 
     const handleOrder = (e) => {
        // e.preventDefault();
-
+     
         console.log(ref.current.values.product);
        // setapiState(apiState + 1);
     };
@@ -177,15 +178,17 @@ function OrderForm() {
         console.log(productrow);
     }
 
-    const sendProducts = (val) =>{
-setProductvalues([...productvalues, val])
+    const sendProducts = (val, index) =>{
+        let a = productvalues;
+        a[index] = val;
+        setProductvalues(a)
     }
 
     return (
         <>
 
             <div>
-            <button onClick={notify}>Notify!</button>
+           
             <ToastContainer
 position="top-center"
 autoClose={5000}
@@ -493,7 +496,7 @@ pauseOnHover
                                                         {
 
                                                             productrow.map((item, index) => {
-                                                                return <OrderProduct response1={response1} productvalues={productvalues} 
+                                                                return <OrderProduct row={index} response1={response1} productvalues={productvalues} 
                                                                 sendProducts={sendProducts}/>
                                                             })
 
