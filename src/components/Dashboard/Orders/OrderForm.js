@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../../Login/Signin.scss";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, Navigate } from "react-router-dom";
 import * as Yup from "yup";
 import useAxios from "../../hooks/useAxios";
 import OrderProduct from "./OrderProduct";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2'
 // import CustomSelect from "./CustomSelect";
 
 function OrderForm() {
@@ -111,7 +112,16 @@ function OrderForm() {
     useEffect(() => {
         if (response !== null) {
             console.log(response);
-            //     console.log(response.message);           
+            //     console.log(response.message);  
+            
+            Swal.fire({
+                confirmButtonColor:'orange',
+                icon: 'success',
+                title: 'Success',
+                text: 'Order placed successfully!',
+              }).then(()=>{
+                
+              })
         }
 
         const resMessage =
@@ -169,7 +179,7 @@ function OrderForm() {
         // e.preventDefault();
 
         // console.log(ref.current.values.product);
-        // setapiState(apiState + 1);
+        setapiState(apiState + 1);
     };
 
     const addProduct = (e) => {
@@ -194,7 +204,7 @@ function OrderForm() {
         <>
 
             <div>
-                <button onClick={() => console.log(productvalues)}>Submit</button>
+                {/* <button onClick={() => console.log(productvalues)}>Submit</button> */}
 
                 <ToastContainer
                     position="top-center"

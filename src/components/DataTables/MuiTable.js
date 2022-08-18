@@ -64,7 +64,7 @@ export default function MuiTable(props) {
             })
 
             // props.viewColumn && (rowVal[1001] = <NavLink className='btn btn-primary' to="/orderdetails">view</NavLink>)
-            props.viewColumn && (rowVal[1001] = <NavLink className='btn btn-primary' to={`/orders/${1}`}>view</NavLink>)
+            props.viewColumn && (rowVal[1001] = <NavLink className='btn btn-theme' to={`/orders/${1}`}>view</NavLink>)
 
             return rowVal
         })
