@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Orders from "./components/Dashboard/Orders/Orders";
 import Products from "./components/Dashboard/Products/Products";
@@ -39,15 +39,14 @@ import StoresForm from "./components/Dashboard/Stores/StoresForm";
 // import LeftSide from "./components/Login/LeftSide";
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // useEffect(() => {
-  //   const loggedInUser = localStorage.getItem("user");
-  //   if (loggedInUser) {
-  //     const foundUser = JSON.parse(loggedInUser);
-  //    // setUser(foundUser);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const loggedInUser = JSON.parse(sessionStorage.getItem("user"));
+    if (loggedInUser) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
     <div className="App">
@@ -65,146 +64,144 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <Layout name="Dashboard">
-                <MainContent/>
-              </Layout>
+              isLoggedIn ? (<Layout name="Dashboard">
+                <MainContent />
+              </Layout>) : <Navigate to='/login' />
             }
           />
-               <Route
+          <Route
             path="/steppers"
             element={
-              <Layout name="Steppers">
-         <CustomizedSteppers/>
-              </Layout>
+              isLoggedIn ? (<Layout name="Steppers">
+                <CustomizedSteppers />
+              </Layout>) : <Navigate to='/login' />
             }
           />
           <Route
             path="/orders"
             element={
-              <Layout name="Orders">
+              isLoggedIn ? (<Layout name="Orders">
                 <Orders />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
 
-            <Route
+          <Route
             path="/orderform"
             element={
-              <Layout name="Add Order">
-               <OrderForm/>
-              </Layout>
+              isLoggedIn ? (<Layout name="Add Order">
+                <OrderForm />
+              </Layout>) : <Navigate to='/login' />
             }
           />
-            <Route
+          <Route
             path="/orderdetails"
             element={
-              <Layout name="Order Details">
-               <OrderDetails/>
-              </Layout>
+              isLoggedIn ? (<Layout name="Order Details">
+                <OrderDetails />
+              </Layout>) : <Navigate to='/login' />
             }
           />
 
-            <Route
+          <Route
             path="/products"
             element={
-              <Layout name="Products">
+              isLoggedIn ? (<Layout name="Products">
                 <Products />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
-            <Route
+          <Route
             path="/stores"
             element={
-              <Layout name="Stores">
+              isLoggedIn ? (<Layout name="Stores">
                 <Stores />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
-            <Route
+          <Route
             path="/payments"
             element={
-              <Layout name="Payments">
+              isLoggedIn ? (<Layout name="Payments">
                 <Payments />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
 
           <Route
             path="/configuration"
             element={
-              <Layout name="Configuration">
+              isLoggedIn ? (<Layout name="Configuration">
                 <Configuration />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
           <Route
             path="/users"
             element={
-              <Layout name="Users List">
+              isLoggedIn ? (<Layout name="Users List">
                 <Users />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
           <Route
             path="/teams"
             element={
-              <Layout name ="Team">
+              isLoggedIn ? (<Layout name="Team">
                 <Teams />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
           <Route
             path="/fields"
             element={
-              <Layout name="Fields">
+              isLoggedIn ? (<Layout name="Fields">
                 <Fields />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
           <Route
             path="/dispositions"
             element={
-              <Layout name="Dispositions">
+              isLoggedIn ? (<Layout name="Dispositions">
                 <Dispositions />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
           <Route
             path="/emails"
             element={
-              <Layout name="Emails">
+              isLoggedIn ? (<Layout name="Emails">
                 <Emails />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
 
           <Route
             path="/sms"
             element={
-              <Layout name="SMS">
+              isLoggedIn ? (<Layout name="SMS">
                 <Sms />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
           <Route
             path="/Test"
             element={
-              <Layout name="SMS">
+              isLoggedIn ? (<Layout name="SMS">
                 <Test />
-              </Layout>
+              </Layout>) : <Navigate to='/login' />
             }
           />
 
-<Route
+          <Route
             path="/form"
             element={
-              <Layout name="SMS">
-               <StoresForm/>
-              </Layout>
+              isLoggedIn ? (<Layout name="SMS">
+                <StoresForm />
+              </Layout>) : <Navigate to='/login' />
             }
           />
-
-        
         </Routes>
       </BrowserRouter>
     </div>
