@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import Header from "./Header";
-
+import { useDispatch } from "react-redux/es/exports";
+import { useSelector } from "react-redux/es/exports";
 import "./Signin.scss";
 import axios from "axios";
 
@@ -10,10 +11,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [successmessage, setSuccessmessage] = useState("");
+  const dispatch = useDispatch();
 
-
-
-  
   const handleLogin = async (e) => {
     e.preventDefault()
     
@@ -33,7 +32,9 @@ function Login() {
           },
         })
         .then((response) => {
+          dispatch({ type: "setUserDetails", payload: response });
           sessionStorage.setItem("user", JSON.stringify(response));
+          localStorage.setItem("user", JSON.stringify(response));
           setSuccessmessage("Login successfull !!");
           setTimeout(() => {
             navigate("/dashboard");

@@ -3,6 +3,7 @@ import Tables from "../../DataTables/Tables";
 import Filter from "../../Elements/Filter/Filter";
 import Adduserform from "../../Configurations/UserConfig/Adduserform";
 import { useDispatch } from "react-redux/es/exports";
+import { useSelector } from "react-redux/es/exports";
 import useAxios from "../../hooks/useAxios";
 import axios from "axios";
 import MuiTable from "../../DataTables/MuiTable";
@@ -10,9 +11,13 @@ import ProductsForm from "./ProductsForm";
 
 function Products() {
   const dispatch = useDispatch();
-  const handleShow = () =>
-    dispatch({ type: "openModal", payload: <ProductsForm/> });
+  const { user } = useSelector((store) => store.userReducer);
 
+  const handleShow = () =>{
+    dispatch({ type: "openModal", payload: <ProductsForm/> });
+    console.log(user)
+    
+  }
 
   const [apiState, setapiState] = useState(1);
   const { response, loading, error } = useAxios({

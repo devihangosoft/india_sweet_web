@@ -50,6 +50,8 @@ function App() {
 
   console.log(isLoggedIn);
 
+  console.log("hiii hello ")
+
   return (
     <div className="App">
       <Modals />
