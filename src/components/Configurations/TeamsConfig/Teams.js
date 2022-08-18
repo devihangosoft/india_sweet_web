@@ -11,7 +11,8 @@ export default function Teams() {
   const [apiState, setapiState] = useState(1);
   const { response, loading, error } = useAxios({
     method: "get",
-    url: "/getteamlist",
+    // url: "/getproduct",
+    url: "/getteams",
     apiState: apiState,
   });
 

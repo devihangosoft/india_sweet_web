@@ -6,7 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { Box } from '@mui/material'
+import { Box } from '@mui/material';
+import { NavLink } from "react-router-dom";
 
 export default function MuiTable(props) {
     const [page, setPage] = React.useState(0);
@@ -38,6 +39,19 @@ export default function MuiTable(props) {
                 format: (value) => value.toLocaleString('en-US'),
             }
         })
+
+
+        const viewColumn = {
+            id: 1001,
+                label: "View",
+                minWidth: 70,
+                align: 'left',
+                format: (value) => value.toLocaleString('en-US'),
+                
+        }
+
+        props.viewColumn && columns.push(viewColumn)
+
     }
 
     let rows = [];
@@ -46,8 +60,12 @@ export default function MuiTable(props) {
 
             let rowVal = {}
             columns.map((columnItem, index) => {
-                rowVal[columnItem.id] = item[columnItem.id]
+                rowVal[columnItem.id] = item[columnItem.id]                
             })
+
+            // props.viewColumn && (rowVal[1001] = <NavLink className='btn btn-primary' to="/orderdetails">view</NavLink>)
+            props.viewColumn && (rowVal[1001] = <NavLink className='btn btn-primary' to={`/orders/${1}`}>view</NavLink>)
+
             return rowVal
         })
     }

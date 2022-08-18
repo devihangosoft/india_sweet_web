@@ -6,16 +6,16 @@ import * as Yup from "yup";
 import useAxios from "../../hooks/useAxios";
 import OrderProduct from "./OrderProduct";
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 // import CustomSelect from "./CustomSelect";
 
 function OrderForm() {
-    const [productrow, setProductrow] = useState([ {
-        proname:"",
-        proquantity:""
+    const [productrow, setProductrow] = useState([{
+        proname: "",
+        proquantity: ""
     }])
     const [productvalues, setProductvalues] = useState([
-       
+
     ])
     const notify = () => toast("Order Placed Successfully");
     //let navigate = useNavigate();
@@ -57,9 +57,9 @@ function OrderForm() {
         customer_name: "",
         phone: "",
         email: "",
-       // gst: "",
+        // gst: "",
         whatsapp: "",
-        address:"",
+        address: "",
 
         // doorno: "",
         // street: "",
@@ -74,7 +74,7 @@ function OrderForm() {
         deliverydate: "",
         branch: "",
 
-       // referenceno: "",
+        // referenceno: "",
         refphone: "",
         refname: ""
 
@@ -111,18 +111,18 @@ function OrderForm() {
     useEffect(() => {
         if (response !== null) {
             console.log(response);
-      //     console.log(response.message);           
+            //     console.log(response.message);           
         }
 
         const resMessage =
             (error.response && error.response.data && error.response.data.message) ||
             error.message ||
             error.toString();
-            console.log(resMessage);
-         
+        console.log(resMessage);
+
         setTimeout(() => {
-           // setSuccessmessage("");
-          // notify();
+            // setSuccessmessage("");
+            // notify();
         }, 5000);
     }, [response, error]);
 
@@ -166,10 +166,10 @@ function OrderForm() {
     }, [response2, error2]);
 
     const handleOrder = (e) => {
-       // e.preventDefault();
-     
-        console.log(ref.current.values.product);
-       // setapiState(apiState + 1);
+        // e.preventDefault();
+
+        // console.log(ref.current.values.product);
+        // setapiState(apiState + 1);
     };
 
     const addProduct = (e) => {
@@ -178,9 +178,15 @@ function OrderForm() {
         console.log(productrow);
     }
 
-    const sendProducts = (val, index) =>{
+    const sendProducts = (val, index) => {
         let a = productvalues;
         a[index] = val;
+        setProductvalues(a)
+    }
+
+    const updateQuantity = (quantity, index) => {
+        let a = productvalues;
+        a[index].quantity = quantity;
         setProductvalues(a)
     }
 
@@ -188,18 +194,19 @@ function OrderForm() {
         <>
 
             <div>
-           
-            <ToastContainer
-position="top-center"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-/>
+                <button onClick={() => console.log(productvalues)}>Submit</button>
+
+                <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
                 <Formik
                     initialValues={initialValues}
                     validationSchema={SignupSchema}
@@ -208,7 +215,7 @@ pauseOnHover
                 >
                     {({ errors, touched }) => (
                         <Form className="theme-form">
-                            <div className="row">                      
+                            <div className="row">
                                 <div className="col-md-12">
                                     <div className="row g-2">
                                         <div className="col-3">
@@ -218,7 +225,7 @@ pauseOnHover
                                                 <Field
                                                     className="form-control"
                                                     type="text"
-                                                    
+
                                                     name="quotation_number"
 
                                                     placeholder="XXXX XXXX"
@@ -236,7 +243,7 @@ pauseOnHover
                                                 <Field
                                                     className="form-control"
                                                     type="text"
-                                                    
+
                                                     name="customer_name"
 
                                                     placeholder="User name"
@@ -254,7 +261,7 @@ pauseOnHover
                                             <Field
                                                 className="form-control"
                                                 type="tel"
-                                                
+
                                                 name="phone"
 
                                                 placeholder="+91 XXXX"
@@ -272,7 +279,7 @@ pauseOnHover
                                             <Field
                                                 className="form-control"
                                                 type="email"
-                                                
+
                                                 name="email"
 
                                                 placeholder="Test@gmail.com"
@@ -303,33 +310,33 @@ pauseOnHover
                                                     />
                                                 </div>
                                             </div> */}
-                                             <div className="col-3">
-                                            <label className="col-form-label">
-                                                Branch
-                                            </label>
-                                            <Field as="select"
+                                            <div className="col-3">
+                                                <label className="col-form-label">
+                                                    Branch
+                                                </label>
+                                                <Field as="select"
 
-                                                className="form-control"
-                                                
-                                                name="branch"
-                                            >
-                                                <option>Select</option>
-                                                {
-                                                    response2 != null ?
-                                                        response2.map((item, index) => {
-                                                            return <option>{item.store_name}</option>
-                                                        })
-                                                        : console.log("No Branch data found")
-                                                }
+                                                    className="form-control"
 
-</Field>
-                                           
-                                            <ErrorMessage
-                                                name="branch"
-                                                component="div"
-                                                className="text-danger"
-                                            />
-                                        </div>
+                                                    name="branch"
+                                                >
+                                                    <option>Select</option>
+                                                    {
+                                                        response2 != null ?
+                                                            response2.map((item, index) => {
+                                                                return <option>{item.store_name}</option>
+                                                            })
+                                                            : console.log("No Branch data found")
+                                                    }
+
+                                                </Field>
+
+                                                <ErrorMessage
+                                                    name="branch"
+                                                    component="div"
+                                                    className="text-danger"
+                                                />
+                                            </div>
                                             <div className="col-3">
                                                 <label className="col-form-label">
                                                     whatsapp
@@ -337,7 +344,7 @@ pauseOnHover
                                                 <div className="form-Field position-relative">
                                                     <Field
                                                         className="form-control"
-                                                    
+
                                                         name="whatsapp"
 
                                                         placeholder="number"
@@ -354,7 +361,7 @@ pauseOnHover
                                                 <Field
                                                     className="form-control"
                                                     type="text"
-                                                    
+
                                                     name="refname"
                                                     placeholder="abc"
                                                 />
@@ -371,7 +378,7 @@ pauseOnHover
                                                 <Field
                                                     className="form-control"
                                                     type="tel"
-                                                    
+
                                                     name="referencecontact"
 
                                                     placeholder="+91 XXXXXX"
@@ -386,7 +393,7 @@ pauseOnHover
                                     </div>
                                 </div>
                                 <div className="col-md-12 " >
-                                <div className="border-top my-3" ></div>
+                                    <div className="border-top my-3" ></div>
                                 </div>
                                 <div className="form-group col-md-12">
                                     <div className="row g-2">
@@ -395,7 +402,7 @@ pauseOnHover
                                             <Field
                                                 className="form-control"
                                                 type="date"
-                                                
+
                                                 name="deliverydate"
                                                 placeholder="+91 XXXX"
                                             />
@@ -412,7 +419,7 @@ pauseOnHover
                                             <Field
                                                 className="form-control"
                                                 type="time"
-                                                
+
                                                 name="deliverytime"
 
                                                 placeholder="Test@gmail.com"
@@ -428,7 +435,7 @@ pauseOnHover
                                             <div className="form-Field position-relative">
                                                 <Field
                                                     className="form-control"
-                                                    
+
                                                     name="address"
 
                                                     placeholder="enter address"
@@ -456,7 +463,7 @@ pauseOnHover
                                                     className="text-danger"
                                                 />
                                             </div> */}
-                                                                               
+
                                     </div>
                                 </div>
 
@@ -477,36 +484,36 @@ pauseOnHover
                                         />
                                     </div> */}
 
-                                <div className="col-md-12 form-group mt-3">                                   
-                                        <div className="cart">
-                                            <div className="table-responsive ">
-                                                <table className="table table-bordered mb-0">
-                                                    <thead className="thead-light">
-                                                        <tr>
-                                                            <th scope="col">Product</th>
-                                                            <th scope="col">Price</th>
-                                                            <th scope="col">Quantity</th>
-                                                            {/* <th scope="col">Total</th> */}
-                                                            {/* <th scope="col">Action</th> */}
+                                <div className="col-md-12 form-group mt-3">
+                                    <div className="cart">
+                                        <div className="table-responsive ">
+                                            <table className="table table-bordered mb-0">
+                                                <thead className="thead-light">
+                                                    <tr>
+                                                        <th scope="col">Product</th>
+                                                        <th scope="col">Price</th>
+                                                        <th scope="col">Quantity</th>
+                                                        {/* <th scope="col">Total</th> */}
+                                                        {/* <th scope="col">Action</th> */}
 
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
 
-                                                        {
+                                                    {
 
-                                                            productrow.map((item, index) => {
-                                                                return <OrderProduct row={index} response1={response1} productvalues={productvalues} 
-                                                                sendProducts={sendProducts}/>
-                                                            })
+                                                        productrow.map((item, index) => {
+                                                            return <OrderProduct row={index} updateQuantity={updateQuantity} response1={response1} productvalues={productvalues}
+                                                                sendProducts={sendProducts} />
+                                                        })
 
-                                                        }
-                                                        <tr>
-                                                            <td colspan="4">
-                                                                <button className="btn btn-info btn-sm" onClick={addProduct}>Add +</button>  </td></tr>                  </tbody>
-                                                </table>
-                                            </div>
+                                                    }
+                                                    <tr>
+                                                        <td colspan="4">
+                                                            <button className="btn btn-info btn-sm" onClick={addProduct}>Add +</button>  </td></tr>                  </tbody>
+                                            </table>
                                         </div>
+                                    </div>
                                 </div>
 
                                 <div className="col-md-4 form-group mt-3 mb-4 float-right">

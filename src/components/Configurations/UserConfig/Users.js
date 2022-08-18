@@ -13,7 +13,7 @@ export default function Users() {
     const [apiState, setapiState] = useState(1);
     const { response, loading, error } = useAxios({
       method: "get",
-      url: "/getcustomerlist",
+      url: "/getuserlist",
       apiState: apiState,
     });
   

@@ -54,7 +54,7 @@ function Orders() {
       <div className="row align-items-center justify-content-between">
         <div className="col-md-12">
         
-        <MuiTable data={response} />
+        <MuiTable viewColumn={true} data={response} />
         </div>
         </div>
     </>

@@ -1,10 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import * as Icon from "react-feather";
-export default function OrderProduct({row, response1, productvalues, sendProducts}) {
-    const selectProduct = (e) =>{
-        console.log(productvalues);
-        sendProducts(e.target.value, row);
+export default function OrderProduct({row, response1, productvalues, updateQuantity, sendProducts}) {
+    const [quantity, setQuantity] = useState('1');
+    const selectProduct = (e) =>{        
+        let value = {item: e.target.value, quantity: quantity};
+        sendProducts(value, row);
     }
+
+    const changeQuantity = (e)=>{
+       setQuantity(e.target.value)
+       updateQuantity(e.target.value, row)
+    }
+
+
+
     return (
         <>
             <tr>
@@ -35,7 +44,7 @@ export default function OrderProduct({row, response1, productvalues, sendProduct
                     <div className="counter">
                        {/* <Icon.Plus /> */}
                         <input className="input-number" type="number"
-                             min="0" value={productvalues.proquantity} />
+                             min="0" value={quantity} onChange={changeQuantity} />
                         {/* <Icon.Minus/> */}
                     </div>
                 </td>

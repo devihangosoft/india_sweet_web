@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "react-step-progress/dist/index.css";
 import CustomizedSteppers from "./Stepper";
 import * as Icon from "react-feather";
+import MuiTabs from "./MuiTabs";
+import Filter from "../../Elements/Filter/Filter";
+import { NavLink } from "react-router-dom";
+import useAxios from "../../hooks/useAxios";
+import {useParams} from "react-router-dom"
 
 function OderDetails() {
   const step1Content = <h1>fgfgghgjh</h1>;
@@ -14,14 +19,46 @@ function OderDetails() {
   function step3Validator() {
     // return a boolean
   }
+  
+
+  const {orderId} = useParams()
+  var thisOrder = null;
+
+  const [apiState, setapiState] = useState(1);
+  const { response, loading, error } = useAxios({
+    method: "get",
+    url: "/getlead",
+    apiState: apiState,
+  });
+
+  useEffect(() => {
+    if (response !== null) {
+      console.log(response);      
+      thisOrder = response.find(response => response.lead_id === parseInt(orderId))      
+      console.log("This Order : ",thisOrder);
+    }
+
+    const resMessage =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    console.log(resMessage)
+  }, [response, error]);
+
+
+
+
+
   return (
     <>
       <div className="page-content">
-        <div className="cart">
+      <h1>{orderId}</h1>
+      <MuiTabs />
+        <div className="cart" style={{display:'flex'}}>
 
 
 
-{/* <CustomizedSteppers /> */}
+          {/* <CustomizedSteppers /> */}
 
           {/* <!-- Main content --> */}
           <div className="row">
@@ -171,6 +208,10 @@ function OderDetails() {
             </aside>
           </div>
         </div>
+
+
+
+          
       </div>
     </>
   );

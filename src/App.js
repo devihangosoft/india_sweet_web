@@ -99,7 +99,7 @@ function App() {
             }
           />
           <Route
-            path="/orderdetails"
+            path="/orders/:orderId"
             element={
               isLoggedIn ? (<Layout name="Order Details">
                 <OrderDetails />
