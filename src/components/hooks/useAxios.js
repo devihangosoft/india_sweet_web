@@ -12,7 +12,7 @@ const useAxios = ({ url, method, headers, body = null, apiState = 0 }) => {
     const [response, setResponse] = useState(null);
     const [error, setError] = useState('');
     const [loading, setloading] = useState(false);
-    const userData = JSON.parse( sessionStorage.getItem("user"));
+    const userData = JSON.parse( localStorage.getItem("user"));
 
     // console.log("BODY DATA:",body)
 

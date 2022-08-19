@@ -20,7 +20,8 @@ function Logout() {
     method: "post",
     url: "/logout",   
     body: JSON.stringify({
-      "user_id": `${userData.data.data[0].public_id}`,      
+      // user_id: `${userData.data.data[0].user_id}`,      
+      user_id: 76,      
     }),
     apiState: apiState,
   });

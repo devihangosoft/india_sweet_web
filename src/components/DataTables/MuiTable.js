@@ -12,6 +12,7 @@ import * as Icon from "react-feather"
 import { useDispatch } from "react-redux/es/exports";
 import { useSelector } from "react-redux/es/exports";
 import UpdateStoreForm from '../Dashboard/Stores/UpdateStoreForm';
+import Swal from 'sweetalert2';
 
 export default function MuiTable(props) {
     const [page, setPage] = React.useState(0);
@@ -48,24 +49,35 @@ export default function MuiTable(props) {
 
         const viewColumn = {
             id: 1001,
-                label: "View",
-                minWidth: 70,
-                align: 'left',
-                format: (value) => value.toLocaleString('en-US'),
-                
+            label: "View",
+            minWidth: 70,
+            align: 'left',
+            format: (value) => value.toLocaleString('en-US'),
+
         }
 
         const updateColumn = {
             id: 1002,
-                label: "Action",
-                minWidth: 70,
-                align: 'left',
-                format: (value) => value.toLocaleString('en-US'),                
+            label: "Edit",
+            minWidth: 70,
+            align: 'left',
+            format: (value) => value.toLocaleString('en-US'),
         }
+
+        const deleteColumn = {
+            id: 1003,
+            label: "Delete",
+            minWidth: 70,
+            align: 'left',
+            format: (value) => value.toLocaleString('en-US'),
+        }
+
+
 
 
         props.viewColumn && columns.push(viewColumn)
         props.updateColumn && columns.push(updateColumn)
+        props.deleteColumn && columns.push(deleteColumn)
 
     }
 
@@ -75,11 +87,31 @@ export default function MuiTable(props) {
 
             let rowVal = {}
             columns.map((columnItem, index) => {
-                rowVal[columnItem.id] = item[columnItem.id]                
+                rowVal[columnItem.id] = item[columnItem.id]
             })
-            
+
             props.viewColumn && (rowVal[1001] = <NavLink to={`/orders/${1}`}><Icon.Eye color='orange' /></NavLink>)
-            props.updateColumn && (rowVal[1002] = <button onClick={()=> dispatch({ type: "openModal", payload: <props.updateForm rowData={rowVal} callback={props.callback} /> }) } ><Icon.Edit color='orange' /></button>)
+            props.updateColumn && (rowVal[1002] = <button className='border-0 bg-transparent' onClick={() => dispatch({ type: "openModal", payload: <props.updateForm rowData={rowVal} callback={props.callback} /> })} ><Icon.Edit color='orange' /></button>)
+
+
+            props.deleteColumn && (rowVal[1003] = <button className='border-0 bg-transparent' onClick={() => {
+                Swal.fire({
+                    title: 'Are you sure?',                    
+                    showCancelButton: true,
+                    confirmButtonText: 'Delete',
+                    confirmButtonColor:'red',
+                }).then((result) => {                   
+                    if (result.isConfirmed) {
+                        
+                    } 
+                })
+            }} ><Icon.Trash color='red' /></button>)
+
+
+
+
+
+
 
             return rowVal
         })
