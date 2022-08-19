@@ -3,11 +3,13 @@ import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
 import "../../Login/Signin.scss";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux/es/exports";
 import * as Yup from "yup";
 import useAxios from "../../hooks/useAxios";
 
-function StoresForm() {
+function StoresForm({callback}) {
   //let navigate = useNavigate();
+  const dispatch = useDispatch();
   let name = /^[a-zA-Z ]+$/;
   const SignupSchema = Yup.object().shape({
     storename: Yup.string()
@@ -44,7 +46,11 @@ function StoresForm() {
   useEffect(() => {
     if (response !== null) {
       console.log(response);
-      setSuccessmessage(response.message);      
+      callback();
+      setSuccessmessage(response.message);    
+      setTimeout(() => {
+        dispatch({ type: "closeModal" });
+      }, 2000);  
     }
 
     const resMessage =

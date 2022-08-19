@@ -10,12 +10,13 @@ import StoresForm from "./StoresForm";
 
 function Stores() {
   const dispatch = useDispatch();
+  const [apiState, setapiState] = useState(1);
+  
   const handleShow = () =>
-    dispatch({ type: "openModal", payload: <StoresForm/> });
+    dispatch({ type: "openModal", payload: <StoresForm callback={()=>setapiState(apiState+1)} /> });
 
   const userData = JSON.parse( sessionStorage.getItem("user"));
   
-  const [apiState, setapiState] = useState(1);
   const { response, loading, error } = useAxios({
     method: "get",
     url: "/getstoredetails", 

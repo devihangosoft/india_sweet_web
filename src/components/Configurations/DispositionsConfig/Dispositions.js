@@ -7,14 +7,15 @@ import MuiTable from "../../DataTables/MuiTable";
 export default function Dispositions() {
   const dispatch = useDispatch();
 
+  const [apiState, setapiState] = useState(1);
+
   const handleShow = () =>
     dispatch({
       type: "openModal",
-      payload : <Adddispositionform /> 
+      payload : <Adddispositionform callback={()=>setapiState(apiState+1)} /> 
     });
 
 
-    const [apiState, setapiState] = useState(1);
     const { response, loading, error } = useAxios({
       method: "get",
       url: "/getdisposition",

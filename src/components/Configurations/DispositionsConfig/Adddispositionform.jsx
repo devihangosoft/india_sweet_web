@@ -3,11 +3,14 @@ import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
 import "../../Login/Signin.scss";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useSelector } from "react-redux/es/exports";
+import { useDispatch } from "react-redux/es/exports";
 import * as Yup from "yup";
 import useAxios from "../../hooks/useAxios";
 
-function Adddispositionform() {
+function Adddispositionform({callback}) {
   //let navigate = useNavigate();
+  const dispatch = useDispatch();
   let name = /^[a-zA-Z ]+$/;
   const SignupSchema = Yup.object().shape({
     dispositionname: Yup.string()
@@ -35,7 +38,7 @@ function Adddispositionform() {
     },
     body: JSON.stringify({
       // ref.current.values         
-      Disposition_name: ref.current.values.dispositionname,
+      dispostion_name: ref.current.values.dispositionname,
     }),
     apiState: apiState,
   });
@@ -43,10 +46,12 @@ function Adddispositionform() {
   useEffect(() => {
     if (response !== null) {
       console.log(response);
-      setSuccessmessage(response.message);
+      const resMessage = (response.message) || response;
+      callback();
+      setSuccessmessage(resMessage);
       setTimeout(() => {
-       // navigate("/login");
-      }, 5000);
+        dispatch({ type: "closeModal" });
+      }, 2000);
     }
 
     const resMessage =
@@ -55,7 +60,7 @@ function Adddispositionform() {
       error.toString();
     setMessage(resMessage);
     setTimeout(() => {
-      setMessage("");
+      setMessage("");      
     }, 5000);
   }, [response, error]);
 

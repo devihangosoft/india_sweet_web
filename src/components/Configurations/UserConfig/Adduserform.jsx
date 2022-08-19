@@ -3,11 +3,14 @@ import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
 import "../../Login/Signin.scss";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useSelector } from "react-redux/es/exports";
+import { useDispatch } from "react-redux/es/exports";
 import * as Yup from "yup";
 import useAxios from "../../hooks/useAxios";
 
-function Adduserform() {
+function Adduserform({callback}) {
   const [passwordShown1, setPasswordShown1] = useState(false);
+  const dispatch = useDispatch();
 
   const togglePasswordVisiblity1 = () => {
     setPasswordShown1(passwordShown1 ? false : true);
@@ -90,9 +93,10 @@ function Adduserform() {
   useEffect(() => {
     if (response !== null) {
       console.log(response);
+      callback();
       setSuccessmessage(response.message);
       setTimeout(() => {
-        // navigate("/login");
+        dispatch({ type: "closeModal" });        
       }, 5000);
     }
 
