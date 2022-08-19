@@ -9,8 +9,6 @@ import Neworder from './OrderStatus/Neworder';
 import Dispatchorder from './OrderStatus/Dispatchorder';
 import Production from './OrderStatus/Production';
 
-
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   return (
@@ -56,7 +54,11 @@ export default function MuiTabs() {
   return (
     <Box sx={{ width: '100%' }} p={0} >
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} p={0} >
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+        <Tabs className="customTabs" value={value} onChange={handleChange} aria-label="basic tabs example" TabIndicatorProps={{
+ style: {
+   background: "#FAAF56"
+ },
+}}>
           <Tab label="New order" {...a11yProps(0)} />
           <Tab label="Production Status" {...a11yProps(1)} />
           <Tab label="Dispatch Status" {...a11yProps(2)} />
