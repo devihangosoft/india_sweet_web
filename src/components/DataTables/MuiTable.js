@@ -8,10 +8,15 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { Box } from '@mui/material';
 import { NavLink } from "react-router-dom";
+import * as Icon from "react-feather"
+import { useDispatch } from "react-redux/es/exports";
+import { useSelector } from "react-redux/es/exports";
+import UpdateStoreForm from '../Dashboard/Stores/UpdateStoreForm';
 
 export default function MuiTable(props) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const dispatch = useDispatch();
 
     let tData = props.data;
     const handleChangePage = (event, newPage) => {
@@ -50,7 +55,17 @@ export default function MuiTable(props) {
                 
         }
 
+        const updateColumn = {
+            id: 1002,
+                label: "Action",
+                minWidth: 70,
+                align: 'left',
+                format: (value) => value.toLocaleString('en-US'),                
+        }
+
+
         props.viewColumn && columns.push(viewColumn)
+        props.updateColumn && columns.push(updateColumn)
 
     }
 
@@ -62,9 +77,9 @@ export default function MuiTable(props) {
             columns.map((columnItem, index) => {
                 rowVal[columnItem.id] = item[columnItem.id]                
             })
-
-            // props.viewColumn && (rowVal[1001] = <NavLink className='btn btn-primary' to="/orderdetails">view</NavLink>)
-            props.viewColumn && (rowVal[1001] = <NavLink className='btn btn-theme' to={`/orders/${1}`}>view</NavLink>)
+            
+            props.viewColumn && (rowVal[1001] = <NavLink to={`/orders/${1}`}><Icon.Eye color='orange' /></NavLink>)
+            props.updateColumn && (rowVal[1002] = <button onClick={()=> dispatch({ type: "openModal", payload: <props.updateForm rowData={rowVal} callback={props.callback} /> }) } ><Icon.Edit color='orange' /></button>)
 
             return rowVal
         })

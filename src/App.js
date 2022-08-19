@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux/es/exports";
 
 import Orders from "./components/Dashboard/Orders/Orders";
 import Products from "./components/Dashboard/Products/Products";
@@ -39,18 +40,7 @@ import StoresForm from "./components/Dashboard/Stores/StoresForm";
 // import LeftSide from "./components/Login/LeftSide";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-  useEffect(() => {
-    const loggedInUser = JSON.parse(localStorage.getItem("user"));
-    if (loggedInUser) {
-      setIsLoggedIn(true);
-    }
-  }, []);
-
-  console.log(isLoggedIn);
-
-  console.log("hiii hello ")
+  const { isLoggedIn } = useSelector((store) => store.userReducer);
 
   return (
     <div className="App">

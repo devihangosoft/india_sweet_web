@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux/es/exports";
 import useAxios from "../../hooks/useAxios";
 import MuiTable from "../../DataTables/MuiTable";
 import StoresForm from "./StoresForm";
+import UpdateStoreForm from "./UpdateStoreForm";
 
 
 function Stores() {
@@ -40,8 +41,8 @@ function Stores() {
   return (
     <>
       <div className="row pb-4">
-        <div className="col-6">
-          <button class="btn btn-theme mt-2" variant="primary" onClick={handleShow}>Add Store</button>
+        <div className="col-12">
+          <button class="btn btn-theme mt-2 float-right" variant="primary" onClick={handleShow}>Add Store</button>
         </div>
         <div className="col-6 ">
           {/* <Filter /> */}
@@ -50,7 +51,7 @@ function Stores() {
       <div className="row align-items-center justify-content-between">
         <div className="col-md-12">
           {/* <Tables /> */}
-          <MuiTable data={response} />
+          <MuiTable updateColumn={true} updateForm={UpdateStoreForm} callback={()=>setapiState(apiState+1)} data={response} />
         </div>
       </div>
     </>

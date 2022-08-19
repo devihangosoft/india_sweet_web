@@ -105,12 +105,13 @@ function Register() {
         });
     } catch (error) {
       const resMessage =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
+      (error.response &&
+        error.response.data &&
+        error.response.data.message) ||
         error.message ||
         error.toString();
-
+        setMessage(resMessage);
+                
       setTimeout(() => {
         setMessage("");
       }, 5000);

@@ -8,6 +8,7 @@ import useAxios from "../../hooks/useAxios";
 import axios from "axios";
 import MuiTable from "../../DataTables/MuiTable";
 import ProductsForm from "./ProductsForm";
+import UpdateProductForm from "./UpdateProductForm";
 
 function Products() {
   const dispatch = useDispatch();
@@ -45,8 +46,8 @@ function Products() {
       <div className="pb-4">
         <div className="row">
 
-          <div className="col-6">
-            <button class="btn btn-theme mt-2" variant="primary" onClick={handleShow}>Add Product</button>
+          <div className="col-12">
+            <button class="btn btn-theme mt-2 float-right" variant="primary" onClick={handleShow}>Add Product</button>
           </div>
 
           <div className="col-6 ">
@@ -58,7 +59,7 @@ function Products() {
         <div className="col-md-12">
           {/* <Tables data={response} /> */}
 
-          <MuiTable data={response} />
+          <MuiTable updateColumn={true} updateForm={UpdateProductForm} callback={()=>setapiState(apiState+1)} data={response} />
         </div>
       </div>
     </>

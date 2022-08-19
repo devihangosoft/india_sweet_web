@@ -39,13 +39,10 @@ export default function Dispositions() {
     <>
 
 
-             <div className="py-4">
+             <div className="pb-4">
                 <div className="row">
-                  <div className="col-6">
-                    <h3>Dispositions List</h3>
-                    
-                  </div>
-                  <div className="col-6">
+                  
+                  <div className="col-12">
                   <button class="btn btn-theme float-right mt-2"variant="primary" onClick={handleShow}>Add Dispositions</button>
                   </div>
                 </div>
