@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Tables from "../../DataTables/Tables";
-import Filter from "../../Elements/Filter/Filter";
 import { NavLink } from "react-router-dom"
 import useAxios from "../../hooks/useAxios";
 import MuiTable from "../../DataTables/MuiTable";

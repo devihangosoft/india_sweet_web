@@ -29,8 +29,8 @@ export default function Production() {
     <>
         <div className="form-group mt-3">
                                     <div className="cart">
-                                        <div className="table-responsive ">
-                                            <table className="table table-bordered mb-0">
+                                        <div className="table-responsive card-box-shadow">
+                                            <table className="table  mb-0">
                                                 <thead className="thead-light">
                                                     <tr>
                                                         <th scope="col">Product</th>
@@ -67,7 +67,7 @@ export default function Production() {
                 
                 <td>
                     <div className="counter">
-                        <input className="input-number" type="text"
+                        <input className="input-number form-control" type="text"
                              min="0"  />
                     </div>
                 </td>
