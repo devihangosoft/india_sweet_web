@@ -42,7 +42,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
-    const loggedInUser = JSON.parse(sessionStorage.getItem("user"));
+    const loggedInUser = JSON.parse(localStorage.getItem("user"));
     if (loggedInUser) {
       setIsLoggedIn(true);
     }

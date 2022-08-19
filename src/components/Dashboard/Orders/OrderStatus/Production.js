@@ -27,7 +27,7 @@ export default function Production() {
 
   return (
     <>
-        <div className="col-md-12 form-group mt-3">
+        <div className="form-group mt-3">
                                     <div className="cart">
                                         <div className="table-responsive ">
                                             <table className="table table-bordered mb-0">
@@ -73,7 +73,7 @@ export default function Production() {
                 </td>
                 <td>
                   <div>
-                    <button className="btn-primary">UPDATE</button>
+                  <button className="btn btn-theme">UPDATE</button>
                   </div>
                 </td>
                 

@@ -48,7 +48,7 @@ function Orders() {
             </NavLink>
           </div>
           <div className="col-6 ">
-            <Filter />
+            {/* <Filter /> */}
           </div>
         </div>     
       <div className="row align-items-center justify-content-between">
