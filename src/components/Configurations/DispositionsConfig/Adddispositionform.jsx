@@ -28,14 +28,13 @@ function Adddispositionform() {
   const [apiState, setapiState] = useState(0);
   const { response, loading, error } = useAxios({
     method: "post",
-    url: "/Adddispositionformuser",
+    url: "/createdispostion",
     headers: {
       "Content-Type": "application/json",
       "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
     },
     body: JSON.stringify({
-      // ref.current.values   
-      Disposition_address: ref.current.values.address,
+      // ref.current.values         
       Disposition_name: ref.current.values.dispositionname,
     }),
     apiState: apiState,

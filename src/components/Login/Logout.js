@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
+import Swal from 'sweetalert2'
 
 function Logout() {
   let navigate = useNavigate();
 
   const [successmessage, setSuccessmessage] = useState("");
-  const userData = JSON.parse( sessionStorage.getItem("user"));
+  // const userData = JSON.parse( sessionStorage.getItem("user"));
+  const userData = JSON.parse( localStorage.getItem("user"));
+
+  console.log(userData.data.data[0].user_id)
+  // console.log(userData.data.data[0].public_id)
+
   
 
   const [apiState, setapiState] = useState(1);
@@ -14,18 +20,29 @@ function Logout() {
     method: "post",
     url: "/logout",   
     body: JSON.stringify({
-      "user_id": `${userData.data[0].user_id}`,      
+      "user_id": `${userData.data.data[0].public_id}`,      
     }),
     apiState: apiState,
   });
 
   useEffect(() => {
+    console.log(response)
     if (response !== null) {
-      console.log(response);      
+      console.log(response);   
+      Swal.fire({
+        confirmButtonColor:'orange',
+        icon: 'success',
+        title: 'Logout',
+        text: 'User logout successfully..!!',
+      }).then(()=>{
+        navigate("/login");
+      })
+      
+      
       setTimeout(() => {
         navigate("/login");
         // sessionStorage.removeItem("user");
-      }, 3000);
+      }, 5000);
     }
 
     const resMessage =

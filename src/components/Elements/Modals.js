@@ -10,9 +10,7 @@ function Modals() {
   const dispatch = useDispatch();
   
   const handleClose = () => 
-    dispatch({
-      type: "closeModal",            
-    });
+    dispatch({ type: "closeModal" });
 
   
   return (

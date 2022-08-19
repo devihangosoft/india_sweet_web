@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Addteamform from "./Addteamform";
+import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux/es/exports";
 import useAxios from "../../hooks/useAxios";
 import MuiTable from "../../DataTables/MuiTable";
 
 export default function Teams() {
   const dispatch = useDispatch();
-  const handleShow = () => dispatch({ type: "openModal", payload: <Addteamform /> });
-
   const [apiState, setapiState] = useState(1);
+
+  const handleShow = () => dispatch({ type: "openModal", payload: <Addteamform callback={()=>setapiState(apiState+1)} /> });
+
   const { response, loading, error } = useAxios({
     method: "get",
-    // url: "/getproduct",
     url: "/getteams",
     apiState: apiState,
   });

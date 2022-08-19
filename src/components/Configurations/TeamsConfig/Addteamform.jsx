@@ -1,12 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux/es/exports";
+import { useDispatch } from "react-redux/es/exports";
 import "../../Login/Signin.scss";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import useAxios from "../../hooks/useAxios";
 
-function Addteamform() {
+function Addteamform({callback}) {
+  const dispatch = useDispatch();
   
   //let navigate = useNavigate();
   let name = /^[a-zA-Z ]+$/;
@@ -39,10 +42,11 @@ function Addteamform() {
   useEffect(() => {
     if (response !== null) {
       console.log(response);
+      callback();
       setSuccessmessage(response.message);
       setTimeout(() => {
-        // navigate("/login");
-      }, 5000);
+        dispatch({ type: "closeModal" });
+      }, 2000);
     }
 
     const resMessage =

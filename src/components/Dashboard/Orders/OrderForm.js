@@ -7,7 +7,7 @@ import useAxios from "../../hooks/useAxios";
 import OrderProduct from "./OrderProduct";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 // import CustomSelect from "./CustomSelect";
 
 function OrderForm() {
