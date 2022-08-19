@@ -12,14 +12,14 @@ import ProductsForm from "./ProductsForm";
 function Products() {
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.userReducer);
+  const [apiState, setapiState] = useState(1);
 
   const handleShow = () =>{
-    dispatch({ type: "openModal", payload: <ProductsForm/> });
+    dispatch({ type: "openModal", payload: <ProductsForm callback={()=>setapiState(apiState+1)} /> });
     console.log(user)
     
   }
 
-  const [apiState, setapiState] = useState(1);
   const { response, loading, error } = useAxios({
     method: "get",
     url: "/getproduct",

@@ -7,10 +7,11 @@ import MuiTable from "../../DataTables/MuiTable";
 export default function Users() {
   const dispatch = useDispatch();
 
-  const handleShow = () =>
-    dispatch({ type: "openModal",  payload : <Adduserform />  });
+  const [apiState, setapiState] = useState(1);
 
-    const [apiState, setapiState] = useState(1);
+  const handleShow = () =>
+    dispatch({ type: "openModal",  payload : <Adduserform callback={()=>setapiState(apiState+1)} />  });
+
     const { response, loading, error } = useAxios({
       method: "get",
       url: "/getuserlist",
@@ -18,7 +19,7 @@ export default function Users() {
     });
   
     useEffect(() => {
-      if (response !== null) {
+      if (response !== null) {        
         console.log(response);
       }
   

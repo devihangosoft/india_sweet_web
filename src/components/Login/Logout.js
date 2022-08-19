@@ -10,7 +10,7 @@ function Logout() {
   // const userData = JSON.parse( sessionStorage.getItem("user"));
   const userData = JSON.parse( localStorage.getItem("user"));
 
-  console.log(userData.data.data[0].user_id)
+  console.log(userData)
   // console.log(userData.data.data[0].public_id)
 
   
