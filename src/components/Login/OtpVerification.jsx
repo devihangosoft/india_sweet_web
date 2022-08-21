@@ -14,7 +14,7 @@ function OtpVerification() {
   )
 
   const handleChange = (otp) => setState({ otp });
-  const user = sessionStorage.getItem("user");
+  const user = localStorage.getItem("user");
   // const userDetails = JSON.parse(user)
 
   const formData = new FormData();
@@ -36,7 +36,7 @@ function OtpVerification() {
   useEffect(() => {
     if (response !== null) {
       if (response.access_token) {
-        // sessionStorage.setItem("user", JSON.stringify(response.data));
+        // localStorage.setItem("user", JSON.stringify(response.data));
         // setSuccessmessage("Successfully Logedin!! ");
         setTimeout(() => {
           // navigate("/otpverification");
@@ -82,7 +82,7 @@ function OtpVerification() {
     console.log(response2);
     // if (response2 !== null) {      
     //   if (response2.access_token) {
-    //     // sessionStorage.setItem("user", JSON.stringify(response.data));
+    //     // localStorage.setItem("user", JSON.stringify(response.data));
     //     // setSuccessmessage("Successfully Logedin!! ");
     //     setTimeout(() => {
     //       // navigate("/otpverification");

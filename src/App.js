@@ -34,6 +34,7 @@ import OrderDetails from "./components/Dashboard/Orders/OrderDetails"
 import CustomizedSteppers from "./components/Dashboard/Orders/Stepper"
 import Test from "./Test";
 import StoresForm from "./components/Dashboard/Stores/StoresForm";
+import Customers from "./components/Dashboard/Customers/Customers";
 //import Cards from "./components/DataTables/Card";
 // import Accordions from "./components/Elements/Accordions";
 // import CustomTabs from "./components/Elements/CustomTabs";
@@ -48,7 +49,14 @@ function App() {
       {/* <Loader /> */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Signin />} />
+        <Route
+            path="/"
+            element={
+              isLoggedIn ? (<Layout name="Dashboard">
+                <MainContent />
+              </Layout>) : <Navigate to='/login' />
+            }
+          />
           <Route path="/login" element={<Signin />} />
           <Route path="/register" element={<Register />} />
           <Route path="/otpverification" element={<OtpVerification />} />
@@ -127,6 +135,14 @@ function App() {
             element={
               isLoggedIn ? (<Layout name="Configuration">
                 <Configuration />
+              </Layout>) : <Navigate to='/login' />
+            }
+          />
+            <Route
+            path="/customers"
+            element={
+              isLoggedIn ? (<Layout name="Customers List">
+                <Customers/>
               </Layout>) : <Navigate to='/login' />
             }
           />

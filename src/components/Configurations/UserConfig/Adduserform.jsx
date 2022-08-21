@@ -70,7 +70,7 @@ function Adduserform({callback}) {
   const ref = useRef([]);
   const [message, setMessage] = useState("");
   const [successmessage, setSuccessmessage] = useState("");
-  const userData = JSON.parse( sessionStorage.getItem("user"));
+  const userData = JSON.parse( localStorage.getItem("user"));
   
   const [apiState, setapiState] = useState(0);
   const { response, loading, error } = useAxios({

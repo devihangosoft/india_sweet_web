@@ -4,21 +4,21 @@ import useAxios from "../../hooks/useAxios";
 import MuiTable from "../../DataTables/MuiTable";
 
 function Orders() {
-
+  const userData = JSON.parse(localStorage.getItem("user"));
     const [apiState, setapiState] = useState(1);
     const { response, loading, error } = useAxios({
       method: "get",
-      url: "/getlead",
+      url: "/getleadselectedcolumns",
+      body: JSON.stringify({
+        user_id: `${userData.data.data[0].user_id}`,
+      }),
       apiState: apiState,
     });
-  
+
     useEffect(() => {
       if (response !== null) {
-        console.log(response);
+       // console.log(response);
         // setSuccessmessage(response.message);
-        // setTimeout(() => {
-        //   navigate("/login");
-        // }, 5000);
       }
   
       const resMessage =
@@ -31,12 +31,7 @@ function Orders() {
         // setMessage("");
       }, 5000);
     }, [response, error]);
-  
-    const handleRegister = (e) => {
-      // e.preventDefault();
-      setapiState(apiState + 1);
-    };
-  
+    
   return (
     <>
         <div className="row pb-4">

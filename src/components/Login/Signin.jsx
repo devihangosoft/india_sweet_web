@@ -33,12 +33,11 @@ function Login() {
         })
         .then((response) => {
           dispatch({ type: "setUserDetails", payload: response });
-          sessionStorage.setItem("user", JSON.stringify(response));
           localStorage.setItem("user", JSON.stringify(response));
           setSuccessmessage("Login successfull !!");
           setTimeout(() => {
             navigate("/dashboard");
-          }, 3000);
+          }, 2000);
         });
 
     } catch (error) {

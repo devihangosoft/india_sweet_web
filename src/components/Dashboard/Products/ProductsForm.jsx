@@ -37,7 +37,6 @@ function ProductsForm({callback}) {
   const ref = useRef([]);
   const [message, setMessage] = useState("");
   const [successmessage, setSuccessmessage] = useState("");
-  const userData = JSON.parse( sessionStorage.getItem("user"));
   
   const [apiState, setapiState] = useState(0);
   const { response, loading, error } = useAxios({
@@ -179,10 +178,7 @@ function ProductsForm({callback}) {
               </div>
 
               <div className="form-group mt-5 mb-0">
-                <button
-                  className="btn btn-theme btn-block w-100"
-                  type="submit"
-                >
+                <button className="btn btn-theme btn-block w-100" type="submit">
                   Create
                 </button>
               </div>

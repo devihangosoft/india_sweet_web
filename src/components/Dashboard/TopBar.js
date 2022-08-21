@@ -128,7 +128,7 @@ export default function TopBar() {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item
+                    {/* <Dropdown.Item
                       className="dropdown-item"
                       data-toggle="dropdown"
                       to="/logout"
@@ -149,9 +149,9 @@ export default function TopBar() {
                       <Icon.Clock />
                       <span id="hours">5 hours</span>
                     </Dropdown.Item>
-                    <div className="dropdown-divider"></div>
+                    <div className="dropdown-divider"></div> */}
                     <Dropdown.Item
-                      to="/configuration"
+                      onClick={()=>{navigate('/configuration')}} 
                       className="dropdown-item"
                     >
                       <Icon.Settings />
@@ -159,8 +159,7 @@ export default function TopBar() {
                       <span>Settings</span>
                     </Dropdown.Item>
                     <div className="dropdown-divider"></div>
-                    <Dropdown.Item
-                      to="/logout"  
+                    <Dropdown.Item  
                       onClick={()=>{navigate('/logout')}}                    
                       className="dropdown-item dropdown-footer"
                     >

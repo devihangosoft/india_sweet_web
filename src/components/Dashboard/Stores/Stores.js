@@ -16,7 +16,7 @@ function Stores() {
   const handleShow = () =>
     dispatch({ type: "openModal", payload: <StoresForm callback={()=>setapiState(apiState+1)} /> });
 
-  const userData = JSON.parse( sessionStorage.getItem("user"));
+  const userData = JSON.parse( localStorage.getItem("user"));
   
   const { response, loading, error } = useAxios({
     method: "get",

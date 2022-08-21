@@ -41,7 +41,7 @@ function a11yProps(index) {
   };
 }
 
-export default function MuiTabs() {
+export default function MuiTabs(props) {
   const [value, setValue] = React.useState(0);
 
 
@@ -64,14 +64,15 @@ export default function MuiTabs() {
           <Tab label="Dispatch Status" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-    <Neworder />
+      <TabPanel value={value} index={0} >
+   
+    <Neworder leadid={props.leadid}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-    <Dispatchorder />
+    <Dispatchorder leadid={props.leadid} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Production />
+        <Production leadid={props.leadid}/>
       </TabPanel>
     </Box>
   );
