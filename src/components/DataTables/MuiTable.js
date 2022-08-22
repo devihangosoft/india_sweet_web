@@ -90,7 +90,8 @@ export default function MuiTable(props) {
                 rowVal[columnItem.id] = item[columnItem.id]
             })
 
-            props.viewColumn && (rowVal[1001] = <NavLink to={`/orders/${1}`}><Icon.Eye color='orange' /></NavLink>)
+            props.viewColumn && (rowVal[1001] = <NavLink to={`/orders/${rowVal.lead_id}`}><Icon.Eye color='orange' /></NavLink>)
+            
             props.updateColumn && (rowVal[1002] = <button className='border-0 bg-transparent' onClick={() => dispatch({ type: "openModal", payload: <props.updateForm rowData={rowVal} callback={props.callback} /> })} ><Icon.Edit color='orange' /></button>)
 
 

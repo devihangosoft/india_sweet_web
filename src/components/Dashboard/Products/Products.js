@@ -59,7 +59,7 @@ function Products() {
         <div className="col-md-12">
           {/* <Tables data={response} /> */}
 
-          <MuiTable deleteColumn={false} updateColumn={true} updateForm={UpdateProductForm} callback={()=>setapiState(apiState+1)} data={response} />
+          <MuiTable deleteColumn={true} updateColumn={true} updateForm={UpdateProductForm} callback={()=>setapiState(apiState+1)} data={response} />
         </div>
       </div>
     </>
