@@ -68,9 +68,6 @@ export default function ActivateUser({rowData, callback}) {
     }
 
 
-
-
-
   return (
     <div>      
       <Switch {...label} 
