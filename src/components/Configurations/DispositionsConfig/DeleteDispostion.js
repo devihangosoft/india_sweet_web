@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { useDispatch } from "react-redux/es/exports";
 
 
-const DeletePrdocut = ({rowData, callback}) => {
+const DeleteDispostion = ({rowData, callback}) => {
     const dispatch = useDispatch();
     
     const handleClose = () => dispatch({ type: "closeModal" });   
@@ -12,11 +12,9 @@ const DeletePrdocut = ({rowData, callback}) => {
     const [apiState3, setapiState3] = useState(0);    
     const { response, loading, error } = useAxios({
         method: "post",
-        url: "/deleteproduct",
+        url: "/deletedispostion",
         body: JSON.stringify({
-            product_id: rowData.product_id,  
-            // product_id: 2,
-
+            disposition_id: rowData.disposition_id,              
         }),
         apiState: apiState3,
     });
@@ -80,4 +78,4 @@ const DeletePrdocut = ({rowData, callback}) => {
     );
 }
 
-export default DeletePrdocut;
+export default DeleteDispostion;

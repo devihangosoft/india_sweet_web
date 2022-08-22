@@ -3,6 +3,7 @@ import Adddispositionform from "./Adddispositionform";
 import { useDispatch } from "react-redux/es/exports";
 import useAxios from "../../hooks/useAxios";
 import MuiTable from "../../DataTables/MuiTable";
+import DeleteDispostion from "./DeleteDispostion";
 
 export default function Dispositions() {
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ export default function Dispositions() {
         <div className="row align-items-center justify-content-between">
           <div className="col-md-12">
     
-          <MuiTable data={response} />
+          <MuiTable deleteColumn={true} deleteForm={DeleteDispostion} data={response} callback={()=>setapiState(apiState+1)} />
           </div>
         </div>
 

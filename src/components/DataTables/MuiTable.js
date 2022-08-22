@@ -95,19 +95,9 @@ export default function MuiTable(props) {
             props.updateColumn && (rowVal[1002] = <button className='border-0 bg-transparent' onClick={() => dispatch({ type: "openModal", payload: <props.updateForm rowData={rowVal} callback={props.callback} /> })} ><Icon.Edit color='orange' /></button>)
 
 
-            props.deleteColumn && (rowVal[1003] = <button className='border-0 bg-transparent' onClick={() => {
-                Swal.fire({
-                    title: 'Are you sure?',                    
-                    showCancelButton: true,
-                    confirmButtonText: 'Delete',
-                    confirmButtonColor:'red',
-                }).then((result) => {                   
-                    if (result.isConfirmed) {
-                        
-                    } 
-                })
-            }} ><Icon.Trash color='red' /></button>)
-
+            props.deleteColumn && (rowVal[1003] = <button className='border-0 bg-transparent' onClick={() => dispatch({ type: "openModal", payload: <props.deleteForm rowData={rowVal} callback={props.callback} /> })} ><Icon.Trash color='red' /></button>)
+                
+            
 
 
 

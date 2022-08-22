@@ -9,6 +9,7 @@ import axios from "axios";
 import MuiTable from "../../DataTables/MuiTable";
 import ProductsForm from "./ProductsForm";
 import UpdateProductForm from "./UpdateProductForm";
+import DeletePrdocut from "./DeletePrdocut";
 
 function Products() {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ function Products() {
         <div className="col-md-12">
           {/* <Tables data={response} /> */}
 
-          <MuiTable deleteColumn={true} updateColumn={true} updateForm={UpdateProductForm} callback={()=>setapiState(apiState+1)} data={response} />
+          <MuiTable deleteColumn={true} deleteForm={DeletePrdocut} updateColumn={true} updateForm={UpdateProductForm} callback={()=>setapiState(apiState+1)} data={response} />
         </div>
       </div>
     </>
