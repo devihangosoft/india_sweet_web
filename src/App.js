@@ -15,7 +15,7 @@ import ResetPassword from "./components/Login/ResetPassword";
 import OtpVerification from "./components/Login/OtpVerification";
 
 // import Adduser from "./components/UserConfig/Adduser";
-import CreatePassword from "./components/Login/CreatePassword";
+import ChangePassword from "./components/Login/ChangePassword";
 import MainContent from "./components/Dashboard/Dashboard";
 import Modals from "./components/Elements/Modals";
 import Loader from "./components/Elements/Loader/Loader";
@@ -62,7 +62,14 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/otpverification" element={<OtpVerification />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
-          <Route path="/createPassword" element={<CreatePassword />} />
+          <Route
+            path="/ChangePassword"
+            element={
+              isLoggedIn ? (<Layout name="Change Password">
+                <ChangePassword/>
+              </Layout>) : <Navigate to='/login' />
+            }
+          />
           <Route path="/logout" element={<Logout />} />
           <Route
             path="/userteammapping"

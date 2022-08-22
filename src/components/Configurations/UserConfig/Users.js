@@ -3,6 +3,7 @@ import Adduserform from "./Adduserform";
 import { useDispatch } from "react-redux/es/exports";
 import useAxios from "../../hooks/useAxios";
 import MuiTable from "../../DataTables/MuiTable";
+import ActivateUser from "./ActivateUser";
 
 export default function Users() {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ export default function Users() {
         <div className="row align-items-center justify-content-between">
           <div className="col-md-12">
     
-          <MuiTable data={response} />
+          <MuiTable activateColumn={true} activateForm={ActivateUser} data={response} callback={()=>setapiState(apiState+1)} />
           </div>
         </div>
 

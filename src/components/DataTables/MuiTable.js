@@ -72,12 +72,21 @@ export default function MuiTable(props) {
             format: (value) => value.toLocaleString('en-US'),
         }
 
+        const activateColumn = {
+            id: 1004,
+            label: "Activate",
+            minWidth: 70,
+            align: 'left',
+            format: (value) => value.toLocaleString('en-US'),
+        }
+
 
 
 
         props.viewColumn && columns.push(viewColumn)
         props.updateColumn && columns.push(updateColumn)
         props.deleteColumn && columns.push(deleteColumn)
+        props.activateColumn && columns.push(activateColumn)
 
     }
 
@@ -87,7 +96,7 @@ export default function MuiTable(props) {
 
             let rowVal = {}
             columns.map((columnItem, index) => {
-                rowVal[columnItem.id] = item[columnItem.id]
+                rowVal[columnItem.id] = (item[columnItem.id] == undefined) ? item[columnItem.id] : item[columnItem.id].toString()
             })
 
             props.viewColumn && (rowVal[1001] = <NavLink to={`/orders/${rowVal.lead_id}`}><Icon.Eye color='orange' /></NavLink>)
@@ -96,14 +105,10 @@ export default function MuiTable(props) {
 
 
             props.deleteColumn && (rowVal[1003] = <button className='border-0 bg-transparent' onClick={() => dispatch({ type: "openModal", payload: <props.deleteForm rowData={rowVal} callback={props.callback} /> })} ><Icon.Trash color='red' /></button>)
+            
+            props.activateColumn && (rowVal[1004] = <props.activateForm rowData={rowVal} callback={props.callback} />)
                 
             
-
-
-
-
-
-
             return rowVal
         })
     }
