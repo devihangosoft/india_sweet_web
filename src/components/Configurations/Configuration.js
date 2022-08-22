@@ -13,7 +13,8 @@ import ProductionQuantityLimitsOutlinedIcon from '@mui/icons-material/Production
 import DiscountOutlinedIcon from '@mui/icons-material/DiscountOutlined';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
-import Teams from "./TeamsConfig/Teams"
+import Teams from "./TeamsConfig/Teams";
+import TeamMapping from "./TeamMapping/TeamMapping";
 import Users from "./UserConfig/Users";
 import Sms from "./SmsConfig/Sms";
 import Emails from "./EmailConfig/Emails";
@@ -93,6 +94,7 @@ TabIndicatorProps={{
        <Tab hidden icon={<AppRegistrationOutlinedIcon />} iconPosition="start" label="Field Configuration" />
         
         <Tab icon={<PeopleOutlineIcon />} iconPosition="start" label="Team Configuration" />
+        <Tab icon={<PeopleOutlineIcon />} iconPosition="start" label="Team Mapping" />
         <Tab icon={<DiscountOutlinedIcon />} iconPosition="start" label="Disposition Configuration" />
         <Tab icon={<ProductionQuantityLimitsOutlinedIcon />} iconPosition="start" label="Products Configuration" />
         <Tab icon={<StoreOutlinedIcon />} iconPosition="start" label="Store Configuration" />
@@ -119,18 +121,21 @@ TabIndicatorProps={{
  <Teams/>
 </TabPanel>
 <TabPanel value={value} index={3}>
-<Dispositions/>
+ <TeamMapping />
 </TabPanel>
 <TabPanel value={value} index={4}>
-<Products/>
+<Dispositions/>
 </TabPanel>
 <TabPanel value={value} index={5}>
- <Stores/>
+<Products/>
 </TabPanel>
 <TabPanel value={value} index={6}>
- <Emails/>
+ <Stores/>
 </TabPanel>
 <TabPanel value={value} index={7}>
+ <Emails/>
+</TabPanel>
+<TabPanel value={value} index={8}>
 <Sms/>
 </TabPanel>
 
