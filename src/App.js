@@ -35,6 +35,7 @@ import CustomizedSteppers from "./components/Dashboard/Orders/Stepper"
 import Test from "./Test";
 import StoresForm from "./components/Dashboard/Stores/StoresForm";
 import Customers from "./components/Dashboard/Customers/Customers";
+import UserTeamMapping from "./components/Configurations/UserTeamMapping";
 //import Cards from "./components/DataTables/Card";
 // import Accordions from "./components/Elements/Accordions";
 // import CustomTabs from "./components/Elements/CustomTabs";
@@ -63,6 +64,14 @@ function App() {
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/createPassword" element={<CreatePassword />} />
           <Route path="/logout" element={<Logout />} />
+          <Route
+            path="/userteammapping"
+            element={
+              isLoggedIn ? (<Layout name="User Team Mapping">
+                <UserTeamMapping/>
+              </Layout>) : <Navigate to='/login' />
+            }
+          />
           <Route
             path="/dashboard"
             element={

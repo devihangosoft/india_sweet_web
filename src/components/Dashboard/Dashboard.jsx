@@ -14,8 +14,8 @@ import Orders from "./Orders/Orders";
 const MainContent = () => {
   return (
     <>
-      <div class="row mb-5">
-        <div class="col-md-4">
+      <div class="row mb-2">
+        <div class="col-md-4 mb-3">
           <div class="card card-box-shadow card-animate alert-warning">
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
@@ -25,19 +25,19 @@ const MainContent = () => {
                   {/* <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
                     <i class="ri-arrow-up-line align-middle"></i> 16.24 %
                   </span> vs. previous month</p>*/}
-                </div> 
+                </div>
                 <div>
                   <div class="avatar-sm flex-shrink-0">
                     <span class="avatar-title  rounded-circle fs-5">
-                      <Icons.Users size={50}/>
-                   </span>
+                      <Icons.Users size={50} />
+                    </span>
                   </div>
                 </div>
               </div>
             </div>{/*end card body */}
           </div> {/*end card*/}
         </div> {/*end col*/}
-        <div class="col-md-4">
+        <div class="col-md-4 mb-3">
           <div class="card card-box-shadow card-animate alert-success">
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
@@ -51,15 +51,15 @@ const MainContent = () => {
                 <div>
                   <div class="avatar-sm flex-shrink-0">
                     <span class="avatar-title rounded-circle fs-2">
-                    <Icons.Activity size={50}/>
-                   </span>
+                      <Icons.Activity size={50} />
+                    </span>
                   </div>
                 </div>
               </div>
             </div>{/*end card body */}
           </div> {/*end card*/}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-3">
           <div class="card card-box-shadow card-animate alert-info">
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
@@ -73,7 +73,7 @@ const MainContent = () => {
                 <div>
                   <div class="avatar-sm flex-shrink-0">
                     <span class="avatar-title rounded-circle fs-2">
-                    <Icons.ShoppingCart size={50}/></span>
+                      <Icons.ShoppingCart size={50} /></span>
                   </div>
                 </div>
               </div>
@@ -83,26 +83,26 @@ const MainContent = () => {
       </div>
       <div className="row mb-5">
         <div className="col-md-8">
-              <ApexChart/>
+          <ApexChart />
         </div>
         <div className="col-md-4 card">
           <div className=" card-box-shadow">
             <div className="card-body">
-              <LinearProgressBar/>
+              <LinearProgressBar />
             </div>
           </div>
         </div>
       </div>
       <div class="row mb-5">
         <div class="col-md-12">
-        <div className="card card-box-shadow">
+          <div className="card card-box-shadow">
             <div className="card-body">
-            {/* <h5>Latest Orders</h5> */}
-          <Orders/>
+              {/* <h5>Latest Orders</h5> */}
+              <Orders />
+            </div>
           </div>
-          </div>
-          </div>
-          </div>
+        </div>
+      </div>
     </>
   );
 };

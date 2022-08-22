@@ -69,6 +69,16 @@ export default function LeftSideBar() {
           </NavLink>
         </li>
 
+        <li className="sidebar-list">
+          <NavLink
+            className="sidebar-link sidebar-title link-nav  "
+            to="/customers"
+          >
+            <Icon.Users />
+            <span>Customers</span>
+          </NavLink>
+        </li>
+
         {/* <li className="sidebar-list">
           <NavLink
             className="sidebar-link sidebar-title link-nav  "

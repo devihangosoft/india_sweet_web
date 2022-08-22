@@ -20,7 +20,7 @@ export default function Customers() {
   
     useEffect(() => {
       if (response !== null) {        
-        console.log(response);
+      //  console.log(response);
       }
   
       const resMessage =
