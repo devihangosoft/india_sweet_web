@@ -22,6 +22,10 @@ const label = { inputProps: { 'aria-label': 'Color switch demo' } };
 export default function ActivateUser({rowData, callback}) {
     const [checked, setChecked] = useState(rowData.is_active==="true");    
 
+    useEffect(() => {        
+        setChecked(rowData.is_active==="true")
+    }, [rowData.is_active]);
+
     const [apiState3, setapiState3] = useState(0);    
     const { response, loading, error } = useAxios({
         method: "post",
@@ -32,8 +36,7 @@ export default function ActivateUser({rowData, callback}) {
         apiState: apiState3,
     });
 
-  
-    
+      
     useEffect(() => {
         if (response !== null) {
             console.log(response);
@@ -74,7 +77,7 @@ export default function ActivateUser({rowData, callback}) {
      
       checked={checked}
   onChange={handleChange}
-      color="success" />      
+      color="success" />            
     </div>
   );
 }

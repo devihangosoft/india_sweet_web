@@ -95,6 +95,7 @@ export default function MuiTable(props) {
         rows = tData.map((item, index) => {
 
             let rowVal = {}
+            
             columns.map((columnItem, index) => {
                 rowVal[columnItem.id] = (item[columnItem.id] == undefined) ? item[columnItem.id] : item[columnItem.id].toString()
             })
@@ -109,6 +110,7 @@ export default function MuiTable(props) {
             props.activateColumn && (rowVal[1004] = <props.activateForm rowData={rowVal} callback={props.callback} />)
                 
             
+
             return rowVal
         })
     }
