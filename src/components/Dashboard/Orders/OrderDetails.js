@@ -79,7 +79,7 @@ const total =(productsrow.reduce((a,v) =>  a = a + v.product_price , 0 ))
                       <tr>
                         <td>
                        
-                          <strong className="me-3">22-11-2021</strong>
+                          {/*<strong className="me-3">22-11-2021</strong>*/}
                         </td>
                         <td className="text-right"> <span className="badge rounded-pill bg-info text-white ">
                           {post.disposition}
