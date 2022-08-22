@@ -6,10 +6,10 @@ import * as Yup from "yup";
 export default function UserTeamMapping(props) {
 
  const SignupSchema = Yup.object().shape({
-  team_name: Yup.string()
+  team_id: Yup.string()
    .trim()
    .required("Team is required"),
-   user_name: Yup.string()
+   user_id: Yup.string()
    .trim()
    .required("User is required")
  });
@@ -22,26 +22,21 @@ export default function UserTeamMapping(props) {
  const ref = useRef([]);
  const [message, setMessage] = useState("");
  const [successmessage, setSuccessmessage] = useState("");
- const userData = JSON.parse(localStorage.getItem("user"));
  const [apiState, setapiState] = useState(0);
  const { response, loading, error } = useAxios({
   method: "post",
-  url: "/processlead",
+  url: "/createteamusermapping",
   body: JSON.stringify({
    team_id: ref.current.values.team_id,
-   user_id: `${userData.data.data[0].user_id}`,
+   user_id: ref.current.values.user_id,
   }),
   apiState: apiState,
  });
 
 console.log(JSON.stringify({
- lead_id: `${props.leadid}`,
- user_id: `${userData.data.data[0].user_id}`,
-    team: ref.current.values.team,
-    order_status: ref.current.values.team,
-    dispatch_status: ref.current.values.dispatch_status,
-    production_status: ref.current.values.production_status,
-    remarks: ref.current.values.remarks
+ team_id: ref.current.values.team_id,
+ user_id: ref.current.values.user_id,
+   
    }));
  useEffect(() => {
   if (response !== null) {
@@ -90,7 +85,7 @@ console.log(JSON.stringify({
 
  useEffect(() => {
   if (response2 !== null) {
-  // console.log("User data : ", response2);
+  //console.log("User data : ", response2);
   }
 
   const resMessage =
@@ -142,19 +137,20 @@ console.log(JSON.stringify({
             <td>
              <Field as="select"
               required
-              name="team"
+              name="team_id"
               className="form-control"
              >
               {
                response1 != null ?
                 response1.map((item, index) => {
                  return <option value={item.team_id} key={index}>{item.team_name}</option>
+                 
                 })
                 : console.log("No Team data found")
               }
              </Field>
              <ErrorMessage
-              name="team"
+              name="team_id"
               component="div"
               className="text-danger"
              />
@@ -162,19 +158,19 @@ console.log(JSON.stringify({
             <td>
              <Field as="select"
               required
-              name="user"
+              name="user_id"
               className="form-control"
              >
               {
                response2 != null ?
                 response2.map((item, index) => {
-                 return <option value={item.user_id} key={index}>{item.first_name}</option>
+                 return <option value={item.u_id} key={index}> {item.first_name}</option>
                 })
                 : console.log("No Branch data found")
               }
              </Field>
              <ErrorMessage
-              name="user"
+              name="user_id"
               component="div"
               className="text-danger"
              />
