@@ -6,8 +6,9 @@ import { useDispatch } from "react-redux/es/exports";
 
 export default function UserTeamMapForm(props) {
   const dispatch = useDispatch();
-    
-  const handleClose = () => dispatch({ type: "closeModal" });   
+
+  const handleClose = () => dispatch({ type: "closeModal" });
+
 
 
   const SignupSchema = Yup.object().shape({
@@ -22,50 +23,15 @@ export default function UserTeamMapForm(props) {
   const initialValues = {
     user_id: "",
     team_id: "",
+    user_name: "",
+    team_name: "",
   };
 
   const ref = useRef([]);
   const [message, setMessage] = useState("");
   const [successmessage, setSuccessmessage] = useState("");
-  const [apiState, setapiState] = useState(0);
-  const { response, loading, error } = useAxios({
-    method: "post",
-    url: "/createteamusermapping",
-    body: JSON.stringify({
-      team_id: ref.current.values.team_id,
-      user_id: ref.current.values.user_id,
-    }),
-    apiState: apiState,
-  });
 
-  console.log(JSON.stringify({
-    team_id: ref.current.values.team_id,
-    user_id: ref.current.values.user_id,
 
-  }));
-  useEffect(() => {
-    if (response !== null) {
-      console.log(response);
-      setSuccessmessage(response.message);
-      setTimeout(() => {
-        setSuccessmessage("");
-        handleClose();
-      }, 3000);
-    }
-
-    const resMessage = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-    setMessage(resMessage);
-    setTimeout(() => {
-      setMessage("");
-    }, 5000);
-  }, [response, error]);
-
-  const handleForm = (e) => {
-    console.log('click');
-    // e.preventDefault();
-    setapiState(apiState + 1);
-  };
-  
   const [apiState1, setapiState1] = useState(1);
   const { response: response1, loading: loading1, error: error1 } = useAxios({
     method: "get",
@@ -98,6 +64,55 @@ export default function UserTeamMapForm(props) {
       (error2.response && error2.response.data && error2.response.data.message) || error2.message || error2.toString(); console.log(resMessage)
   }, [response2, error2]);
 
+
+  //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  const [apiState, setapiState] = useState(0);
+  const { response, loading, error } = useAxios({
+    method: "post",
+    url: "/createteamusermapping",
+    body: JSON.stringify({
+      team_id: JSON.parse(ref.current.values.team_id).team_id,
+      user_id: JSON.parse(ref.current.values.user_id).u_id,
+      team_name: JSON.parse(ref.current.values.team_id).team_name,
+      user_name: JSON.parse(ref.current.values.user_id).first_name + " " + JSON.parse(ref.current.values.user_id).last_name,
+    }),
+    apiState: apiState,
+  });
+
+  // console.log(JSON.stringify({
+  //   team_id: JSON.parse(ref.current.values.team_id).team_id,
+  //   user_id: JSON.parse(ref.current.values.user_id).u_id,
+  //   team_name: JSON.parse(ref.current.values.team_id).team_name,
+  //   user_name: JSON.parse(ref.current.values.user_id).first_name + " " + JSON.parse(ref.current.values.user_id).last_name,
+  // }));
+
+
+  useEffect(() => {
+    if (response !== null) {
+      console.log(response);
+      setSuccessmessage(response.message);
+      setTimeout(() => {
+        setSuccessmessage("");
+        handleClose();
+      }, 3000);
+    }
+
+    const resMessage = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    setMessage(resMessage);
+    setTimeout(() => {
+      setMessage("");
+    }, 5000);
+  }, [response, error]);
+
+  const handleForm = (e) => {
+    console.log('click');
+    // e.preventDefault();
+    setapiState(apiState + 1);
+
+
+
+  };
+
   return (
     <>
 
@@ -125,12 +140,13 @@ export default function UserTeamMapForm(props) {
                           required
                           name="team_id"
                           className="form-control"
+                          onChangeText={() => console.log("hiii text")}
                         >
-                        <option value="null">--select--</option>
+                          <option value="null">--select--</option>
                           {
                             response1 != null ?
                               response1.map((item, index) => {
-                                return <option value={item.team_id} key={index}>{item.team_name}</option>
+                                return <option value={JSON.stringify(item)} key={index}>{item.team_name}</option>
 
                               })
                               : console.log("No Team data found")
@@ -151,11 +167,11 @@ export default function UserTeamMapForm(props) {
                         name="user_id"
                         className="form-control"
                       >
-                      <option value="null">--select--</option>
+                        <option value="null">--select--</option>
                         {
                           response2 != null ?
                             response2.map((item, index) => {
-                              return <option value={item.u_id} key={index}> {item.first_name}</option>
+                              return <option value={JSON.stringify(item)} key={index}> {item.first_name}</option>
                             })
                             : console.log("No Branch data found")
                         }
@@ -175,26 +191,26 @@ export default function UserTeamMapForm(props) {
                     </div>
                   </div>
                   <div>
-                    
-                      {message && (
-                        <div className="form-group mb-0">
-                          <div className="col-md-12">
-                            <div className="alert alert-danger" role="alert">
-                              {message}
-                            </div>
+
+                    {message && (
+                      <div className="form-group mb-0">
+                        <div className="col-md-12">
+                          <div className="alert alert-danger" role="alert">
+                            {message}
                           </div>
                         </div>
-                      )}
-                      {successmessage && (
-                        <div className="form-group mb-0">
-                          <div className="col-md-12">
-                            <div className="alert alert-success" role="alert">
-                              {successmessage}
-                            </div>
+                      </div>
+                    )}
+                    {successmessage && (
+                      <div className="form-group mb-0">
+                        <div className="col-md-12">
+                          <div className="alert alert-success" role="alert">
+                            {successmessage}
                           </div>
                         </div>
-                      )}
-                    
+                      </div>
+                    )}
+
                   </div>
                 </div>
               </Form>
