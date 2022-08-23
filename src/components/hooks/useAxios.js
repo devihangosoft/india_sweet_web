@@ -12,7 +12,6 @@ const useAxios = ({ url, method, headers, body = null, apiState = 0 }) => {
     const [error, setError] = useState('');
     const [loading, setloading] = useState(false);
     const userData = JSON.parse( localStorage.getItem("user"));
-
     // console.log("BODY DATA:",body)
 
     const fetchData = () => {
@@ -27,7 +26,7 @@ const useAxios = ({ url, method, headers, body = null, apiState = 0 }) => {
                     "Accept": "*/*",
                     "Content-Type": "application/json",                    
                     "api-key": "3d2bd7f8-406b-4ea3-9adc-fb38755f31c9",
-                    "Authorization": `Bearer ${userData.access_token}`
+                    "Authorization": `Bearer ${userData.data.access_token}`
                 },                
             }
         )

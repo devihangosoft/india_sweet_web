@@ -31,14 +31,6 @@ function LeadLog() {
 
   return (
     <>
-      <div className="row pb-4">
-        <div className="col-12">
-          <button class="btn btn-theme mt-2 float-right" variant="primary" >Add Store</button>
-        </div>
-        <div className="col-6 ">
-          {/* <Filter /> */}
-        </div>
-      </div>
       <div className="row align-items-center justify-content-between">
         <div className="col-md-12">
           {/* <Tables /> */}

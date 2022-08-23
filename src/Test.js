@@ -22,7 +22,7 @@ const Test = () => {
            });
            
            let reqOptions = {
-             url: "http://192.168.8.101:5000/createproduct",
+             url: "http://216.48.182.12:5000/test",
              method: "POST",
              headers: headersList,
              data: bodyContent,
