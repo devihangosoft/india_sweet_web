@@ -179,6 +179,7 @@ function OrderForm() {
         // e.preventDefault();
 
         // console.log(ref.current.values.product);
+        console.log("product values : ", productvalues)
         setapiState(apiState + 1);
     };
 
