@@ -66,24 +66,36 @@ export default function UserTeamMapForm(props) {
 
 
   //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  function isJson(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+  }
+
+
   const [apiState, setapiState] = useState(0);
   const { response, loading, error } = useAxios({
     method: "post",
     url: "/createteamusermapping",
     body: JSON.stringify({
-      team_id: JSON.parse(ref.current.values.team_id).team_id,
-      user_id: JSON.parse(ref.current.values.user_id).u_id,
-      team_name: JSON.parse(ref.current.values.team_id).team_name,
-      user_name: JSON.parse(ref.current.values.user_id).first_name + " " + JSON.parse(ref.current.values.user_id).last_name,
+      team_id: (isJson(ref.current.values.team_id)) ? JSON.parse(ref.current.values.team_id).team_id : '',
+      user_id: (isJson(ref.current.values.user_id)) ? JSON.parse(ref.current.values.user_id).u_id : '',
+      team_name:(isJson(ref.current.values.team_id)) ? JSON.parse(ref.current.values.team_id).team_name : '',
+      user_name:(isJson(ref.current.values.user_id)) ? (JSON.parse(ref.current.values.user_id).first_name + " " + JSON.parse(ref.current.values.user_id).last_name) : '',
     }),
     apiState: apiState,
   });
 
-  // console.log(JSON.stringify({
-  //   team_id: JSON.parse(ref.current.values.team_id).team_id,
-  //   user_id: JSON.parse(ref.current.values.user_id).u_id,
-  //   team_name: JSON.parse(ref.current.values.team_id).team_name,
-  //   user_name: JSON.parse(ref.current.values.user_id).first_name + " " + JSON.parse(ref.current.values.user_id).last_name,
+
+  // console.log(JSON.stringify({    
+  //   team_id: (isJson(ref.current.values.team_id)) ? JSON.parse(ref.current.values.team_id).team_id : '',
+  //   user_id: (isJson(ref.current.values.user_id)) ? JSON.parse(ref.current.values.user_id).u_id : '',
+  //   team_name:(isJson(ref.current.values.team_id)) ? JSON.parse(ref.current.values.team_id).team_name : '',
+  //   user_name:(isJson(ref.current.values.user_id)) ? (JSON.parse(ref.current.values.user_id).first_name + " " + JSON.parse(ref.current.values.user_id).last_name) : '',
   // }));
 
 
@@ -110,6 +122,9 @@ export default function UserTeamMapForm(props) {
     setapiState(apiState + 1);
 
 
+    
+
+
 
   };
 
@@ -128,21 +143,21 @@ export default function UserTeamMapForm(props) {
             {({ errors, touched }) => (
               <Form className="theme-form p-2">
                 <div className="text-center">
-                  <h5 className="text-uppercase">Create new team</h5>
-                  <p>Enter your team details</p>
-                </div>
+                  <h5 className="text-uppercase">User Team Mapping</h5>
+                </div><br></br>
                 <div className=" card-box-shadow">
                   <div className="table mb-0">
 
                     <div className='form-group'>
                       <div className='col-md-12'>
+                      <label >Select team</label>
                         <Field as="select"
                           required
                           name="team_id"
                           className="form-control"
-                          onChangeText={() => console.log("hiii text")}
+                          
                         >
-                          <option value="null">--select--</option>
+                        <option value={null}>--select--</option>
                           {
                             response1 != null ?
                               response1.map((item, index) => {
@@ -150,7 +165,7 @@ export default function UserTeamMapForm(props) {
 
                               })
                               : console.log("No Team data found")
-                          }
+                          }                          
                         </Field>
                         <ErrorMessage
                           name="team_id"
@@ -162,12 +177,13 @@ export default function UserTeamMapForm(props) {
                   </div>
                   <div className='form-group'>
                     <div className='col-md-12'>
+                    <label >Select user</label>
                       <Field as="select"
                         required
                         name="user_id"
                         className="form-control"
                       >
-                        <option value="null">--select--</option>
+                      <option value={null}>--select--</option>
                         {
                           response2 != null ?
                             response2.map((item, index) => {
