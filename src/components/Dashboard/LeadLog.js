@@ -6,14 +6,19 @@ function LeadLog() {
   const userData = JSON.parse( localStorage.getItem("user"));
   const [apiState, setapiState] = useState(1);
   const { response, loading, error } = useAxios({
-    method: "get",
+    method: "post",
     url: "/getleadlog", 
     body: JSON.stringify({
-     user_id: 1,
-     lead_id: 1,
+    // user_id: "1",
+     lead_id: "1",
     }),
     apiState: apiState,
   });
+
+  console.log(JSON.stringify({
+   //user_id: "1",
+   lead_id: "1",
+  }))
 
   useEffect(() => {
     if (response !== null) {
