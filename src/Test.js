@@ -5,8 +5,7 @@ import axios from 'axios';
 const Test = () => {
     
     const apicall = async()=>{
-       
-
+      
         let headersList = {
             "Accept": "*/*",
             "Content-Type": "application/json",

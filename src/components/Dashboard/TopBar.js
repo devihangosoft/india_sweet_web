@@ -46,39 +46,8 @@ export default function TopBar() {
 
               {/* <!-- Right navbar links --> */}
               <ul className="navbar-nav ml-auto align-items-center float-right">
-                <li>
-                  <form className="form-inline ml-3">
-                    <div className="input-group input-group-sm">
-                      <input
-                        id="global-search"
-                        className="form-control "
-                        type="search"
-                        placeholder="Search"
-                        aria-label="Search"
-                      />
-                      <div className="input-group-append">
-                        <button className="btn btn-navbar" type="submit">
-                          <Icon.Search color="#b5b5b5" width="18px"/>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                  <div
-                    id="global-searchresults"
-                    className="dropdown-menu dropdown-menu-xl dropdown-menu-right"
-                  >
-                    <span
-                      className="dropdown-item dropdown-header"
-                      id="global-resultcount"
-                    >
-                      0 accounts
-                    </span>
-                    <div className="dropdown-divider"></div>
-                    <div id="golbal-searchContainer"></div>
-                  </div>
-                </li>
-
-                <Dropdown>
+             
+                {/* <Dropdown>
                   <Dropdown.Toggle variant="" id="" className=" bg-transparent">
                     <Icon.Bell width="18px" />
                     <span
@@ -113,7 +82,7 @@ export default function TopBar() {
                       See All Notifications
                     </Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown> */}
 
                 <Dropdown>
                   <Dropdown.Toggle

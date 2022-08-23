@@ -36,6 +36,7 @@ import Test from "./Test";
 import StoresForm from "./components/Dashboard/Stores/StoresForm";
 import Customers from "./components/Dashboard/Customers/Customers";
 import UserTeamMapping from "./components/Configurations/UserTeamMapping";
+import LeadLog from "./components/Dashboard/LeadLog";
 //import Cards from "./components/DataTables/Card";
 // import Accordions from "./components/Elements/Accordions";
 // import CustomTabs from "./components/Elements/CustomTabs";
@@ -84,6 +85,14 @@ function App() {
             element={
               isLoggedIn ? (<Layout name="Dashboard">
                 <MainContent />
+              </Layout>) : <Navigate to='/login' />
+            }
+          />
+           <Route
+            path="/leadlog"
+            element={
+              isLoggedIn ? (<Layout name="Lead Log">
+                <LeadLog/>
               </Layout>) : <Navigate to='/login' />
             }
           />
