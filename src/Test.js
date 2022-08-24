@@ -21,6 +21,8 @@ const Test = () => {
              "price": "700"
            });
            
+
+           
            let reqOptions = {
              url: "http://216.48.182.12:5000/test",
              method: "POST",

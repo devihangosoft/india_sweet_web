@@ -23,7 +23,7 @@ const [post, setPost] = useState([])
     if (response !== null) {
      // console.log(response);
       const thisOrder = response.find(response => response.lead_id === parseInt(orderId))
-      //console.log("This Order : ", thisOrder);
+      console.log("This Order : ", thisOrder);
       setPost(thisOrder)
       // setSuccessmessage(response.message);
     }
@@ -77,9 +77,8 @@ const total =(productsrow.reduce((a,v) =>  a = a + v.product_price , 0 ))
                   <table className="table table-bordernone">
                     <tbody>
                       <tr>
-                        <td>
-                       
-                          {/*<strong className="me-3">22-11-2021</strong>*/}
+                        <td>                       
+                          <p className="me-3">Quotation No: {post.quotation_no}</p>
                         </td>
                         <td className="text-right"> <span className="badge rounded-pill bg-info text-white ">
                           {post.disposition}
@@ -112,7 +111,7 @@ const total =(productsrow.reduce((a,v) =>  a = a + v.product_price , 0 ))
               </div>
             </div>
 
-            <div className="col-lg-4">
+            <div className="col-lg-4 mb-4">
               <div className="card border-0 card-box-shadow">
                 <div className="card-body">
                   <table className="table ">
@@ -134,6 +133,14 @@ const total =(productsrow.reduce((a,v) =>  a = a + v.product_price , 0 ))
                       <tr className="summary-shipping">
                         <td><h6>Whatsapp:</h6></td>
                         <td><p>{post.customer_phone}</p></td>
+                      </tr>
+                      <tr className="summary-shipping">
+                        <td><h6>Reference Name:</h6></td>
+                        <td><p>{post.reference_name}</p></td>
+                      </tr>
+                      <tr className="summary-shipping">
+                        <td><h6>Reference Contact:</h6></td>
+                        <td><p>{post.reference_contact}</p></td>
                       </tr>
                     </tbody>
                   </table>
