@@ -36,7 +36,7 @@ function Login() {
           localStorage.setItem("user", JSON.stringify(response));
           setSuccessmessage("Login successfull !!");
           setTimeout(() => {
-            navigate("/dashboard");
+            navigate("/test");
           }, 2000);
         });
 
