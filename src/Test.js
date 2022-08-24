@@ -10,7 +10,8 @@ const Test = () => {
             "Accept": "*/*",
             "Content-Type": "application/json",
             "api-key": "F2PE47UiPImpXj5bEJQymSynK9wAYSd71Lon1haWXLYRGfbRS6K51dQ_NQ",
-            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2MDYzMzc4MiwianRpIjoiODM5ZGQ3OWEtOTYyOC00NDU3LWJkZDEtOTE5NDAwNjcwNzcwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IkRldkAxMjM0IiwibmJmIjoxNjYwNjMzNzgyLCJleHAiOjE2NjA2NTUzODJ9.YN6CklmVTyUla7FStH5PmWQxOfzoyMnYsbice_gY65o" 
+            // "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2MDYzMzc4MiwianRpIjoiODM5ZGQ3OWEtOTYyOC00NDU3LWJkZDEtOTE5NDAwNjcwNzcwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IkRldkAxMjM0IiwibmJmIjoxNjYwNjMzNzgyLCJleHAiOjE2NjA2NTUzODJ9.YN6CklmVTyUla7FStH5PmWQxOfzoyMnYsbice_gY65o" 
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2MTI1Njk4MiwianRpIjoiYmQ0MjQxOTctZWNlMC00YjBkLThlNzUtMzE0ZjdhYmE3MGM1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Im5ldyIsIm5iZiI6MTY2MTI1Njk4MiwiZXhwIjoxNjYxMjc4NTgyfQ.QSW3Iu992X3wKjv2uQCrzstKm0kJlNDDQmsEYpdiieY" 
            }
            
            let bodyContent = JSON.stringify({
@@ -25,9 +26,10 @@ const Test = () => {
            
            let reqOptions = {
              url: "http://216.48.182.12:5000/test",
+            //  url: "http://192.168.8.101:5000/test",             
              method: "POST",
              headers: headersList,
-             data: bodyContent,
+            //  data: bodyContent,
            }
            
            let response = await axios.request(reqOptions);

@@ -17,7 +17,7 @@ function Orders() {
 
     useEffect(() => {
       if (response !== null) {
-       // console.log(response);
+       console.log(response);
         // setSuccessmessage(response.message);
       }
   
