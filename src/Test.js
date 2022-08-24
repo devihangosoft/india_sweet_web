@@ -20,6 +20,7 @@ const Test = () => {
        console.log(response);
         // setSuccessmessage(response.message);
       }
+      
   
       const resMessage =
         (error.response && error.response.data && error.response.data.message) ||
@@ -27,6 +28,7 @@ const Test = () => {
         error.toString();
       // setMessage(resMessage);
       console.log(resMessage)
+      
       setTimeout(() => {
         // setMessage("");
       }, 5000);

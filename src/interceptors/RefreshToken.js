@@ -21,12 +21,10 @@ axios.interceptors.response.use(resp => resp, async error => {
    userData.data.access_token = response.data.access_token;
    localStorage.setItem('user', JSON.stringify(userData));
 
-  // window.location.reload();
+  
+  error.config.headers.Authorization = "Bearer " + JSON.parse(localStorage.getItem("user")).data.access_token;
+  return axios.request(error.config);
 
-
-  //  return response;   
-
-  return axios(error.config);
   }
   console.log('refresh not happening');
  }
