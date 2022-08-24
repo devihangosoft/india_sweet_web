@@ -18,7 +18,7 @@ export default function Dispositions() {
 
 
     const { response, loading, error } = useAxios({
-      method: "get",
+      method: "post",
       url: "/getdisposition",
       apiState: apiState,
     });

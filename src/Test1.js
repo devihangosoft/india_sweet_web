@@ -12,7 +12,7 @@ async function start() {
    
    let reqOptions = {
      url: "http://216.48.182.12:5000/getproduct",
-     method: "GET",
+     method: "post",
      headers: headersList,
      data: bodyContent,
    }

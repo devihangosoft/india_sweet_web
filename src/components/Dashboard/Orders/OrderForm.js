@@ -139,7 +139,7 @@ function OrderForm() {
 
     const [apiState1, setapiState1] = useState(1);
     const { response: response1, loading: loading1, error: error1 } = useAxios({
-        method: "get",
+        method: "post",
         url: "/getproduct",
         apiState: apiState1,
     });
@@ -158,7 +158,7 @@ function OrderForm() {
 
     const [apiState2, setapiState2] = useState(1);
     const { response: response2, loading: loading2, error: error2 } = useAxios({
-        method: "get",
+        method: "post",
         url: "/getstoredetails",
         apiState: apiState2,
     });

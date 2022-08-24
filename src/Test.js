@@ -9,9 +9,9 @@ const Test = () => {
     const { response, loading, error } = useAxios({
       method: "post",
       url: "/test",
-      body: JSON.stringify({
-        user_id: `${userData.data.data[0].user_id}`,
-      }),
+    //   body: JSON.stringify({
+    //     user_id: `${userData.data.data[0].user_id}`,
+    //   }),
       apiState: apiState,
     });
 
@@ -56,7 +56,7 @@ const Test = () => {
     //        let reqOptions = {
     //         //  url: "http://216.48.182.12:5000/test",
     //          url: "http://192.168.8.101:5000/test",             
-    //          method: "GET",
+    //          method: "post",
     //          headers: headersList,
     //          data: bodyContent,
     //        }

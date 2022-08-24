@@ -11,7 +11,7 @@ const [post, setPost] = useState([])
   var thisOrder = null;
   const [apiState, setapiState] = useState(1);
   const { response, loading, error } = useAxios({
-    method: "get",
+    method: "post",
     url: "/getlead",
     body: JSON.stringify({
       user_id: `${userData.data.data[0].user_id}`,

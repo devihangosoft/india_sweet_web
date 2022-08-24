@@ -14,7 +14,7 @@ export default function Users() {
     dispatch({ type: "openModal",  payload : <Adduserform callback={()=>setapiState(apiState+1)} />  });
 
     const { response, loading, error } = useAxios({
-      method: "get",
+      method: "post",
       url: "/getuserlist",
       apiState: apiState,
     });

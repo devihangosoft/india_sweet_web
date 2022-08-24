@@ -64,7 +64,7 @@ export default function Production(props) {
 
  const [apiState1, setapiState1] = useState(1);
  const { response: response1, loading: loading1, error: error1 } = useAxios({
-  method: "get",
+  method: "post",
   url: "/getdisposition",
   apiState: apiState1,
  });

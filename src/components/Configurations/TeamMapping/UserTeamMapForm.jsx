@@ -34,7 +34,7 @@ export default function UserTeamMapForm(props) {
 
   const [apiState1, setapiState1] = useState(1);
   const { response: response1, loading: loading1, error: error1 } = useAxios({
-    method: "get",
+    method: "post",
     url: "/getteams",
     apiState: apiState1,
   });
@@ -50,7 +50,7 @@ export default function UserTeamMapForm(props) {
 
   const [apiState2, setapiState2] = useState(1);
   const { response: response2, loading: loading2, error: error2 } = useAxios({
-    method: "get",
+    method: "post",
     url: "/getuserlist",
     apiState: apiState1,
   });

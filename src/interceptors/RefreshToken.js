@@ -14,13 +14,19 @@ axios.interceptors.response.use(resp => resp, async error => {
      "Authorization": "Bearer " + userData.data.refresh_token
    },
  });
+//  const response = await axios.post('refresh', {}, {withCredentials: true});
   if (response.status === 200) {
+  console.log(response)
    userData.data.refresh_token = response.data.refresh_token;
    userData.data.access_token = response.data.access_token;
    localStorage.setItem('user', JSON.stringify(userData));
 
+  // window.location.reload();
+
+
   //  return response;   
-  return null;
+
+  return axios(error.config);
   }
   console.log('refresh not happening');
  }

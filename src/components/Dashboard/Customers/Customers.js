@@ -13,7 +13,7 @@ export default function Customers() {
     dispatch({ type: "openModal",  payload : <Addcustomerform callback={()=>setapiState(apiState+1)} />  });
 
     const { response, loading, error } = useAxios({
-      method: "get",
+      method: "post",
       url: "/getcustomerlist",
       apiState: apiState,
     });

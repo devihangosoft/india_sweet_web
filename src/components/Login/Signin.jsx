@@ -34,9 +34,12 @@ function Login() {
         .then((response) => {
           dispatch({ type: "setUserDetails", payload: response });
           localStorage.setItem("user", JSON.stringify(response));
+          console.log(response);
           setSuccessmessage("Login successfull !!");
           setTimeout(() => {
             navigate("/test");
+            // navigate("/dashboard");
+            setSuccessmessage("");
           }, 2000);
         });
 

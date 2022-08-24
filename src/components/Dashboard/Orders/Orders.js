@@ -7,7 +7,7 @@ function Orders() {
   const userData = JSON.parse(localStorage.getItem("user"));
     const [apiState, setapiState] = useState(1);
     const { response, loading, error } = useAxios({
-      method: "get",
+      method: "post",
       url: "/getleadselectedcolumns",
       body: JSON.stringify({
         user_id: `${userData.data.data[0].user_id}`,

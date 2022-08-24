@@ -19,7 +19,7 @@ function Stores() {
   const userData = JSON.parse( localStorage.getItem("user"));
   
   const { response, loading, error } = useAxios({
-    method: "get",
+    method: "post",
     url: "/getstoredetails", 
     apiState: apiState,
   });

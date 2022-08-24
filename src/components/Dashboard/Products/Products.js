@@ -23,14 +23,14 @@ function Products() {
   }
 
   const { response, loading, error } = useAxios({
-    method: "get",
+    method: "post",
     url: "/getproduct",
     apiState: apiState,
   });
 
   useEffect(() => {
     if (response !== null) {
-      console.log(response);
+      console.log("products",response);
     }
 
     const resMessage =

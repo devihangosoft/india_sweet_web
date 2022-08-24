@@ -12,7 +12,7 @@ export default function Teams() {
   const handleShow = () => dispatch({ type: "openModal", payload: <Addteamform callback={()=>setapiState(apiState+1)} /> });
 
   const { response, loading, error } = useAxios({
-    method: "get",
+    method: "post",
     url: "/getteams",
     apiState: apiState,
   });
