@@ -31,12 +31,14 @@ function StoresForm({callback}) {
   const ref = useRef([]);
   const [message, setMessage] = useState("");
   const [successmessage, setSuccessmessage] = useState("");
-
+  const userData = JSON.parse(localStorage.getItem("user"));
   const [apiState, setapiState] = useState(0);
   const { response, loading, error } = useAxios({
     method: "post",
     url: "/createstore",
     body: JSON.stringify({
+      user_id: `${userData.data.data[0].user_id}`,
+      api_key: `${userData.data.data[0].api_key}`,
       store_address: ref.current.values.address,
       store_name: ref.current.values.storename,
     }),
