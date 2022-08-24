@@ -5,11 +5,9 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://216.48.182.12:5000';
 // axios.defaults.baseURL = 'http://192.168.29.146:5000';
-<<<<<<< Updated upstream
+
 //axios.defaults.baseURL = 'http://192.168.8.101:5000';
-=======
 // axios.defaults.baseURL = 'http://192.168.8.101:5000';
->>>>>>> Stashed changes
 
 const useAxios = ({ url, method, headers, body = null, apiState = 0 }) => {
     const [response, setResponse] = useState(null);

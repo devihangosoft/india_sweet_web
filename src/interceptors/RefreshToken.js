@@ -15,12 +15,12 @@ axios.interceptors.response.use(resp => resp, async error => {
    },
  });
   if (response.status === 200) {
-   userData.data.refresh_token = response.refresh_token;
-   userData.data.access_token = response.access_token;
+   userData.data.refresh_token = response.data.refresh_token;
+   userData.data.access_token = response.data.access_token;
    localStorage.setItem('user', JSON.stringify(userData));
-  console.log(response);
-   return response;
-   
+
+  //  return response;   
+  return null;
   }
   console.log('refresh not happening');
  }
