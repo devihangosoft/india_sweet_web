@@ -81,7 +81,9 @@ input:checked + .slider:before {
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-
+.border-radius-10{
+  border-radius: 10px;
+}
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
@@ -427,7 +429,12 @@ $header-wrapper-nav-icon-color: $theme-font-color;
 $header-wrapper-nav-icon-align: middle;
 $header-size: 40px;
 $box-layout-space: 40px;
-
+.col-form-label{
+  font-size: 14px;
+}
+.theme-color2{
+ color: #9a1b1e;
+}
 .card .table {
 	margin-bottom: 0rem;
 }

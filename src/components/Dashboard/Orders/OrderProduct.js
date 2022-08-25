@@ -38,23 +38,26 @@ export default function OrderProduct({row, response1, productvalues, updateQuant
                     </select>
 
                 </td>
+               
                 <td>
-                    <h6>$20.00</h6>
+                    500g
                 </td>
-                <td>
+                <td className=''>
                     <div className="counter">
                        {/* <Icon.Plus /> */}
-                        <input className="input-number" type="number"
+                        <input className="input-number " type="number" style={{width:70}}
                              min="0" value={quantity} onChange={changeQuantity} />
                         {/* <Icon.Minus/> */}
                     </div>
                 </td>
-                {/* <td>
-                    <h6>$20.00</h6>
-                </td> */}
-                {/* <td>
-                    <button className="btn btn-danger btn-sm">Delete</button>
-                </td> */}
+
+                <td>
+                   jhssfgds dsgkdsg sdfjsdg jhssfgds dsgkdsg sdfjsdgjhssfgds dsgkdsg sdfjsdgjhssfgds dsgkdsg sdfjsdg
+                </td>
+                <td>
+                    
+                    <button className="border-0 bg-transparent"><Icon.Trash color='red'/></button>
+                </td>
             </tr>
         </>
     )
