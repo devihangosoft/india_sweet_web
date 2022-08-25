@@ -5,8 +5,6 @@ import Swal from 'sweetalert2'
 
 function Logout() {
   let navigate = useNavigate();
-
-  const [successmessage, setSuccessmessage] = useState("");
   const userData = JSON.parse(localStorage.getItem("user"));
   //console.log(userData)
   // console.log(userData.data.data[0].public_id)
@@ -25,18 +23,17 @@ function Logout() {
     if (response !== null) {
       console.log(response);
       Swal.fire({
-        confirmButtonColor: 'orange',
+        showConfirmButton: false,
         icon: 'success',
         title: 'Logout',
         text: 'User logout successfully..!!',
-      }).then(() => {
-        navigate("/login");
       })
-
       setTimeout(() => {
-        navigate("/login");
-        localStorage.removeItem("user");
-      }, 5000);
+        Swal.close();
+        localStorage.removeItem("user")
+        navigate('/login')
+      }, 2000);
+      
     }
 
     const resMessage = (error.response && error.response.data && error.response.data.message) ||
