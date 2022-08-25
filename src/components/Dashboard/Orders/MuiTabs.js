@@ -69,10 +69,10 @@ export default function MuiTabs(props) {
     <Neworder leadid={props.leadid}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-    <Dispatchorder leadid={props.leadid} />
+        <Production leadid={props.leadid}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Production leadid={props.leadid}/>
+    <Dispatchorder leadid={props.leadid} />
       </TabPanel>
     </Box>
   );

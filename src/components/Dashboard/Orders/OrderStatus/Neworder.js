@@ -5,7 +5,7 @@ import * as Yup from "yup";
 
 export default function Neworder(props) {
  const SignupSchema = Yup.object().shape({
-  order_status: Yup.string()
+  dispostion: Yup.string()
    .trim()
    .required("Order status is required")
  });
@@ -139,6 +139,7 @@ console.log(JSON.stringify({
               name="dispostion"
               className="form-control"
              >
+             <option value="" selected disabled hidden>--select--</option>
               {
                response1 != null ?
                 response1.map((item, index) => {
@@ -170,7 +171,7 @@ console.log(JSON.stringify({
             </td>
             <td>
              <div>
-              <button type="submit" className="btn btn-theme" onClick={handleForm}>UPDATE</button>
+              <button type="submit" className="btn btn-theme">UPDATE</button>
              </div>
             </td>
            </tr>

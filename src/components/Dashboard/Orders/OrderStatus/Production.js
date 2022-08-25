@@ -5,7 +5,7 @@ import * as Yup from "yup";
 
 export default function Production(props) {
  const SignupSchema = Yup.object().shape({
-  order_status: Yup.string()
+  dispostion: Yup.string()
    .trim()
    .required("Order status is required")
  });
@@ -34,7 +34,7 @@ export default function Production(props) {
    dispostion: ref.current.values.dispostion,
    order_status: ref.current.values.order_status,
    dispatch_status: ref.current.values.dispatch_status,
-   production_status: ref.current.values.disposition,
+   production_status: ref.current.values.dispostion,
    remarks: ref.current.values.remarks
   }),
   apiState: apiState,
@@ -130,6 +130,7 @@ export default function Production(props) {
               name="dispostion"
               className="form-control"
              >
+             <option value="" selected disabled hidden>--select--</option>
               {
                response1 != null ?
                 response1.map((item, index) => {
@@ -161,7 +162,7 @@ export default function Production(props) {
             </td>
             <td>
              <div>
-              <button type="submit" className="btn btn-theme" onClick={handleForm}>UPDATE</button>
+              <button type="submit" className="btn btn-theme">UPDATE</button>
              </div>
             </td>
            </tr>

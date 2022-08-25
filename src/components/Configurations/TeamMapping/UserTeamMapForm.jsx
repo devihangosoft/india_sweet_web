@@ -157,7 +157,7 @@ export default function UserTeamMapForm(props) {
                           className="form-control"
                           
                         >
-                        <option value={null}>--select--</option>
+                        <option value="" selected disabled hidden>--select--</option>
                           {
                             response1 != null ?
                               response1.map((item, index) => {
@@ -183,7 +183,7 @@ export default function UserTeamMapForm(props) {
                         name="user_id"
                         className="form-control"
                       >
-                      <option value={null}>--select--</option>
+                      <option value="" selected disabled hidden>--select--</option>
                         {
                           response2 != null ?
                             response2.map((item, index) => {
