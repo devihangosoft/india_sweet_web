@@ -24,6 +24,7 @@ export default function OrderProduct({row, response1, productvalues, updateQuant
                         name="product"
                         onChange={selectProduct}
                     >
+                         <option value="" selected disabled hidden>--select--</option>
                         <option>Select</option>
                         {
                             response1 != null ?
