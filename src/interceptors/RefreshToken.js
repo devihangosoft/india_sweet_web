@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Navigate} from "react-router-dom"
 
 let refresh = false;
 const userData = JSON.parse(localStorage.getItem("user"));
@@ -25,7 +26,8 @@ axios.interceptors.response.use(resp => resp, async error => {
   return axios.request(error.config);
 
   }
-  console.log('refresh not happening');
+ // console.log('refresh not happening');
+window.location = `${window.origin}/login`
  }
 
  refresh = false;
