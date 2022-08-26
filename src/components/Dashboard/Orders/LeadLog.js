@@ -28,8 +28,9 @@ function LeadLog() {
 
   useEffect(() => {
     if (response !== null) {
-      console.log(response);
+    //  console.log(response);
       setPost(response)
+   
     }
 
     const resMessage =
@@ -39,11 +40,24 @@ function LeadLog() {
     console.log(resMessage)
   }, [response, error]);
 
-  const year = (post.processed_on).getFullYear();
-  console.log("year",year)
+  const IndDateTime = (val) => {
+    let date = new Date(val);
+    let month = date.getMonth()+1;
+    let dt = date.getDate();
+    if(dt < 10) {  dt = '0' + dt; }
+    if(month < 10) { month = '0' + month;}
+     return (dt + '-' + month + '-'+dt + date.getFullYear()+'  '+ date.toLocaleTimeString());
+    }
+    
+
+    // const datetime = IndDateTime();
+    // console.log(datetime);
+    // console.log('processs', post[0].processed_by);
+ 
   return (
     <>
       <Timeline className="mt-3">
+       
         {post.map((item, index) => {
           return (
             <TimelineItem className="col-md-12">
@@ -80,17 +94,15 @@ function LeadLog() {
                     </div>
                     <div className="col-md-3">
                       <span className="text-grey small">processed on:</span><br></br>
-                     <b>{
-                     item.processed_on
-                     }</b> 
-
-               
-
+                     <b>
+                      {item.processed_on}
+                     {/* {()=>IndDateTime('2022-08-10T17:13:48.218Z')} */}
+                     </b>               
                     </div>
                   </div>
                   <hr></hr>
                   <h4>
-                    {item.production_status}
+                   {item.production_status}
                   </h4>
 
 
