@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux/es/exports";
+import { useDispatch } from "react-redux/es/exports";
 
 import Orders from "./components/Dashboard/Orders/Orders";
 import Products from "./components/Dashboard/Products/Products";
 import Stores from "./components/Dashboard/Stores/Stores";
 import Payments from "./components/Dashboard/Payments/Payments";
-
 import Configuration from "./components/Configurations/Configuration";
 import Signin from "./components/Login/Signin";
 import Logout from "./components/Login/Logout";
@@ -38,6 +38,7 @@ import Customers from "./components/Dashboard/Customers/Customers";
 import UserTeamMapping from "./components/Configurations/UserTeamMapping";
 import LeadLog from "./components/Dashboard/Orders/LeadLog";
 
+
 //import Cards from "./components/DataTables/Card";
 // import Accordions from "./components/Elements/Accordions";
 // import CustomTabs from "./components/Elements/CustomTabs";
@@ -45,6 +46,12 @@ import LeadLog from "./components/Dashboard/Orders/LeadLog";
 
 function App() {
   const { isLoggedIn } = useSelector((store) => store.userReducer);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    var userData = localStorage.getItem("user");
+    (userData!==null) && dispatch({ type: "setUserDetails", payload: JSON.parse(userData) });
+  }, []);
 
   return (
     <div className="App">
@@ -60,7 +67,13 @@ function App() {
               </Layout>) : <Navigate to='/login' />
             }
           />
-          <Route path="/login" element={<Signin />} />
+          {/* <Route path="/login" element={<Signin />} /> */}
+          <Route
+            path="/login"
+            element={
+              !isLoggedIn ? <Signin /> : <Navigate to='/dashboard' />
+            }
+          />
           <Route path="/register" element={<Register />} />
           <Route path="/otpverification" element={<OtpVerification />} />
           <Route path="/resetPassword" element={<ResetPassword />} />

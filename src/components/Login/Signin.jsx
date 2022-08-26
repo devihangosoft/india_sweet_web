@@ -37,10 +37,10 @@ function Login() {
           console.log(response);
           setSuccessmessage("Login successfull !!");
           setTimeout(() => {
-            navigate("/test");
-            // navigate("/dashboard");
+            // navigate("/test");
+            navigate("/dashboard");
             setSuccessmessage("");
-          }, 2000);
+          }, 1000);
         });
 
     } catch (error) {
