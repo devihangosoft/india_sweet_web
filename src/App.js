@@ -67,13 +67,18 @@ function App() {
               </Layout>) : <Navigate to='/login' />
             }
           />
+
           {/* <Route path="/login" element={<Signin />} /> */}
+
           <Route
             path="/login"
             element={
               !isLoggedIn ? <Signin /> : <Navigate to='/dashboard' />
             }
           />
+
+          {/* <Route path="/login" element={<Signin />} /> */}
+
           <Route path="/register" element={<Register />} />
           <Route path="/otpverification" element={<OtpVerification />} />
           <Route path="/resetPassword" element={<ResetPassword />} />

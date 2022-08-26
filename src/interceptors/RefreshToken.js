@@ -1,5 +1,6 @@
 import axios from "axios";
 import {Navigate} from "react-router-dom"
+import { useDispatch } from "react-redux/es/exports";
 
 let refresh = false;
 const userData = JSON.parse(localStorage.getItem("user"));
@@ -27,7 +28,11 @@ axios.interceptors.response.use(resp => resp, async error => {
 
   }
  // console.log('refresh not happening');
-window.location = `${window.origin}/login`
+ 
+ const dispatch = useDispatch();
+ dispatch({ type: "deleteUserDetails" });
+ 
+ window.location = `${window.origin}/login`
  }
 
  refresh = false;
