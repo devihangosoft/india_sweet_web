@@ -36,7 +36,8 @@ import Test from "./Test";
 import StoresForm from "./components/Dashboard/Stores/StoresForm";
 import Customers from "./components/Dashboard/Customers/Customers";
 import UserTeamMapping from "./components/Configurations/UserTeamMapping";
-import LeadLog from "./components/Dashboard/LeadLog";
+import LeadLog from "./components/Dashboard/Orders/LeadLog";
+
 //import Cards from "./components/DataTables/Card";
 // import Accordions from "./components/Elements/Accordions";
 // import CustomTabs from "./components/Elements/CustomTabs";

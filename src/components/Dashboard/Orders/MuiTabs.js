@@ -8,6 +8,9 @@ import useAxios from '../../hooks/useAxios';
 import Neworder from './OrderStatus/Neworder';
 import Dispatchorder from './OrderStatus/Dispatchorder';
 import Production from './OrderStatus/Production';
+import Details from './Details';
+import Payment from './Payment';
+import LeadLog from './LeadLog';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,21 +62,38 @@ export default function MuiTabs(props) {
    background: "#FAAF56"
  },
 }}>
-          <Tab label="New order" {...a11yProps(0)} />
-          <Tab label="Production Status" {...a11yProps(1)} />
-          <Tab label="Dispatch Status" {...a11yProps(2)} />
+          <Tab label=" Details" {...a11yProps(0)} />
+          <Tab label="Call Center" {...a11yProps(1)} />
+          <Tab label="Production Status" {...a11yProps(2)} />
+          <Tab label="Packaging & Dispatch Status" {...a11yProps(3)} />
+          <Tab label="Accounts" {...a11yProps(4)} />
+          <Tab label="Timeline" {...a11yProps(5)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0} >
    
-    <Neworder leadid={props.leadid}/>
+ 
+    <Details leadid={props.leadid}/>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={value} index={1} >
+   
+   <Neworder leadid={props.leadid}/>
+     </TabPanel>
+      <TabPanel value={value} index={2}>
         <Production leadid={props.leadid}/>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={3}>
     <Dispatchorder leadid={props.leadid} />
       </TabPanel>
+      <TabPanel value={value} index={4}>
+    <Payment leadid={props.leadid}/>
+      </TabPanel>
+
+      <TabPanel value={value} index={5}>
+ <LeadLog/>
+      </TabPanel>
+
+
     </Box>
   );
 }

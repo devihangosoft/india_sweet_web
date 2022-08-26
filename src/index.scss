@@ -84,6 +84,12 @@ input:checked + .slider:before {
 .border-radius-10{
   border-radius: 10px;
 }
+
+.MuiTimelineItem-root:before {
+-webkit-flex: 0!important; 
+  -ms-flex: 0!important;
+  flex: 0!important;
+}
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
@@ -510,7 +516,7 @@ th{
   font-size: 12px;
 }
 td p{
-  margin: 0;
+  margin: 0;word-break: break-all;
 }
 // .MuiTab-textColorPrimary{
 //   color: orange;
