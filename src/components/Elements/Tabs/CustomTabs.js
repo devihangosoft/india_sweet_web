@@ -3,7 +3,7 @@ import React from "react";
 // import Tab from 'react-bootstrap/Tab';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import Filterlist from "../../Elements/Filter/Filterlist";
+import Filterlist from "../Filter/Filterlist";
 import "./CustomTabs.css"
 
 function CustomTabs() {

@@ -10,6 +10,7 @@ import Payments from "./components/Dashboard/Payments/Payments";
 import Configuration from "./components/Configurations/Configuration";
 import Signin from "./components/Login/Signin";
 import Logout from "./components/Login/Logout";
+import AutoLogout from "./components/Login/AutoLogout";
 import Register from "./components/Login/Register";
 import ResetPassword from "./components/Login/ResetPassword";
 import OtpVerification from "./components/Login/OtpVerification";
@@ -77,7 +78,7 @@ function App() {
             }
           />
 
-          {/* <Route path="/login" element={<Signin />} /> */}
+          
 
           <Route path="/register" element={<Register />} />
           <Route path="/otpverification" element={<OtpVerification />} />
@@ -91,6 +92,7 @@ function App() {
             }
           />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/AutoLogout" element={<AutoLogout />} />
           <Route
             path="/userteammapping"
             element={
@@ -240,7 +242,7 @@ function App() {
             }
           />
           <Route
-            path="/Test"
+            path="/test"
             element={
               isLoggedIn ? (<Layout name="SMS">
                 <Test />
