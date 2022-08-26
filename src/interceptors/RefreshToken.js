@@ -28,10 +28,7 @@ axios.interceptors.response.use(resp => resp, async error => {
 
   }
  // console.log('refresh not happening');
- 
- const dispatch = useDispatch();
- dispatch({ type: "deleteUserDetails" });
- 
+ localStorage.removeItem("user")
  window.location = `${window.origin}/login`
  }
 
