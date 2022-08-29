@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import * as Icon from "react-feather";
-export default function OrderProduct({row, response1, productvalues, updateQuantity, sendProducts}) {
+export default function OrderProduct({row, response1, updateQuantity, sendProducts, DeleteProductRow}) {
     const [quantity, setQuantity] = useState('1');
     const selectProduct = (e) =>{        
         let value = {item: e.target.value, quantity: quantity};
@@ -12,6 +12,9 @@ export default function OrderProduct({row, response1, productvalues, updateQuant
        updateQuantity(e.target.value, row)
     }
 
+    const DeleteRow = (e)=>{
+        DeleteProductRow(row)
+    }
 
 
     return (
@@ -25,7 +28,7 @@ export default function OrderProduct({row, response1, productvalues, updateQuant
                         onChange={selectProduct}
                     >
                          <option value="" selected disabled hidden>--select--</option>
-                        <option>Select</option>
+                        
                         {
                             response1 != null ?
                                 response1.map((item, index) => {
@@ -56,7 +59,7 @@ export default function OrderProduct({row, response1, productvalues, updateQuant
                 </td>
                 <td>
                     
-                    <button className="border-0 bg-transparent"><Icon.Trash color='red'/></button>
+                    <button className="border-0 bg-transparent"><Icon.Trash color='red' onClick={DeleteRow}/></button>
                 </td>
             </tr>
         </>

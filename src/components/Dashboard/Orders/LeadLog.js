@@ -29,8 +29,7 @@ function LeadLog() {
   useEffect(() => {
     if (response !== null) {
     //  console.log(response);
-      setPost(response)
-   
+      setPost(response)   
     }
 
     const resMessage =
@@ -52,7 +51,7 @@ function LeadLog() {
 
     // const datetime = IndDateTime();
     // console.log(datetime);
-    // console.log('processs', post[0].processed_by);
+    // console.log('processs', post);
  
   return (
     <>
@@ -95,8 +94,9 @@ function LeadLog() {
                     <div className="col-md-3">
                       <span className="text-grey small">processed on:</span><br></br>
                      <b>
-                      {item.processed_on}
-                     {/* {()=>IndDateTime('2022-08-10T17:13:48.218Z')} */}
+                     {item.processed_on}
+                     
+                                           
                      </b>               
                     </div>
                   </div>

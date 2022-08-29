@@ -9,12 +9,9 @@ import Swal from 'sweetalert2';
 // import CustomSelect from "./CustomSelect";
 
 function OrderForm() {
- const [productrow, setProductrow] = useState([{
-  proname: "",
-  proquantity: ""
- }])
- const [productvalues, setProductvalues] = useState([
-
+ const [productrow, setProductrow] = useState([])
+ const [productvalues, setProductvalues] = useState([   
+  {"":""}
  ])
  //let navigate = useNavigate();
  let name = /^[a-zA-Z ]+$/;
@@ -177,13 +174,15 @@ function OrderForm() {
 
   // console.log(ref.current.values.product);
   console.log("product values : ", productvalues)
-  setapiState(apiState + 1);
+  // setapiState(apiState + 1);
  };
 
  const addProduct = (e) => {
   e.preventDefault();
-  setProductrow([...productrow, productrow.length]);
-  console.log(productrow);
+  // setProductrow([...productrow, productrow.length]);
+
+  setProductvalues([...productvalues, {item: "", quantity: ""} ])
+  
  }
 
  const sendProducts = (val, index) => {
@@ -197,6 +196,36 @@ function OrderForm() {
   a[index].quantity = quantity;
   setProductvalues(a)
  }
+
+
+ const DeleteProductRow = (indexRow)=>{
+  console.log("key is : ", indexRow)
+
+  // setProductvalues(current =>
+  //   current.filter(element => {      
+  //     return current.indexOf(element) !== indexRow;
+  //   }),
+  // )
+
+
+  // setProductvalues(productvalues =>
+  //   productvalues.filter(element => {           
+  //     return productvalues.indexOf(element) !== indexRow;
+  //   }),
+  // )
+
+  var temp = productvalues;
+  temp = temp.filter((item, index)=>{
+    return temp.indexOf(item) !== indexRow;
+  })
+  console.log("temp:", temp)
+
+  setProductvalues(temp)
+
+
+ }
+
+
 
  return (
   <>
@@ -514,14 +543,31 @@ innerRef={ref}
        </tr>
       </thead>
       <tbody>
-       {
+       {/* {
 
         productrow.map((item, index) => {
-         return <OrderProduct row={index} updateQuantity={updateQuantity} response1={response1} productvalues={productvalues}
-          sendProducts={sendProducts} />
+         return <OrderProduct key={index} row={index} updateQuantity={updateQuantity} response1={response1} 
+          sendProducts={sendProducts} DeleteProductRow={DeleteProductRow} />
+        })
+
+       } */}
+
+
+       {
+
+        
+
+
+    productvalues.map((item, index) => {
+         return <OrderProduct key={index} row={index} updateQuantity={updateQuantity} response1={response1} 
+          sendProducts={sendProducts} DeleteProductRow={DeleteProductRow} />
         })
 
        }
+
+
+
+
        <tr>
         <td colspan="5">
          <button className="btn btn-success btn-sm" onClick={addProduct}>Add +</button>
@@ -535,7 +581,7 @@ innerRef={ref}
   </div>
 
   <div className="col-md-3 form-group mt-3 mb-4 float-right">
-   <button className="btn btn-theme btn-block w-100" type="submit">
+   <button className="btn btn-theme btn-block w-100" type="submit" onClick={handleOrder}>
     Create Order
    </button>
   </div>
